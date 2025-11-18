@@ -254,7 +254,23 @@ public static class MyUtils
         }
     }
 
+    public static void SetMove(GameObject gameObject, float x, float y, float z)
+    {
+        Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
+        if (rigidbody != null)
+        {
+            rigidbody.linearVelocity = new Vector3(x, y, z);
+        }
+    }
 
+    public static void AddMove(GameObject gameObject, Vector3 move)
+    {
+        Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
+        if (rigidbody != null)
+        {
+            rigidbody.linearVelocity = new Vector3(rigidbody.linearVelocity.x + move.x, rigidbody.linearVelocity.y + move.y, rigidbody.linearVelocity.z + move.z);
+        }
+    }
 
     // pitch = transform.eulerAngles.x    yaw = transform.eulerAngles.y
 

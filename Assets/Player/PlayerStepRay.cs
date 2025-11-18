@@ -18,7 +18,7 @@ public class PlayerStepRay : MonoBehaviour
         bool cast = Physics.Raycast(ray, out hit, length, mask);
         if (cast)
         {
-            if (Vector3.Angle(hit.normal, Vector3.up) < 30)
+            if (Vector3.Angle(hit.normal, Vector3.up) < parentEntity.stepAngle)
             {
                 float difference = length - Vector3.Distance(transform.position, hit.point);
                 Transform tr = parentEntity.transform;
