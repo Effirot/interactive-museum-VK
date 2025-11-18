@@ -24,9 +24,15 @@ public class UserInterface : MonoBehaviour
     public bool leftMouseButton;
     [HideInInspector]
     public bool rightMouseButton;
+    [HideInInspector]
+    public bool interact;
+    [HideInInspector]
+    public bool spotlight;
 
-    public Canvas canvas;
+    public CanvasManager canvasManager;
 
+    public static Vector3 positionCamera;
+    public float mouseSense = 0.06F;
 
     public void ApplyInputToEntity(int id, InputValue inputValue)
     {
@@ -54,9 +60,36 @@ public class UserInterface : MonoBehaviour
         
     }
     public void OnJump(InputValue inputValue) { jump = inputValue.isPressed; }
-    public void OnLeftMouseButton(InputValue inputValue) { leftMouseButton = inputValue.isPressed; }
+    public void OnLeftMouseButton(InputValue inputValue) 
+    { 
+        if (!leftMouseButton && inputValue.isPressed)
+            ApplyInputToEntity(0, inputValue);
+        leftMouseButton = inputValue.isPressed;
 
-    public void OnRightMouseButton(InputValue inputValue) { rightMouseButton = inputValue.isPressed; }
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void OnRightMouseButton(InputValue inputValue)
+    {
+        if (!rightMouseButton && inputValue.isPressed)
+            ApplyInputToEntity(1, inputValue);
+        rightMouseButton = inputValue.isPressed;
+
+    }
+
+    public void OnInteract(InputValue inputValue)
+    {
+        if (!interact && inputValue.isPressed)
+            ApplyInputToEntity(3, inputValue);
+        interact = inputValue.isPressed;
+    }
+
+    public void OnTurnLight(InputValue inputValue)
+    {
+        if (!spotlight && inputValue.isPressed)
+            ApplyInputToEntity(4, inputValue);
+        spotlight = inputValue.isPressed;
+    }
 
 
     // Start is called before the first frame update
@@ -65,13 +98,19 @@ public class UserInterface : MonoBehaviour
         if (entityUnderControl != null)
             controlEntity(entityUnderControl);
 
-        GameObject canvasObject = GameObject.Find("Canvas");
-        if (canvasObject != null)
-        {
-            canvas = canvasObject.GetComponent<Canvas>();
+        //GameObject canvasObject = GameObject.Find("Canvas");
+        //if (canvasObject != null)
+        //{
+        //    canvas = canvasObject.GetComponent<Canvas>();
             
-        }
+        //}
 
+    }
+
+    public void Update()
+    {
+        if (entityUnderControl != null)
+            positionCamera = entityUnderControl.GetCameraHolder().position;
     }
 
     // Update is called once per frame

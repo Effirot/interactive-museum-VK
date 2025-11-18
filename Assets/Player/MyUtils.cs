@@ -254,7 +254,23 @@ public static class MyUtils
         }
     }
 
+    public static void SetMove(GameObject gameObject, float x, float y, float z)
+    {
+        Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
+        if (rigidbody != null)
+        {
+            rigidbody.linearVelocity = new Vector3(x, y, z);
+        }
+    }
 
+    public static void AddMove(GameObject gameObject, Vector3 move)
+    {
+        Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
+        if (rigidbody != null)
+        {
+            rigidbody.linearVelocity = new Vector3(rigidbody.linearVelocity.x + move.x, rigidbody.linearVelocity.y + move.y, rigidbody.linearVelocity.z + move.z);
+        }
+    }
 
     // pitch = transform.eulerAngles.x    yaw = transform.eulerAngles.y
 
@@ -670,6 +686,23 @@ public static class MyUtils
         x -= 0.5F;
         return Mathf.Sqrt(0.25F - x * x) * 2F;
     }
+
+    public static RaycastHit fixedRaycast(Vector3 origin, Vector3 direction, float maxDistance, int layerMask, float normalizeRayResult)
+    {
+        Physics.Raycast(origin, direction, out RaycastHit hitInfo, maxDistance, layerMask);
+
+        if (hitInfo.collider != null)
+        {
+            hitInfo = NormalizeRayTraceResult(hitInfo, normalizeRayResult);
+        }
+        else
+        {
+            hitInfo.point = origin + direction * maxDistance;
+            hitInfo.distance = maxDistance;
+        }
+        return hitInfo;
+    }
+
 
     //public static Vector3 getPositionRelative(Vector3 relativeToPos, Vector3 relativeToUpVector, Vector3 point)
     //{

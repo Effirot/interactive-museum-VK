@@ -15,6 +15,7 @@ public class EntityLiving : MonoBehaviour
     public bool isDead;
     public bool onGround;
     public UserInterface userInterface;
+    public float stepAngle;
 
     // Start is called before the first frame update
     public virtual void Start()
