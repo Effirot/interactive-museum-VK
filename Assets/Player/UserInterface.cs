@@ -30,6 +30,8 @@ public class UserInterface : MonoBehaviour
     public bool spotlight;
 
     public CanvasManager canvasManager;
+
+    public static Vector3 positionCamera;
     public float mouseSense = 0.06F;
 
     public void ApplyInputToEntity(int id, InputValue inputValue)
@@ -103,6 +105,12 @@ public class UserInterface : MonoBehaviour
             
         //}
 
+    }
+
+    public void Update()
+    {
+        if (entityUnderControl != null)
+            positionCamera = entityUnderControl.GetCameraHolder().position;
     }
 
     // Update is called once per frame

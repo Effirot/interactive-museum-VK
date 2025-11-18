@@ -5,7 +5,8 @@ public class PickableObject : MonoBehaviour
     Collider collider;
 
     Vector3 destinationPoint;
-    bool placingActive;
+    [HideInInspector]
+    public bool placingActive;
 
     void Start()
     {

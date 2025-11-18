@@ -687,6 +687,23 @@ public static class MyUtils
         return Mathf.Sqrt(0.25F - x * x) * 2F;
     }
 
+    public static RaycastHit fixedRaycast(Vector3 origin, Vector3 direction, float maxDistance, int layerMask, float normalizeRayResult)
+    {
+        Physics.Raycast(origin, direction, out RaycastHit hitInfo, maxDistance, layerMask);
+
+        if (hitInfo.collider != null)
+        {
+            hitInfo = NormalizeRayTraceResult(hitInfo, normalizeRayResult);
+        }
+        else
+        {
+            hitInfo.point = origin + direction * maxDistance;
+            hitInfo.distance = maxDistance;
+        }
+        return hitInfo;
+    }
+
+
     //public static Vector3 getPositionRelative(Vector3 relativeToPos, Vector3 relativeToUpVector, Vector3 point)
     //{
     //    freeUsableTransform.position = relativeToPos;
