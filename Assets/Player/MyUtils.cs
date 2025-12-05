@@ -13,6 +13,7 @@ public static class MyUtils
     //https://danielilett.com/2021-05-20-every-shader-graph-node/
 
     public static float radiansToDegrees = 57.295779513082320876798154814105F;
+    
     public static float degreesToRadians = 0.01745329251994329576923690768489F;
     public static Transform freeUsableTransform = new GameObject().transform;
     public static System.Random rand = new System.Random();
