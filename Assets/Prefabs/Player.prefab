@@ -313,7 +313,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1451870066717933829}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f396433a3456f049ad2d6f02145309f, type: 3}
+  m_Script: {fileID: 11500000, guid: ec503a42efbd79b40af510929786e5d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovementController
   headCamera: {fileID: 5268134909495560552}
@@ -321,11 +321,11 @@ MonoBehaviour:
   interactionLayer:
     serializedVersion: 2
     m_Bits: 1
-  speed: 2.1
-  sprintSpeed: 4
-  characterSense: 0.1
-  rightHand: {fileID: 5308042707865778692}
-  leftHand: {fileID: 1084388421676478329}
-  isInPipeMode: 0
-  righthandObject: {fileID: 0}
-  lefthandObject: {fileID: 0}
+  speed: 10
+  sprintSpeed: 10
+  characterSense: 0.2
+  rightHand: {fileID: 0}
+  leftHand: {fileID: 0}
+  _isInPipeMode: 0
+  _righthandObject: {fileID: 0}
+  _lefthandObject: {fileID: 0}

@@ -3354,7 +3354,7 @@ MonoBehaviour:
   - {fileID: 114350483966675253}
   m_ExposedName: Scale
   m_Exposed: 1
-  m_Order: 8
+  m_Order: 7
   m_Category: 
   m_Min:
     m_Type:
@@ -3538,7 +3538,7 @@ MonoBehaviour:
   - {fileID: 114350483966675258}
   m_ExposedName: Texture
   m_Exposed: 1
-  m_Order: 9
+  m_Order: 8
   m_Category: 
   m_Min:
     m_Type:
