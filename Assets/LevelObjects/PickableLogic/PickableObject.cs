@@ -11,7 +11,7 @@ public class PickableObject : MonoBehaviour
     void Start()
     {
         collider = GetComponent<Collider>();
-        this.gameObject.layer = 6;
+        // this.gameObject.layer = 0;
     }
 
     private void Update()
@@ -35,7 +35,7 @@ public class PickableObject : MonoBehaviour
 
     }
 
-    public void onPick()
+    public void OnPick()
     {
         if (collider != null)
         {
@@ -43,18 +43,18 @@ public class PickableObject : MonoBehaviour
         }
 
     }
-    public void onPlace(Vector3 destinationPoint)
+    public void OnPlace(Vector3 destinationPoint)
     {
         this.destinationPoint = destinationPoint;
         this.placingActive = true;
-        onPlaceOrDrop();
+        OnPlaceOrDrop();
     }
-    public void onDrop()
+    public void OnDrop()
     {
-        onPlaceOrDrop();
+        OnPlaceOrDrop();
     }
 
-    public void onPlaceOrDrop()
+    public void OnPlaceOrDrop()
     {
 
         if (collider != null)

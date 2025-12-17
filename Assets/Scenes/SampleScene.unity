@@ -328,6 +328,7 @@ GameObject:
   - component: {fileID: 57932935}
   - component: {fileID: 57932934}
   - component: {fileID: 57932933}
+  - component: {fileID: 57932936}
   m_Layer: 0
   m_Name: Photo
   m_TagString: Untagged
@@ -427,6 +428,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 57932931}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &57932936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57932931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c4f86bd417148649991fcf8fd6854ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickableObject
+  placingActive: 0
 --- !u!1001 &75499686
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8375,6 +8389,7 @@ GameObject:
   - component: {fileID: 1095140248}
   - component: {fileID: 1095140247}
   - component: {fileID: 1095140246}
+  - component: {fileID: 1095140249}
   m_Layer: 0
   m_Name: Notebook
   m_TagString: Untagged
@@ -8474,6 +8489,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1095140244}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1095140249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095140244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c4f86bd417148649991fcf8fd6854ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickableObject
+  placingActive: 0
 --- !u!1 &1099526660
 GameObject:
   m_ObjectHideFlags: 0
@@ -9021,6 +9049,7 @@ GameObject:
   - component: {fileID: 1212812669}
   - component: {fileID: 1212812668}
   - component: {fileID: 1212812667}
+  - component: {fileID: 1212812670}
   m_Layer: 0
   m_Name: Toothbrush
   m_TagString: Untagged
@@ -9120,6 +9149,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1212812665}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1212812670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212812665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c4f86bd417148649991fcf8fd6854ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickableObject
+  placingActive: 0
 --- !u!1001 &1219326474
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10405,6 +10447,7 @@ GameObject:
   - component: {fileID: 1419389155}
   - component: {fileID: 1419389154}
   - component: {fileID: 1419389153}
+  - component: {fileID: 1419389156}
   m_Layer: 0
   m_Name: Mug
   m_TagString: Untagged
@@ -10504,6 +10547,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419389151}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1419389156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419389151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c4f86bd417148649991fcf8fd6854ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickableObject
+  placingActive: 0
 --- !u!1001 &1425761848
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11339,7 +11395,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -11457,8 +11513,8 @@ MonoBehaviour:
     Enabled: 0
     DefaultMode: 2
   DefaultBlend:
-    Style: 1
-    Time: 2
+    Style: 5
+    Time: 0.9
     CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -15009,6 +15065,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1084388421676478329, guid: 7a0e7608502f89d4e8a3c084d7a05ef6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1451870066717933829, guid: 7a0e7608502f89d4e8a3c084d7a05ef6, type: 3}
       propertyPath: m_Name
       value: Player
@@ -15052,6 +15112,18 @@ PrefabInstance:
     - target: {fileID: 3822528598486772489, guid: 7a0e7608502f89d4e8a3c084d7a05ef6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308042707865778692, guid: 7a0e7608502f89d4e8a3c084d7a05ef6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6864932298663252047, guid: 7a0e7608502f89d4e8a3c084d7a05ef6, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: df70fa95-8a34-4494-b137-73ab6b9c7d37
+      objectReference: {fileID: 0}
+    - target: {fileID: 7439895940223897291, guid: 7a0e7608502f89d4e8a3c084d7a05ef6, type: 3}
+      propertyPath: interactionDistance
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
