@@ -239,7 +239,7 @@ public class EntityPlayer : EntityLiving
                 Interactable iObject = gameObject.GetComponent<Interactable>();
                 if (iObject != null)
                 {
-                    iObject.interact(this, lastLookRaycast.point);
+                    // iObject.interact(this, lastLookRaycast.point);
                 }
                 return;
             }
@@ -268,7 +268,7 @@ public class EntityPlayer : EntityLiving
         if (isRighthand && righthandObject == null)
         {
             righthandObject = pickableObject;
-            pickableObject.onPick();
+            // pickableObject.onPick();
             rightPickedLastPos = pickableObject.transform.position;
             rightpickSmoothProgress = 0;
             return true;
@@ -276,7 +276,7 @@ public class EntityPlayer : EntityLiving
         if (!isRighthand && lefthandObject == null)
         {
             lefthandObject = pickableObject;
-            pickableObject.onPick();
+            // pickableObject.onPick();
             leftPickedLastPos = pickableObject.transform.position;
             leftpickSmoothProgress = 0;
             return true;
@@ -289,12 +289,12 @@ public class EntityPlayer : EntityLiving
         if (isRighthand && righthandObject != null)
         {
 
-            righthandObject.onPlace(hit.point);
+            // righthandObject.onPlace(hit.point);
             righthandObject = null;
         }
         if (!isRighthand && lefthandObject != null)
         {
-            lefthandObject.onPlace(hit.point);
+            // lefthandObject.onPlace(hit.point);
             lefthandObject = null;
         }
     }
@@ -304,13 +304,13 @@ public class EntityPlayer : EntityLiving
         if (isRighthand && righthandObject != null)
         {
             MyUtils.AddMove(righthandObject.gameObject, GetCameraHolder().forward * 3);
-            righthandObject.onDrop();
+            // righthandObject.onDrop();
             righthandObject = null;
         }
         if (!isRighthand && lefthandObject != null)
         {
             MyUtils.AddMove(lefthandObject.gameObject, GetCameraHolder().forward * 3);
-            lefthandObject.onDrop();
+            // lefthandObject.onDrop();
             lefthandObject = null;
         }
     }
