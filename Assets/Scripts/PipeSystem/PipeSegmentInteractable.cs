@@ -1,4 +1,5 @@
 using UnityEngine;
+using InteractiveMuseum.Interaction;
 
 namespace InteractiveMuseum.PipeSystem
 {
@@ -23,6 +24,13 @@ namespace InteractiveMuseum.PipeSystem
             if (_pipeGridSystem == null)
             {
                 Debug.LogWarning("PipeSegmentInteractable could not find PipeGridSystem in parent!");
+            }
+            
+            // Ensure InteractableOutline exists for highlighting
+            InteractableOutline outline = GetComponent<InteractableOutline>();
+            if (outline == null)
+            {
+                outline = gameObject.AddComponent<InteractableOutline>();
             }
         }
         

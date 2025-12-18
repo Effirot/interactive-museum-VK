@@ -3,6 +3,7 @@ using Unity.Cinemachine;
 using InteractiveMuseum.Camera;
 using InteractiveMuseum.Player;
 using InteractiveMuseum.Interaction;
+using InteractiveMuseum.PipeSystem;
 
 namespace InteractiveMuseum.PipeSystem
 {
@@ -41,6 +42,19 @@ namespace InteractiveMuseum.PipeSystem
         [Tooltip("Position of the grid origin")]
         [SerializeField]
         private Vector3 _gridPosition = new Vector3(0, 0, 10);
+        
+        [Header("Puzzle Settings")]
+        [Tooltip("Start position of the puzzle (grid coordinates)")]
+        [SerializeField]
+        private Vector2Int _startPosition = new Vector2Int(0, 0);
+        
+        [Tooltip("End position of the puzzle (grid coordinates)")]
+        [SerializeField]
+        private Vector2Int _endPosition = new Vector2Int(2, 2);
+        
+        [Tooltip("Randomize initial pipe rotations")]
+        [SerializeField]
+        private bool _randomizeInitialRotations = false;
         
         [Header("Camera Settings")]
         [Tooltip("Position for the pipe camera")]
@@ -202,28 +216,82 @@ namespace InteractiveMuseum.PipeSystem
             system.pipeSpacing = _pipeSpacing;
             system.gridOrigin = _gridPosition;
             
-            // Try to find or assign pipe prefab
-            if (system.pipePrefab == null)
+            // Configure puzzle settings
+            system.startPosition = _startPosition;
+            system.endPosition = _endPosition;
+            system.randomizeInitialRotations = _randomizeInitialRotations;
+            
+            // Try to find and assign pipe prefabs using reflection to access private fields
+            #if UNITY_EDITOR
+            System.Reflection.FieldInfo straightField = typeof(PipeGridSystem).GetField("_straightPipePrefab", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            System.Reflection.FieldInfo cornerField = typeof(PipeGridSystem).GetField("_cornerPipePrefab", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            System.Reflection.FieldInfo tJunctionField = typeof(PipeGridSystem).GetField("_tJunctionPipePrefab", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            System.Reflection.FieldInfo crossField = typeof(PipeGridSystem).GetField("_crossPipePrefab", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            
+            // Try to find prefabs
+            GameObject straightPrefab = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Pipe_Straight.prefab");
+            GameObject cornerPrefab = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Pipe_Corner.prefab");
+            GameObject tJunctionPrefab = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Pipe_TJunction.prefab");
+            GameObject crossPrefab = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Pipe_Cross.prefab");
+            
+            // Assign found prefabs
+            if (straightField != null && straightPrefab != null && straightField.GetValue(system) == null)
             {
-                // Try to find existing prefab
-                GameObject prefab = Resources.Load<GameObject>("Pipe_Straight");
-                if (prefab == null)
+                straightField.SetValue(system, straightPrefab);
+                Debug.Log("✓ Found and assigned straight pipe prefab");
+            }
+            
+            if (cornerField != null && cornerPrefab != null && cornerField.GetValue(system) == null)
+            {
+                cornerField.SetValue(system, cornerPrefab);
+                Debug.Log("✓ Found and assigned corner pipe prefab");
+            }
+            
+            if (tJunctionField != null && tJunctionPrefab != null && tJunctionField.GetValue(system) == null)
+            {
+                tJunctionField.SetValue(system, tJunctionPrefab);
+                Debug.Log("✓ Found and assigned T-junction pipe prefab");
+            }
+            
+            if (crossField != null && crossPrefab != null && crossField.GetValue(system) == null)
+            {
+                crossField.SetValue(system, crossPrefab);
+                Debug.Log("✓ Found and assigned cross pipe prefab");
+            }
+            
+            // If no prefabs found, try Resources folder
+            if (straightPrefab == null && cornerPrefab == null && tJunctionPrefab == null && crossPrefab == null)
+            {
+                GameObject resourcePrefab = Resources.Load<GameObject>("Pipe_Straight");
+                if (resourcePrefab != null && straightField != null && straightField.GetValue(system) == null)
                 {
-                    #if UNITY_EDITOR
-                    // Look in Prefabs folder (Editor-only)
-                    prefab = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Pipe_Straight.prefab");
-                    #endif
-                }
-                if (prefab != null)
-                {
-                    system.pipePrefab = prefab;
-                    Debug.Log("✓ Found and assigned pipe prefab");
-                }
-                else
-                {
-                    Debug.LogWarning("⚠ Pipe prefab not found. Please create one using Tools/Pipe System/Create Pipe Prefab");
+                    straightField.SetValue(system, resourcePrefab);
+                    Debug.Log("✓ Found and assigned straight pipe prefab from Resources");
                 }
             }
+            
+            // Check if at least one prefab is assigned
+            bool hasAnyPrefab = (straightField != null && straightField.GetValue(system) != null) ||
+                               (cornerField != null && cornerField.GetValue(system) != null) ||
+                               (tJunctionField != null && tJunctionField.GetValue(system) != null) ||
+                               (crossField != null && crossField.GetValue(system) != null);
+            
+            if (!hasAnyPrefab)
+            {
+                Debug.LogWarning("⚠ No pipe prefabs found. Please create them using Tools/Pipe System/Create Pipe Prefab");
+            }
+            #else
+            // Runtime: try Resources folder
+            GameObject resourcePrefab = Resources.Load<GameObject>("Pipe_Straight");
+            if (resourcePrefab != null)
+            {
+                Debug.Log("✓ Found pipe prefab in Resources (assign manually in Inspector for full control)");
+            }
+            else
+            {
+                Debug.LogWarning("⚠ Pipe prefabs not found in Resources. Please assign them manually in Inspector.");
+            }
+            #endif
             
             Debug.Log("✓ Configured PipeGridSystem");
         }
@@ -284,6 +352,13 @@ namespace InteractiveMuseum.PipeSystem
                     interactable = trigger.AddComponent<Interactable>();
                 }
                 interactable.onLookText = "Interact with pipes";
+                
+                // Add InteractableOutline for highlighting
+                InteractableOutline outline = trigger.GetComponent<InteractableOutline>();
+                if (outline == null)
+                {
+                    outline = trigger.AddComponent<InteractableOutline>();
+                }
                 
                 // Link references
                 CameraManager manager = FindObjectOfType<CameraManager>();

@@ -324,8 +324,8 @@ MonoBehaviour:
   speed: 10
   sprintSpeed: 10
   characterSense: 0.2
-  rightHand: {fileID: 0}
-  leftHand: {fileID: 0}
+  rightHand: {fileID: 5308042707865778692}
+  leftHand: {fileID: 1084388421676478329}
   _isInPipeMode: 0
   _righthandObject: {fileID: 0}
   _lefthandObject: {fileID: 0}

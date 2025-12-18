@@ -78,6 +78,13 @@ namespace InteractiveMuseum.Interaction
             {
                 _playerCamera = _cameraManager.playerCamera;
             }
+            
+            // Ensure InteractableOutline exists for highlighting
+            InteractableOutline outline = GetComponent<InteractableOutline>();
+            if (outline == null)
+            {
+                outline = gameObject.AddComponent<InteractableOutline>();
+            }
         }
         
         /// <summary>
@@ -85,20 +92,28 @@ namespace InteractiveMuseum.Interaction
         /// </summary>
         public void OnInteract()
         {
-            Debug.Log($"[FocusableInteractable] OnInteract called. isPipeModeActive: {_isPipeModeActive}");
+            // Check actual pipe mode state from PipeGridSystem instead of local flag
+            bool isCurrentlyActive = false;
+            if (_pipeSystem != null)
+            {
+                isCurrentlyActive = _pipeSystem.IsActive();
+            }
             
-            if (_isPipeModeActive)
+            // Also check CameraManager state as fallback
+            if (!isCurrentlyActive && _cameraManager != null)
             {
-                // Exit pipe mode
-                Debug.Log("[FocusableInteractable] Exiting pipe mode");
-                ExitPipeMode();
+                isCurrentlyActive = _cameraManager.IsPipeModeActive();
             }
-            else
+            
+            // If pipe mode is already active, don't allow interaction with trigger (exit only via ESC)
+            if (isCurrentlyActive)
             {
-                // Enter pipe mode
-                Debug.Log("[FocusableInteractable] Entering pipe mode");
-                EnterPipeMode();
+                // Don't exit on trigger click - only allow exit via ESC key
+                return;
             }
+            
+            // Enter pipe mode
+            EnterPipeMode();
         }
         
         private void EnterPipeMode()
@@ -131,6 +146,7 @@ namespace InteractiveMuseum.Interaction
                 _pipeSystem.ActivatePipeMode();
             }
             
+            // Update local flag to match actual state
             _isPipeModeActive = true;
         }
         
@@ -145,6 +161,7 @@ namespace InteractiveMuseum.Interaction
                 _pipeSystem.DeactivatePipeMode();
             }
             
+            // Update local flag to match actual state
             _isPipeModeActive = false;
         }
         

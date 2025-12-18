@@ -235,15 +235,64 @@ public class PipeSystemSetup : EditorWindow
             }
         }
         
-        // Assign prefab to grid system
-        if (system != null && system.pipePrefab == null)
+        // Assign prefabs to grid system using reflection
+        if (system != null)
         {
-            GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Pipe_Straight.prefab");
-            if (prefab != null)
+            System.Reflection.FieldInfo straightField = typeof(PipeGridSystem).GetField("_straightPipePrefab", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            System.Reflection.FieldInfo cornerField = typeof(PipeGridSystem).GetField("_cornerPipePrefab", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            System.Reflection.FieldInfo tJunctionField = typeof(PipeGridSystem).GetField("_tJunctionPipePrefab", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            System.Reflection.FieldInfo crossField = typeof(PipeGridSystem).GetField("_crossPipePrefab", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            
+            bool assignedAny = false;
+            
+            // Try to assign straight prefab
+            if (straightField != null && straightField.GetValue(system) == null)
             {
-                system.pipePrefab = prefab;
+                GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Pipe_Straight.prefab");
+                if (prefab != null)
+                {
+                    straightField.SetValue(system, prefab);
+                    assignedAny = true;
+                }
+            }
+            
+            // Try to assign corner prefab
+            if (cornerField != null && cornerField.GetValue(system) == null)
+            {
+                GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Pipe_Corner.prefab");
+                if (prefab != null)
+                {
+                    cornerField.SetValue(system, prefab);
+                    assignedAny = true;
+                }
+            }
+            
+            // Try to assign T-junction prefab
+            if (tJunctionField != null && tJunctionField.GetValue(system) == null)
+            {
+                GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Pipe_TJunction.prefab");
+                if (prefab != null)
+                {
+                    tJunctionField.SetValue(system, prefab);
+                    assignedAny = true;
+                }
+            }
+            
+            // Try to assign cross prefab
+            if (crossField != null && crossField.GetValue(system) == null)
+            {
+                GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Pipe_Cross.prefab");
+                if (prefab != null)
+                {
+                    crossField.SetValue(system, prefab);
+                    assignedAny = true;
+                }
+            }
+            
+            if (assignedAny)
+            {
                 EditorUtility.SetDirty(system);
-                Debug.Log("✓ Assigned pipe prefab to PipeGridSystem");
+                Debug.Log("✓ Assigned pipe prefabs to PipeGridSystem");
             }
         }
         
@@ -254,6 +303,12 @@ public class PipeSystemSetup : EditorWindow
             system.gridHeight = 3;
             system.pipeSpacing = 2f;
             system.gridOrigin = new Vector3(0, 0, 10);
+            
+            // Configure puzzle settings (start at top-left, end at bottom-right)
+            system.startPosition = new Vector2Int(0, 0);
+            system.endPosition = new Vector2Int(2, 2);
+            system.randomizeInitialRotations = false;
+            
             EditorUtility.SetDirty(system);
             Debug.Log("✓ Configured PipeGridSystem default values");
         }

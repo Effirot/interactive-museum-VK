@@ -135,13 +135,29 @@ public class CheckPipeSystemSetup : EditorWindow
         {
             Debug.Log("✓ PipeGridSystem found");
             
-            if (system.pipePrefab == null)
+            // Check if any pipe prefabs are assigned
+            System.Reflection.FieldInfo straightField = typeof(PipeGridSystem).GetField("_straightPipePrefab", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            System.Reflection.FieldInfo cornerField = typeof(PipeGridSystem).GetField("_cornerPipePrefab", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            System.Reflection.FieldInfo tJunctionField = typeof(PipeGridSystem).GetField("_tJunctionPipePrefab", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            System.Reflection.FieldInfo crossField = typeof(PipeGridSystem).GetField("_crossPipePrefab", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            
+            bool hasAnyPrefab = (straightField != null && straightField.GetValue(system) != null) ||
+                               (cornerField != null && cornerField.GetValue(system) != null) ||
+                               (tJunctionField != null && tJunctionField.GetValue(system) != null) ||
+                               (crossField != null && crossField.GetValue(system) != null);
+            
+            if (!hasAnyPrefab)
             {
-                Debug.LogWarning("⚠ PipeGridSystem: Pipe Prefab not assigned");
+                Debug.LogWarning("⚠ PipeGridSystem: No pipe prefabs assigned");
             }
             else
             {
-                Debug.Log("✓ PipeGridSystem: Pipe Prefab assigned");
+                int prefabCount = 0;
+                if (straightField != null && straightField.GetValue(system) != null) prefabCount++;
+                if (cornerField != null && cornerField.GetValue(system) != null) prefabCount++;
+                if (tJunctionField != null && tJunctionField.GetValue(system) != null) prefabCount++;
+                if (crossField != null && crossField.GetValue(system) != null) prefabCount++;
+                Debug.Log($"✓ PipeGridSystem: {prefabCount} pipe prefab(s) assigned");
             }
         }
         

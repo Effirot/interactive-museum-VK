@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 using InteractiveMuseum.Camera;
 using InteractiveMuseum.PipeSystem;
 using InteractiveMuseum.Interaction;
+using System.Linq;
 
 namespace InteractiveMuseum.Player
 {
@@ -108,6 +109,7 @@ namespace InteractiveMuseum.Player
         
         private RaycastHit _lastLookRaycast;
         private bool _escapeKeyPressedLastFrame = false;
+        private InteractableOutline _currentHighlightedOutline = null;
 
         /// <summary>
         /// Starts player control and locks cursor.
@@ -187,6 +189,21 @@ namespace InteractiveMuseum.Player
 
             // Update interaction raycast
             UpdateInteractionRaycast();
+            
+            // In pipe mode, also handle mouse clicks directly (as fallback if OnInteract doesn't work)
+            if (_isInPipeMode && Mouse.current != null)
+            {
+                // Check for left mouse button click (clockwise, right)
+                if (Mouse.current.leftButton.wasPressedThisFrame)
+                {
+                    HandlePipeClick(true);
+                }
+                // Also check right mouse button (counter-clockwise, left)
+                else if (Mouse.current.rightButton.wasPressedThisFrame)
+                {
+                    HandlePipeClick(false);
+                }
+            }
         }
 
         private void LateUpdate()
@@ -216,40 +233,62 @@ namespace InteractiveMuseum.Player
         
         private void UpdateInteractionRaycast()
         {
-            // In pipe mode, we need to use the pipe camera for raycast
-            Transform rayOrigin = null;
-            Vector3 rayDirection = Vector3.forward;
+            Ray ray;
             
             if (_isInPipeMode)
             {
-                // Use pipe camera for raycast
-                CameraManager cameraManager = CameraManager.Instance;
-                if (cameraManager != null && cameraManager.pipeCamera != null)
+                // In pipe mode, use mouse position for raycast (cursor is unlocked)
+                UnityEngine.Camera pipeCameraComponent = null;
+                
+                // Get Camera from CinemachineBrain (Cinemachine controls the main camera)
+                CinemachineBrain cinemachineBrain = FindFirstObjectByType<CinemachineBrain>();
+                if (cinemachineBrain != null)
                 {
-                    rayOrigin = cameraManager.pipeCamera.transform;
-                    rayDirection = cameraManager.pipeCamera.transform.forward;
+                    pipeCameraComponent = cinemachineBrain.OutputCamera;
                 }
-                else if (headCamera != null)
+                
+                // Fallback: try to get Camera from main camera
+                if (pipeCameraComponent == null)
                 {
-                    // Fallback to head camera
-                    rayOrigin = headCamera.transform;
-                    rayDirection = headCamera.transform.forward;
+                    pipeCameraComponent = UnityEngine.Camera.main;
+                }
+                
+                // Final fallback: find any camera
+                if (pipeCameraComponent == null)
+                {
+                    pipeCameraComponent = FindFirstObjectByType<UnityEngine.Camera>();
+                }
+                
+                if (pipeCameraComponent != null)
+                {
+                    // Use mouse position to create ray from camera (using new Input System)
+                    Vector2 mousePos2D = Mouse.current != null ? Mouse.current.position.ReadValue() : Vector2.zero;
+                    Vector3 mousePosition = new Vector3(mousePos2D.x, mousePos2D.y, 0);
+                    ray = pipeCameraComponent.ScreenPointToRay(mousePosition);
                 }
                 else
                 {
-                    return;
+                    // Last resort: use forward direction from pipe camera transform
+                    CameraManager cameraManager = CameraManager.Instance;
+                    if (cameraManager != null && cameraManager.pipeCamera != null)
+                    {
+                        ray = new Ray(cameraManager.pipeCamera.transform.position, 
+                                     cameraManager.pipeCamera.transform.forward);
+                    }
+                    else
+                    {
+                        return;
+                    }
                 }
             }
             else
             {
+                // Normal mode: use head camera forward direction
                 if (headCamera == null)
                     return;
-                rayOrigin = headCamera.transform;
-                rayDirection = headCamera.transform.forward;
+                    
+                ray = new Ray(headCamera.transform.position, headCamera.transform.forward);
             }
-                
-            // Always update raycast
-            Ray ray = new Ray(rayOrigin.position, rayDirection);
             RaycastHit hit;
             int mask = interactionLayer.value;
             
@@ -270,9 +309,31 @@ namespace InteractiveMuseum.Player
                 currentMask = ~(1 << 5); // All layers except UI layer 5
             }
             
-            if (Physics.Raycast(ray, out hit, currentDistance, currentMask))
+            // Clear previous highlight
+            if (_currentHighlightedOutline != null)
+            {
+                _currentHighlightedOutline.DisableHighlight();
+                _currentHighlightedOutline = null;
+            }
+            
+            // Use longer distance in pipe mode since we're using mouse position
+            float raycastDistance = _isInPipeMode ? interactionDistance * 10f : currentDistance;
+            
+            if (Physics.Raycast(ray, out hit, raycastDistance, currentMask))
             {
                 _lastLookRaycast = hit;
+                
+                // Find and highlight interactable object
+                InteractableOutline outline = FindInteractableOutline(hit.collider.gameObject);
+                if (outline != null && outline != _currentHighlightedOutline)
+                {
+                    if (_currentHighlightedOutline != null)
+                    {
+                        _currentHighlightedOutline.DisableHighlight();
+                    }
+                    _currentHighlightedOutline = outline;
+                    _currentHighlightedOutline.EnableHighlight();
+                }
                 
                 // Show interaction info
                 if (_isInPipeMode)
@@ -286,7 +347,7 @@ namespace InteractiveMuseum.Player
                     
                     if (pipeInteractable != null)
                     {
-                        CanvasManager canvasManager = FindObjectOfType<CanvasManager>();
+                        CanvasManager canvasManager = FindFirstObjectByType<CanvasManager>();
                         if (canvasManager != null)
                         {
                             canvasManager.setInteractionInfo("Click to rotate pipe");
@@ -298,7 +359,7 @@ namespace InteractiveMuseum.Player
                         FocusableInteractable focusable = hit.collider.gameObject.GetComponent<FocusableInteractable>();
                         if (focusable != null)
                         {
-                            CanvasManager canvasManager = FindObjectOfType<CanvasManager>();
+                            CanvasManager canvasManager = FindFirstObjectByType<CanvasManager>();
                             if (canvasManager != null)
                             {
                                 canvasManager.setInteractionInfo("Click to exit pipe mode");
@@ -306,7 +367,7 @@ namespace InteractiveMuseum.Player
                         }
                         else
                         {
-                            CanvasManager canvasManager = FindObjectOfType<CanvasManager>();
+                            CanvasManager canvasManager = FindFirstObjectByType<CanvasManager>();
                             if (canvasManager != null)
                             {
                                 canvasManager.setInteractionInfo("");
@@ -334,7 +395,7 @@ namespace InteractiveMuseum.Player
                     {
                         // Check if hand is free
                         bool handFree = _righthandObject == null || _lefthandObject == null;
-                        CanvasManager canvasManager = FindObjectOfType<CanvasManager>();
+                        CanvasManager canvasManager = FindFirstObjectByType<CanvasManager>();
                         if (canvasManager != null)
                         {
                             if (handFree)
@@ -353,7 +414,7 @@ namespace InteractiveMuseum.Player
                         Interactable interactable = hitObj.GetComponent<Interactable>();
                         if (interactable != null)
                         {
-                            CanvasManager canvasManager = FindObjectOfType<CanvasManager>();
+                            CanvasManager canvasManager = FindFirstObjectByType<CanvasManager>();
                             if (canvasManager != null)
                             {
                                 canvasManager.setInteractionInfo(interactable.onLookText);
@@ -361,7 +422,7 @@ namespace InteractiveMuseum.Player
                         }
                         else
                         {
-                            CanvasManager canvasManager = FindObjectOfType<CanvasManager>();
+                            CanvasManager canvasManager = FindFirstObjectByType<CanvasManager>();
                             if (canvasManager != null)
                             {
                                 canvasManager.setInteractionInfo("");
@@ -374,13 +435,138 @@ namespace InteractiveMuseum.Player
             {
                 _lastLookRaycast = new RaycastHit();
                 
+                // Clear highlight
+                if (_currentHighlightedOutline != null)
+                {
+                    _currentHighlightedOutline.DisableHighlight();
+                    _currentHighlightedOutline = null;
+                }
+                
                 // Clear interaction text
-                CanvasManager canvasManager = FindObjectOfType<CanvasManager>();
+                CanvasManager canvasManager = FindFirstObjectByType<CanvasManager>();
                 if (canvasManager != null)
                 {
                     canvasManager.setInteractionInfo("");
                 }
             }
+        }
+        
+        /// <summary>
+        /// Finds InteractableOutline component on the hit object or its parents/children.
+        /// </summary>
+        private InteractableOutline FindInteractableOutline(GameObject hitObject)
+        {
+            if (hitObject == null)
+                return null;
+            
+            // Check for InteractableOutline on the hit object
+            InteractableOutline outline = hitObject.GetComponent<InteractableOutline>();
+            if (outline != null)
+                return outline;
+            
+            // Check parent
+            if (hitObject.transform.parent != null)
+            {
+                outline = hitObject.transform.parent.GetComponent<InteractableOutline>();
+                if (outline != null)
+                    return outline;
+            }
+            
+            // Check children
+            outline = hitObject.GetComponentInChildren<InteractableOutline>();
+            if (outline != null)
+                return outline;
+            
+            // Check for interactable components and add outline if needed
+            // Check for PipeSegmentInteractable
+            PipeSegmentInteractable pipeInteractable = hitObject.GetComponent<PipeSegmentInteractable>();
+            if (pipeInteractable == null && hitObject.transform.parent != null)
+            {
+                pipeInteractable = hitObject.transform.parent.GetComponent<PipeSegmentInteractable>();
+            }
+            if (pipeInteractable == null)
+            {
+                pipeInteractable = hitObject.GetComponentInChildren<PipeSegmentInteractable>();
+            }
+            
+            if (pipeInteractable != null)
+            {
+                // Add outline component if it doesn't exist
+                outline = pipeInteractable.GetComponent<InteractableOutline>();
+                if (outline == null)
+                {
+                    outline = pipeInteractable.gameObject.AddComponent<InteractableOutline>();
+                    // Ensure settings are applied after dynamic addition
+                    outline.RefreshSettings();
+                }
+                return outline;
+            }
+            
+            // Check for FocusableInteractable
+            FocusableInteractable focusable = hitObject.GetComponent<FocusableInteractable>();
+            if (focusable == null && hitObject.transform.parent != null)
+            {
+                focusable = hitObject.transform.parent.GetComponent<FocusableInteractable>();
+            }
+            
+            if (focusable != null)
+            {
+                // Add outline component if it doesn't exist
+                outline = focusable.GetComponent<InteractableOutline>();
+                if (outline == null)
+                {
+                    outline = focusable.gameObject.AddComponent<InteractableOutline>();
+                    // Ensure settings are applied after dynamic addition
+                    outline.RefreshSettings();
+                }
+                return outline;
+            }
+            
+            // Check for Interactable
+            Interactable interactable = hitObject.GetComponent<Interactable>();
+            if (interactable == null && hitObject.transform.parent != null)
+            {
+                interactable = hitObject.transform.parent.GetComponent<Interactable>();
+            }
+            
+            if (interactable != null)
+            {
+                // Add outline component if it doesn't exist
+                outline = interactable.GetComponent<InteractableOutline>();
+                if (outline == null)
+                {
+                    outline = interactable.gameObject.AddComponent<InteractableOutline>();
+                    // Ensure settings are applied after dynamic addition
+                    outline.RefreshSettings();
+                }
+                return outline;
+            }
+            
+            // Check for PickableObject
+            PickableObject pickable = hitObject.GetComponent<PickableObject>();
+            if (pickable == null && hitObject.transform.parent != null)
+            {
+                pickable = hitObject.transform.parent.GetComponent<PickableObject>();
+            }
+            if (pickable == null)
+            {
+                pickable = hitObject.GetComponentInChildren<PickableObject>();
+            }
+            
+            if (pickable != null)
+            {
+                // Add outline component if it doesn't exist
+                outline = pickable.GetComponent<InteractableOutline>();
+                if (outline == null)
+                {
+                    outline = pickable.gameObject.AddComponent<InteractableOutline>();
+                    // Ensure settings are applied after dynamic addition
+                    outline.RefreshSettings();
+                }
+                return outline;
+            }
+            
+            return null;
         }
 
 #if UNITY_EDITOR
@@ -421,6 +607,10 @@ namespace InteractiveMuseum.Player
         
         private void OnLook(InputValue inputValue)
         {
+            // Don't process look input in pipe mode (cursor is unlocked)
+            if (_isInPipeMode)
+                return;
+                
             _lookDirection += inputValue.Get<Vector2>() * characterSense;
 
             _lookDirection.y = Mathf.Clamp(_lookDirection.y, -89, 89);
@@ -450,8 +640,15 @@ namespace InteractiveMuseum.Player
     
         private void ExitPipeModeViaESC()
         {
+            // Clear highlight when exiting pipe mode
+            if (_currentHighlightedOutline != null)
+            {
+                _currentHighlightedOutline.DisableHighlight();
+                _currentHighlightedOutline = null;
+            }
+            
             // Find PipeGridSystem and deactivate it
-            PipeGridSystem pipeSystem = FindObjectOfType<PipeGridSystem>();
+            PipeGridSystem pipeSystem = FindFirstObjectByType<PipeGridSystem>();
             if (pipeSystem != null)
             {
                 pipeSystem.DeactivatePipeMode();
@@ -471,12 +668,10 @@ namespace InteractiveMuseum.Player
             if (!inputValue.isPressed)
                 return;
                 
-            Debug.Log($"[OnInteract] Called. isInPipeMode: {_isInPipeMode}, lastLookRaycast: {_lastLookRaycast.collider != null}");
-                
-            // Handle pipe interaction mode
+            // Handle pipe interaction mode (default to clockwise for Interact action)
             if (_isInPipeMode)
             {
-                HandlePipeClick();
+                HandlePipeClick(true);
                 return;
             }
             
@@ -559,10 +754,11 @@ namespace InteractiveMuseum.Player
             if (!inputValue.isPressed)
                 return;
                 
-            // Handle pipe interaction mode - left click rotates pipes
-            if (isInPipeMode)
+            // Handle pipe interaction mode - left click rotates pipes clockwise (right)
+            if (_isInPipeMode)
             {
-                HandlePipeClick();
+                Debug.Log("[OnLeftClick] In pipe mode, handling pipe click (clockwise)");
+                HandlePipeClick(true);
                 return;
             }
                 
@@ -603,10 +799,11 @@ namespace InteractiveMuseum.Player
             if (!inputValue.isPressed)
                 return;
                 
-            // Handle pipe interaction mode - right click also rotates pipes
-            if (isInPipeMode)
+            // Handle pipe interaction mode - right click rotates pipes counter-clockwise (left)
+            if (_isInPipeMode)
             {
-                HandlePipeClick();
+                Debug.Log("[OnRightClick] In pipe mode, handling pipe click (counter-clockwise)");
+                HandlePipeClick(false);
                 return;
             }
                 
@@ -708,41 +905,57 @@ namespace InteractiveMuseum.Player
             }
         }
     
-        private void HandlePipeClick()
+        private void HandlePipeClick(bool clockwise = true)
         {
             // Do a fresh raycast for pipe clicking (more reliable)
-            // Use pipe camera for raycast in pipe mode
-            Transform rayOrigin = null;
-            Vector3 rayDirection = Vector3.forward;
+            Ray ray;
             
             if (_isInPipeMode)
             {
-                CameraManager cameraManager = CameraManager.Instance;
-                if (cameraManager != null && cameraManager.pipeCamera != null)
+                // In pipe mode, use mouse position for raycast
+                UnityEngine.Camera pipeCameraComponent = null;
+                
+                // Get Camera from CinemachineBrain (Cinemachine controls the main camera)
+                CinemachineBrain cinemachineBrain = FindFirstObjectByType<CinemachineBrain>();
+                if (cinemachineBrain != null)
                 {
-                    rayOrigin = cameraManager.pipeCamera.transform;
-                    rayDirection = cameraManager.pipeCamera.transform.forward;
+                    pipeCameraComponent = cinemachineBrain.OutputCamera;
                 }
-                else if (headCamera != null)
+                
+                // Fallback: try to get Camera from main camera
+                if (pipeCameraComponent == null)
                 {
-                    rayOrigin = headCamera.transform;
-                    rayDirection = headCamera.transform.forward;
+                    pipeCameraComponent = UnityEngine.Camera.main;
+                }
+                
+                // Final fallback: find any camera
+                if (pipeCameraComponent == null)
+                {
+                    pipeCameraComponent = FindFirstObjectByType<UnityEngine.Camera>();
+                }
+                
+                if (pipeCameraComponent != null)
+                {
+                    // Use mouse position to create ray from camera (using new Input System)
+                    Vector2 mousePos2D = Mouse.current != null ? Mouse.current.position.ReadValue() : Vector2.zero;
+                    Vector3 mousePosition = new Vector3(mousePos2D.x, mousePos2D.y, 0);
+                    ray = pipeCameraComponent.ScreenPointToRay(mousePosition);
+                }
+                else
+                {
+                    Debug.LogWarning("[HandlePipeClick] No camera available for raycast!");
+                    return;
                 }
             }
             else
             {
+                // Normal mode: use head camera forward direction
                 if (headCamera == null)
                     return;
-                rayOrigin = headCamera.transform;
-                rayDirection = headCamera.transform.forward;
+                    
+                ray = new Ray(headCamera.transform.position, headCamera.transform.forward);
             }
-            
-            if (rayOrigin == null)
-            {
-                Debug.LogWarning("[HandlePipeClick] No camera available for raycast!");
-                return;
-            }
-            
+
             // Use wider layer mask for pipes
             int mask = interactionLayer.value;
             if (mask == 0)
@@ -751,58 +964,89 @@ namespace InteractiveMuseum.Player
             }
             // In pipe mode, accept all layers except UI
             mask = ~(1 << 5);
+
+            // Use longer distance in pipe mode
+            float raycastDistance = _isInPipeMode ? interactionDistance * 10f : interactionDistance * 3f;
             
             RaycastHit hit;
-            if (Physics.Raycast(rayOrigin.position, rayDirection, out hit, interactionDistance * 3f, mask))
+            if (Physics.Raycast(ray, out hit, raycastDistance, mask))
             {
                 GameObject hitObject = hit.collider.gameObject;
-                Debug.Log($"[HandlePipeClick] Hit object: {hitObject.name}");
+                Debug.Log($"[HandlePipeClick] Hit object: {hitObject.name}, Layer: {hitObject.layer}");
                 
-                // Check for pipe interaction - search in object, parent, and children
+                // Try to find PipeSegment directly (most reliable method)
+                PipeSegment pipeSegment = null;
+                
+                // Check on hit object
+                pipeSegment = hitObject.GetComponent<PipeSegment>();
+                if (pipeSegment != null)
+                {
+                    Debug.Log($"[HandlePipeClick] Found PipeSegment on hit object: {hitObject.name}");
+                }
+                
+                // Check parent
+                if (pipeSegment == null && hitObject.transform.parent != null)
+                {
+                    pipeSegment = hitObject.transform.parent.GetComponent<PipeSegment>();
+                    if (pipeSegment != null)
+                    {
+                        Debug.Log($"[HandlePipeClick] Found PipeSegment on parent: {hitObject.transform.parent.name}");
+                    }
+                }
+                
+                // Check children
+                if (pipeSegment == null)
+                {
+                    pipeSegment = hitObject.GetComponentInChildren<PipeSegment>();
+                    if (pipeSegment != null)
+                    {
+                        Debug.Log($"[HandlePipeClick] Found PipeSegment in children of: {hitObject.name}");
+                    }
+                }
+                
+                // Check root parent (in case pipe is nested deeper)
+                if (pipeSegment == null && hitObject.transform.root != null && hitObject.transform.root != hitObject.transform)
+                {
+                    pipeSegment = hitObject.transform.root.GetComponentInChildren<PipeSegment>();
+                    if (pipeSegment != null)
+                    {
+                        Debug.Log($"[HandlePipeClick] Found PipeSegment in root hierarchy: {hitObject.transform.root.name}");
+                    }
+                }
+                
+                // If we found a pipe segment, rotate it directly
+                if (pipeSegment != null)
+                {
+                    Debug.Log($"[HandlePipeClick] Rotating PipeSegment: {pipeSegment.name}");
+                    PipeGridSystem pipeSystem = FindFirstObjectByType<PipeGridSystem>();
+                    if (pipeSystem != null)
+                    {
+                        if (pipeSystem.IsActive())
+                        {
+                            Debug.Log($"[HandlePipeClick] Calling OnPipeClicked on PipeGridSystem (clockwise: {clockwise})");
+                            pipeSystem.OnPipeClicked(pipeSegment, clockwise);
+                            return;
+                        }
+                        else
+                        {
+                            Debug.LogWarning("[HandlePipeClick] PipeGridSystem found but not active!");
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogWarning("[HandlePipeClick] PipeGridSystem not found in scene!");
+                    }
+                }
+                
+                // Fallback: try PipeSegmentInteractable
                 PipeSegmentInteractable pipeInteractable = hitObject.GetComponent<PipeSegmentInteractable>();
-                
                 if (pipeInteractable == null && hitObject.transform.parent != null)
                 {
                     pipeInteractable = hitObject.transform.parent.GetComponent<PipeSegmentInteractable>();
-                    if (pipeInteractable != null)
-                    {
-                        Debug.Log($"[HandlePipeClick] Found PipeSegmentInteractable on parent {hitObject.transform.parent.name}");
-                    }
                 }
-                
                 if (pipeInteractable == null)
                 {
                     pipeInteractable = hitObject.GetComponentInChildren<PipeSegmentInteractable>();
-                    if (pipeInteractable != null)
-                    {
-                        Debug.Log($"[HandlePipeClick] Found PipeSegmentInteractable in children");
-                    }
-                }
-                
-                // Also try to find PipeSegment directly and use its grid system
-                if (pipeInteractable == null)
-                {
-                    PipeSegment pipeSegment = hitObject.GetComponent<PipeSegment>();
-                    if (pipeSegment == null && hitObject.transform.parent != null)
-                    {
-                        pipeSegment = hitObject.transform.parent.GetComponent<PipeSegment>();
-                    }
-                    if (pipeSegment == null)
-                    {
-                        pipeSegment = hitObject.GetComponentInChildren<PipeSegment>();
-                    }
-                    
-                    if (pipeSegment != null)
-                    {
-                        Debug.Log($"[HandlePipeClick] Found PipeSegment directly: {pipeSegment.name}");
-                        PipeGridSystem pipeSystem = FindObjectOfType<PipeGridSystem>();
-                        if (pipeSystem != null && pipeSystem.IsActive())
-                        {
-                            Debug.Log("[HandlePipeClick] Rotating pipe directly via PipeGridSystem");
-                            pipeSystem.OnPipeClicked(pipeSegment);
-                            return;
-                        }
-                    }
                 }
                 
                 if (pipeInteractable != null)
@@ -812,34 +1056,14 @@ namespace InteractiveMuseum.Player
                     return;
                 }
                 
-                // Check for exit trigger (FocusableInteractable)
-                FocusableInteractable focusable = hitObject.GetComponent<FocusableInteractable>();
-                if (focusable == null && hitObject.transform.parent != null)
-                {
-                    focusable = hitObject.transform.parent.GetComponent<FocusableInteractable>();
-                }
+                // Don't process FocusableInteractable in pipe mode - exit only via ESC key
+                // This prevents accidental exit when clicking near the trigger
                 
-                if (focusable != null)
-                {
-                    Debug.Log($"[HandlePipeClick] Found FocusableInteractable - exiting pipe mode");
-                    // Exit pipe mode by interacting again
-                    Interactable interactable = hitObject.GetComponent<Interactable>();
-                    if (interactable == null && hitObject.transform.parent != null)
-                    {
-                        interactable = hitObject.transform.parent.GetComponent<Interactable>();
-                    }
-                    if (interactable != null)
-                    {
-                        interactable.Interact(this, hit.point);
-                    }
-                    return;
-                }
-                
-                Debug.Log($"[HandlePipeClick] No pipe interactable found on {hitObject.name}");
+                Debug.LogWarning($"[HandlePipeClick] No pipe interactable found on {hitObject.name}. Object has components: {string.Join(", ", hitObject.GetComponents<Component>().Select(c => c.GetType().Name))}");
             }
             else
             {
-                Debug.Log("[HandlePipeClick] Raycast did not hit anything");
+                Debug.LogWarning($"[HandlePipeClick] Raycast did not hit anything. Ray: origin={ray.origin}, direction={ray.direction}, distance={raycastDistance}, mask={mask}");
             }
         }
     
@@ -849,6 +1073,24 @@ namespace InteractiveMuseum.Player
         public void SetPipeMode(bool active)
         {
             _isInPipeMode = active;
+            
+            // Ensure PlayerInput is enabled in pipe mode (needed for Input System callbacks)
+            if (_input != null && active && !_input.enabled)
+            {
+                _input.enabled = true;
+            }
+            
+            // Unlock cursor in pipe mode for mouse interaction
+            if (active)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
         }
     
         /// <summary>

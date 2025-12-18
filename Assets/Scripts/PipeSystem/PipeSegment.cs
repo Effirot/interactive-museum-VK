@@ -34,6 +34,10 @@ namespace InteractiveMuseum.PipeSystem
         [SerializeField]
         private float _rotationSpeed = 5f;
         
+        [Tooltip("Axis to rotate around: X, Y, or Z")]
+        [SerializeField]
+        private Vector3 _rotationAxis = Vector3.forward; // Z axis by default (for vertical pipes)
+        
         [HideInInspector]
         [SerializeField]
         private int _gridX = -1;
@@ -110,24 +114,56 @@ namespace InteractiveMuseum.PipeSystem
         }
         
         /// <summary>
-        /// Rotates the pipe segment by 90 degrees.
+        /// Rotates the pipe segment by 90 degrees clockwise.
         /// </summary>
         public void Rotate()
+        {
+            Rotate(true);
+        }
+        
+        /// <summary>
+        /// Rotates the pipe segment by 90 degrees.
+        /// </summary>
+        /// <param name="clockwise">True for clockwise, false for counter-clockwise</param>
+        public void Rotate(bool clockwise)
         {
             if (_isRotating)
                 return;
                 
-            StartCoroutine(RotateCoroutine());
+            StartCoroutine(RotateCoroutine(clockwise));
         }
         
-        private IEnumerator RotateCoroutine()
+        /// <summary>
+        /// Sets the initial rotation without animation (for grid generation).
+        /// </summary>
+        /// <param name="rotationCount">Number of 90-degree rotations (0-3)</param>
+        public void SetInitialRotation(int rotationCount)
+        {
+            if (_isRotating)
+                return;
+                
+            rotationCount = rotationCount % 4; // Ensure it's 0-3
+            
+            // Apply rotations to connections
+            for (int i = 0; i < rotationCount; i++)
+            {
+                RotateConnections();
+            }
+            
+            // Set rotation angle and transform
+            _rotationAngle = rotationCount * 90;
+            transform.localRotation = Quaternion.AngleAxis(_rotationAngle, _rotationAxis);
+        }
+        
+        private IEnumerator RotateCoroutine(bool clockwise)
         {
             _isRotating = true;
             
-            // Rotate by 90 degrees
-            _rotationAngle = (_rotationAngle + 90) % 360;
+            // Rotate by 90 degrees (clockwise or counter-clockwise)
+            int rotationDelta = clockwise ? 90 : -90;
+            _rotationAngle = (_rotationAngle + rotationDelta + 360) % 360;
             
-            Quaternion targetRotation = Quaternion.Euler(0, _rotationAngle, 0);
+            Quaternion targetRotation = Quaternion.AngleAxis(_rotationAngle, _rotationAxis);
             Quaternion startRotation = transform.localRotation;
             
             float elapsedTime = 0f;
@@ -144,7 +180,14 @@ namespace InteractiveMuseum.PipeSystem
             transform.localRotation = targetRotation;
             
             // Rotate connections array
-            RotateConnections();
+            if (clockwise)
+            {
+                RotateConnections();
+            }
+            else
+            {
+                RotateConnectionsCounterClockwise();
+            }
             
             _isRotating = false;
         }
@@ -158,6 +201,17 @@ namespace InteractiveMuseum.PipeSystem
                 _connections[i] = _connections[i - 1];
             }
             _connections[0] = last;
+        }
+        
+        private void RotateConnectionsCounterClockwise()
+        {
+            // Rotate connections array counter-clockwise
+            bool first = _connections[0];
+            for (int i = 0; i < 3; i++)
+            {
+                _connections[i] = _connections[i + 1];
+            }
+            _connections[3] = first;
         }
         
         /// <summary>
