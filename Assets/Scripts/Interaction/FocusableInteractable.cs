@@ -146,6 +146,9 @@ namespace InteractiveMuseum.Interaction
                 _pipeSystem.ActivatePipeMode();
             }
             
+            // Disable interaction trigger when entering pipe mode
+            DisableInteractionTrigger();
+            
             // Update local flag to match actual state
             _isPipeModeActive = true;
         }
@@ -161,8 +164,35 @@ namespace InteractiveMuseum.Interaction
                 _pipeSystem.DeactivatePipeMode();
             }
             
+            // Enable interaction trigger when exiting pipe mode
+            EnableInteractionTrigger();
+            
             // Update local flag to match actual state
             _isPipeModeActive = false;
+        }
+        
+        /// <summary>
+        /// Disables the pipe interaction trigger GameObject.
+        /// </summary>
+        private void DisableInteractionTrigger()
+        {
+            GameObject trigger = GameObject.Find("PipeInteractionTrigger");
+            if (trigger != null)
+            {
+                trigger.SetActive(false);
+            }
+        }
+        
+        /// <summary>
+        /// Enables the pipe interaction trigger GameObject.
+        /// </summary>
+        private void EnableInteractionTrigger()
+        {
+            GameObject trigger = GameObject.Find("PipeInteractionTrigger");
+            if (trigger != null)
+            {
+                trigger.SetActive(true);
+            }
         }
         
         /// <summary>

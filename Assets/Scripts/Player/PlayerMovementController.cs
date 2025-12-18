@@ -661,6 +661,21 @@ namespace InteractiveMuseum.Player
             {
                 cameraManager.SwitchToPlayerCamera();
             }
+            
+            // Enable interaction trigger when exiting pipe mode
+            EnableInteractionTrigger();
+        }
+        
+        /// <summary>
+        /// Enables the pipe interaction trigger GameObject.
+        /// </summary>
+        private void EnableInteractionTrigger()
+        {
+            GameObject trigger = GameObject.Find("PipeInteractionTrigger");
+            if (trigger != null)
+            {
+                trigger.SetActive(true);
+            }
         }
         
         private void OnInteract(InputValue inputValue)

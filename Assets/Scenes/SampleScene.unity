@@ -11866,7 +11866,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.01
+  near clip plane: 0.1
   far clip plane: 5000
   field of view: 75
   orthographic: 0
@@ -11894,8 +11894,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517373468}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.99367046, z: 0, w: 0.11233463}
-  m_LocalPosition: {x: 5.701351, y: 1.38, z: 3.5656114}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.8723297, y: 1.957, z: 0.8469124}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15561,10 +15561,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1084388421676478329, guid: 7a0e7608502f89d4e8a3c084d7a05ef6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1451870066717933829, guid: 7a0e7608502f89d4e8a3c084d7a05ef6, type: 3}
       propertyPath: m_Name
       value: Player
@@ -15609,41 +15605,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5308042707865778692, guid: 7a0e7608502f89d4e8a3c084d7a05ef6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6864932298663252047, guid: 7a0e7608502f89d4e8a3c084d7a05ef6, type: 3}
-      propertyPath: m_DefaultActionMap
-      value: df70fa95-8a34-4494-b137-73ab6b9c7d37
-      objectReference: {fileID: 0}
-    - target: {fileID: 7439895940223897291, guid: 7a0e7608502f89d4e8a3c084d7a05ef6, type: 3}
-      propertyPath: leftHand
-      value: 
-      objectReference: {fileID: 4965897996322479696}
-    - target: {fileID: 7439895940223897291, guid: 7a0e7608502f89d4e8a3c084d7a05ef6, type: 3}
-      propertyPath: rightHand
-      value: 
-      objectReference: {fileID: 4965897996322479697}
-    - target: {fileID: 7439895940223897291, guid: 7a0e7608502f89d4e8a3c084d7a05ef6, type: 3}
-      propertyPath: interactionDistance
-      value: 9
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a0e7608502f89d4e8a3c084d7a05ef6, type: 3}
---- !u!4 &4965897996322479696 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1084388421676478329, guid: 7a0e7608502f89d4e8a3c084d7a05ef6, type: 3}
-  m_PrefabInstance: {fileID: 4965897996322479695}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &4965897996322479697 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5308042707865778692, guid: 7a0e7608502f89d4e8a3c084d7a05ef6, type: 3}
-  m_PrefabInstance: {fileID: 4965897996322479695}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5052124173937536944
 PrefabInstance:
   m_ObjectHideFlags: 0
