@@ -647,6 +647,14 @@ namespace InteractiveMuseum.Player
                 _currentHighlightedOutline = null;
             }
             
+            // Find all FocusableInteractable components and exit pipe mode on them
+            // This ensures triggers are re-enabled when exiting pipe mode
+            FocusableInteractable[] focusables = FindObjectsByType<FocusableInteractable>(FindObjectsSortMode.None);
+            foreach (var focusable in focusables)
+            {
+                focusable.ExitPipeModePublic();
+            }
+            
             // Find PipeGridSystem and deactivate it
             PipeGridSystem pipeSystem = FindFirstObjectByType<PipeGridSystem>();
             if (pipeSystem != null)
@@ -661,22 +669,19 @@ namespace InteractiveMuseum.Player
             {
                 cameraManager.SwitchToPlayerCamera();
             }
-            
-            // Enable interaction trigger when exiting pipe mode
-            EnableInteractionTrigger();
         }
         
         /// <summary>
         /// Enables the pipe interaction trigger GameObject.
         /// </summary>
-        private void EnableInteractionTrigger()
-        {
-            GameObject trigger = GameObject.Find("PipeInteractionTrigger");
-            if (trigger != null)
-            {
-                trigger.SetActive(true);
-            }
-        }
+        // private void EnableInteractionTrigger()
+        // {
+        //     GameObject trigger = GameObject.Find("PipeInteractionTrigger");
+        //     if (trigger != null)
+        //     {
+        //         trigger.SetActive(true);
+        //     }
+        // }
         
         private void OnInteract(InputValue inputValue)
         {

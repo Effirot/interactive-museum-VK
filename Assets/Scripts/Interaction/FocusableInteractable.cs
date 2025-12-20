@@ -176,10 +176,10 @@ namespace InteractiveMuseum.Interaction
         /// </summary>
         private void DisableInteractionTrigger()
         {
-            GameObject trigger = GameObject.Find("PipeInteractionTrigger");
+            Collider trigger = GetComponent<Collider>();
             if (trigger != null)
             {
-                trigger.SetActive(false);
+                trigger.enabled = false;
             }
         }
         
@@ -188,10 +188,10 @@ namespace InteractiveMuseum.Interaction
         /// </summary>
         private void EnableInteractionTrigger()
         {
-            GameObject trigger = GameObject.Find("PipeInteractionTrigger");
+            Collider trigger = GetComponent<Collider>();
             if (trigger != null)
             {
-                trigger.SetActive(true);
+                trigger.enabled = true;
             }
         }
         
