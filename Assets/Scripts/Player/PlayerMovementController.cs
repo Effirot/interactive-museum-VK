@@ -1014,6 +1014,37 @@ namespace InteractiveMuseum.Player
                 GameObject hitObject = hit.collider.gameObject;
                 Debug.Log($"[HandlePipeClick] Hit object: {hitObject.name}, Layer: {hitObject.layer}");
                 
+                // First check for Cockroach mini-game
+                if (_isInMiniGameMode)
+                {
+                    // Check if we hit a cockroach directly
+                    InteractiveMuseum.MiniGames.Cockroach cockroach = hitObject.GetComponent<InteractiveMuseum.MiniGames.Cockroach>();
+                    if (cockroach == null && hitObject.transform.parent != null)
+                    {
+                        cockroach = hitObject.transform.parent.GetComponent<InteractiveMuseum.MiniGames.Cockroach>();
+                    }
+                    if (cockroach == null)
+                    {
+                        cockroach = hitObject.GetComponentInChildren<InteractiveMuseum.MiniGames.Cockroach>();
+                    }
+                    
+                    if (cockroach != null)
+                    {
+                        // Direct hit on cockroach - squash it
+                        cockroach.Squash();
+                        return;
+                    }
+                    
+                    // Check for cockroach mini-game and handle click by position
+                    InteractiveMuseum.MiniGames.CockroachMiniGame cockroachGame = FindFirstObjectByType<InteractiveMuseum.MiniGames.CockroachMiniGame>();
+                    if (cockroachGame != null && cockroachGame.IsActive())
+                    {
+                        // Convert hit point to world position for cockroach click (fallback if direct hit missed)
+                        cockroachGame.HandleCockroachClick(hit.point);
+                        return;
+                    }
+                }
+                
                 // Try to find PipeSegment directly (most reliable method)
                 PipeSegment pipeSegment = null;
                 

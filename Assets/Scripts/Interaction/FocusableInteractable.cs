@@ -147,21 +147,16 @@ namespace InteractiveMuseum.Interaction
                 return;
             }
             
-            // Ensure camera manager has references
-            if (_cameraManager.miniGameCamera == null)
-            {
-                _cameraManager.miniGameCamera = _targetCamera;
-            }
+            // Always set this zone's camera as the active mini-game camera, so multiple
+            // mini-games (e.g. pipes vs cockroaches) don't conflict — whichever zone
+            // we interact with gets its camera.
+            _cameraManager.miniGameCamera = _targetCamera;
             if (_cameraManager.playerCamera == null && _playerCamera != null)
             {
                 _cameraManager.playerCamera = _playerCamera;
             }
             
-            // Set mini-game camera in mini-game if not already set
-            if (_miniGame.miniGameCamera == null)
-            {
-                _miniGame.miniGameCamera = _targetCamera;
-            }
+            _miniGame.miniGameCamera = _targetCamera;
             
             // Activate mini-game
             _miniGame.ActivateMiniGame();
