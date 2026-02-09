@@ -109,9 +109,9 @@ public class PipeSystemSetup : EditorWindow
         
         // Assign to CameraManager if exists
         CameraManager manager = FindObjectOfType<CameraManager>();
-        if (manager != null && manager.pipeCamera == null)
+        if (manager != null && manager.miniGameCamera == null)
         {
-            manager.pipeCamera = pipeCameraObj.GetComponent<CinemachineCamera>();
+            manager.miniGameCamera = pipeCameraObj.GetComponent<CinemachineCamera>();
             EditorUtility.SetDirty(manager);
         }
     }
@@ -199,9 +199,9 @@ public class PipeSystemSetup : EditorWindow
         if (manager != null)
         {
             // Link pipe camera
-            if (pipeCam != null && manager.pipeCamera == null)
+            if (pipeCam != null && manager.miniGameCamera == null)
             {
-                manager.pipeCamera = pipeCam.GetComponent<CinemachineCamera>();
+                manager.miniGameCamera = pipeCam.GetComponent<CinemachineCamera>();
                 EditorUtility.SetDirty(manager);
                 Debug.Log("✓ Linked pipe camera to CameraManager");
             }

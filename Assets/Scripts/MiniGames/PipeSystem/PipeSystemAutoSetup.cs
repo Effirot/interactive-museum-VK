@@ -168,7 +168,7 @@ namespace InteractiveMuseum.PipeSystem
             }
             
             // Check if pipe camera already exists
-            if (manager.pipeCamera != null)
+            if (manager.miniGameCamera != null)
             {
                 Debug.Log("✓ Pipe camera already assigned");
                 return;
@@ -196,7 +196,7 @@ namespace InteractiveMuseum.PipeSystem
                 Debug.Log("✓ Created Pipe Camera");
             }
             
-            manager.pipeCamera = pipeCam;
+            manager.miniGameCamera = pipeCam;
             Debug.Log("✓ Assigned pipe camera to CameraManager");
         }
         
@@ -366,7 +366,7 @@ namespace InteractiveMuseum.PipeSystem
                 
                 if (manager != null)
                 {
-                    focusable.targetCamera = manager.pipeCamera;
+                    focusable.targetCamera = manager.miniGameCamera;
                     focusable.playerCamera = manager.playerCamera;
                 }
                 

@@ -1,12 +1,13 @@
 using UnityEngine;
 using Unity.Cinemachine;
 using InteractiveMuseum.Camera;
+using InteractiveMuseum.MiniGames;
 using InteractiveMuseum.PipeSystem;
 
 namespace InteractiveMuseum.Interaction
 {
     /// <summary>
-    /// Allows interaction with objects that can switch camera focus and activate pipe system.
+    /// Allows interaction with objects that can switch camera focus and activate mini-games.
     /// </summary>
     public class FocusableInteractable : MonoBehaviour
     {
@@ -19,15 +20,15 @@ namespace InteractiveMuseum.Interaction
         [SerializeField]
         private CinemachineCamera _playerCamera;
         
-        [Header("Pipe System")]
-        [Tooltip("Pipe grid system to activate")]
+        [Header("Mini-Game")]
+        [Tooltip("Mini-game to activate when interacting with this object")]
         [SerializeField]
-        private PipeGridSystem _pipeSystem;
+        private MiniGameBase _miniGame;
         
         [Header("Interaction Settings")]
         [Tooltip("Text shown when looking at this object")]
         [SerializeField]
-        private string _interactionText = "Interact with pipes";
+        private string _interactionText = "Interact";
 
         public CinemachineCamera targetCamera
         {
@@ -41,10 +42,20 @@ namespace InteractiveMuseum.Interaction
             set => _playerCamera = value;
         }
 
+        public MiniGameBase miniGame
+        {
+            get => _miniGame;
+            set => _miniGame = value;
+        }
+        
+        /// <summary>
+        /// Legacy property for backward compatibility with PipeGridSystem.
+        /// </summary>
+        [System.Obsolete("Use miniGame instead")]
         public PipeGridSystem pipeSystem
         {
-            get => _pipeSystem;
-            set => _pipeSystem = value;
+            get => _miniGame as PipeGridSystem;
+            set => _miniGame = value;
         }
 
         public string interactionText
@@ -56,7 +67,7 @@ namespace InteractiveMuseum.Interaction
         
         private CameraManager _cameraManager;
         private Interactable _interactableComponent;
-        private bool _isPipeModeActive = false;
+        private bool _isMiniGameModeActive = false;
         
         private void Start()
         {
@@ -92,31 +103,31 @@ namespace InteractiveMuseum.Interaction
         /// </summary>
         public void OnInteract()
         {
-            // Check actual pipe mode state from PipeGridSystem instead of local flag
+            // Check actual mini-game mode state from MiniGameBase instead of local flag
             bool isCurrentlyActive = false;
-            if (_pipeSystem != null)
+            if (_miniGame != null)
             {
-                isCurrentlyActive = _pipeSystem.IsActive();
+                isCurrentlyActive = _miniGame.IsActive();
             }
             
             // Also check CameraManager state as fallback
             if (!isCurrentlyActive && _cameraManager != null)
             {
-                isCurrentlyActive = _cameraManager.IsPipeModeActive();
+                isCurrentlyActive = _cameraManager.IsMiniGameModeActive();
             }
             
-            // If pipe mode is already active, don't allow interaction with trigger (exit only via ESC)
+            // If mini-game mode is already active, don't allow interaction with trigger (exit only via ESC)
             if (isCurrentlyActive)
             {
                 // Don't exit on trigger click - only allow exit via ESC key
                 return;
             }
             
-            // Enter pipe mode
-            EnterPipeMode();
+            // Enter mini-game mode
+            EnterMiniGameMode();
         }
         
-        private void EnterPipeMode()
+        private void EnterMiniGameMode()
         {
             if (_cameraManager == null)
             {
@@ -130,49 +141,58 @@ namespace InteractiveMuseum.Interaction
                 return;
             }
             
-            // Ensure camera manager has references
-            if (_cameraManager.pipeCamera == null)
+            if (_miniGame == null)
             {
-                _cameraManager.pipeCamera = _targetCamera;
+                Debug.LogError("Mini-game not set in FocusableInteractable!");
+                return;
+            }
+            
+            // Ensure camera manager has references
+            if (_cameraManager.miniGameCamera == null)
+            {
+                _cameraManager.miniGameCamera = _targetCamera;
             }
             if (_cameraManager.playerCamera == null && _playerCamera != null)
             {
                 _cameraManager.playerCamera = _playerCamera;
             }
             
-            // Activate pipe system
-            if (_pipeSystem != null)
+            // Set mini-game camera in mini-game if not already set
+            if (_miniGame.miniGameCamera == null)
             {
-                _pipeSystem.ActivatePipeMode();
+                _miniGame.miniGameCamera = _targetCamera;
             }
             
-            // Disable interaction trigger when entering pipe mode
+            // Activate mini-game
+            _miniGame.ActivateMiniGame();
+            
+            // Disable interaction trigger when entering mini-game mode
             DisableInteractionTrigger();
             
             // Update local flag to match actual state
-            _isPipeModeActive = true;
+            _isMiniGameModeActive = true;
         }
         
-        private void ExitPipeMode()
+        private void ExitMiniGameMode()
         {
             if (_cameraManager == null)
                 return;
                 
-            // Deactivate pipe system
-            if (_pipeSystem != null)
+            // Deactivate mini-game
+            if (_miniGame != null)
             {
-                _pipeSystem.DeactivatePipeMode();
+                _miniGame.DeactivateMiniGame();
             }
             
-            // Enable interaction trigger when exiting pipe mode
+            // Enable interaction trigger when exiting mini-game mode
             EnableInteractionTrigger();
             
             // Update local flag to match actual state
-            _isPipeModeActive = false;
+            _isMiniGameModeActive = false;
         }
         
         /// <summary>
-        /// Disables the pipe interaction trigger GameObject.
+        /// Disables the interaction trigger GameObject.
         /// </summary>
         private void DisableInteractionTrigger()
         {
@@ -184,7 +204,7 @@ namespace InteractiveMuseum.Interaction
         }
         
         /// <summary>
-        /// Enables the pipe interaction trigger GameObject.
+        /// Enables the interaction trigger GameObject.
         /// </summary>
         private void EnableInteractionTrigger()
         {
@@ -196,11 +216,20 @@ namespace InteractiveMuseum.Interaction
         }
         
         /// <summary>
-        /// Public method to exit pipe mode from external calls (e.g., ESC key).
+        /// Public method to exit mini-game mode from external calls (e.g., ESC key).
         /// </summary>
+        public void ExitMiniGameModePublic()
+        {
+            ExitMiniGameMode();
+        }
+        
+        /// <summary>
+        /// Legacy method name for backward compatibility.
+        /// </summary>
+        [System.Obsolete("Use ExitMiniGameModePublic instead")]
         public void ExitPipeModePublic()
         {
-            ExitPipeMode();
+            ExitMiniGameModePublic();
         }
         
         // Legacy method for compatibility with PlayerMovementController

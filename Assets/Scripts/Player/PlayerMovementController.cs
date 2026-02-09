@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 using InteractiveMuseum.Camera;
 using InteractiveMuseum.PipeSystem;
 using InteractiveMuseum.Interaction;
+using InteractiveMuseum.MiniGames;
 using System.Linq;
 
 namespace InteractiveMuseum.Player
@@ -55,10 +56,10 @@ namespace InteractiveMuseum.Player
         [SerializeField]
         private Transform leftHand;
 
-        [Header("Pipe Mode")]
+        [Header("Mini-Game Mode")]
         [HideInInspector]
         [SerializeField]
-        private bool _isInPipeMode = false;
+        private bool _isInMiniGameMode = false;
 
         public bool IsGrounded { get; private set; } = false;
 
@@ -84,10 +85,17 @@ namespace InteractiveMuseum.Player
         [SerializeField]
         private PickableObject _lefthandObject;
 
+        public bool isInMiniGameMode
+        {
+            get => _isInMiniGameMode;
+            set => _isInMiniGameMode = value;
+        }
+        
+        [System.Obsolete("Use isInMiniGameMode instead")]
         public bool isInPipeMode
         {
-            get => _isInPipeMode;
-            set => _isInPipeMode = value;
+            get => _isInMiniGameMode;
+            set => _isInMiniGameMode = value;
         }
 
         public PickableObject righthandObject
@@ -180,9 +188,9 @@ namespace InteractiveMuseum.Player
 
             // Check ESC key directly (works even when cursor is unlocked)
             bool escapePressed = Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame;
-            if (escapePressed && !_escapeKeyPressedLastFrame && _isInPipeMode)
+            if (escapePressed && !_escapeKeyPressedLastFrame && _isInMiniGameMode)
             {
-                Debug.Log("[Update] ESC key pressed - exiting pipe mode");
+                Debug.Log("[Update] ESC key pressed - exiting mini-game mode");
                 ExitPipeModeViaESC();
             }
             _escapeKeyPressedLastFrame = escapePressed;
@@ -190,8 +198,8 @@ namespace InteractiveMuseum.Player
             // Update interaction raycast
             UpdateInteractionRaycast();
             
-            // In pipe mode, also handle mouse clicks directly (as fallback if OnInteract doesn't work)
-            if (_isInPipeMode && Mouse.current != null)
+            // In mini-game mode, also handle mouse clicks directly (as fallback if OnInteract doesn't work)
+            if (_isInMiniGameMode && Mouse.current != null)
             {
                 // Check for left mouse button click (clockwise, right)
                 if (Mouse.current.leftButton.wasPressedThisFrame)
@@ -208,8 +216,8 @@ namespace InteractiveMuseum.Player
 
         private void LateUpdate()
         {
-            // Block movement if in pipe mode
-            if (_isInPipeMode)
+            // Block movement if in mini-game mode
+            if (_isInMiniGameMode)
             {
                 return;
             }
@@ -235,45 +243,45 @@ namespace InteractiveMuseum.Player
         {
             Ray ray;
             
-            if (_isInPipeMode)
+            if (_isInMiniGameMode)
             {
-                // In pipe mode, use mouse position for raycast (cursor is unlocked)
-                UnityEngine.Camera pipeCameraComponent = null;
+                // In mini-game mode, use mouse position for raycast (cursor is unlocked)
+                UnityEngine.Camera miniGameCameraComponent = null;
                 
                 // Get Camera from CinemachineBrain (Cinemachine controls the main camera)
                 CinemachineBrain cinemachineBrain = FindFirstObjectByType<CinemachineBrain>();
                 if (cinemachineBrain != null)
                 {
-                    pipeCameraComponent = cinemachineBrain.OutputCamera;
+                    miniGameCameraComponent = cinemachineBrain.OutputCamera;
                 }
                 
                 // Fallback: try to get Camera from main camera
-                if (pipeCameraComponent == null)
+                if (miniGameCameraComponent == null)
                 {
-                    pipeCameraComponent = UnityEngine.Camera.main;
+                    miniGameCameraComponent = UnityEngine.Camera.main;
                 }
                 
                 // Final fallback: find any camera
-                if (pipeCameraComponent == null)
+                if (miniGameCameraComponent == null)
                 {
-                    pipeCameraComponent = FindFirstObjectByType<UnityEngine.Camera>();
+                    miniGameCameraComponent = FindFirstObjectByType<UnityEngine.Camera>();
                 }
                 
-                if (pipeCameraComponent != null)
+                if (miniGameCameraComponent != null)
                 {
                     // Use mouse position to create ray from camera (using new Input System)
                     Vector2 mousePos2D = Mouse.current != null ? Mouse.current.position.ReadValue() : Vector2.zero;
                     Vector3 mousePosition = new Vector3(mousePos2D.x, mousePos2D.y, 0);
-                    ray = pipeCameraComponent.ScreenPointToRay(mousePosition);
+                    ray = miniGameCameraComponent.ScreenPointToRay(mousePosition);
                 }
                 else
                 {
-                    // Last resort: use forward direction from pipe camera transform
+                    // Last resort: use forward direction from mini-game camera transform
                     CameraManager cameraManager = CameraManager.Instance;
-                    if (cameraManager != null && cameraManager.pipeCamera != null)
+                    if (cameraManager != null && cameraManager.miniGameCamera != null)
                     {
-                        ray = new Ray(cameraManager.pipeCamera.transform.position, 
-                                     cameraManager.pipeCamera.transform.forward);
+                        ray = new Ray(cameraManager.miniGameCamera.transform.position, 
+                                     cameraManager.miniGameCamera.transform.forward);
                     }
                     else
                     {
@@ -298,14 +306,14 @@ namespace InteractiveMuseum.Player
                 mask = (1 << 6) | (1 << 0);
             }
             
-            // Increase distance for pipe mode to make it easier to click
-            float currentDistance = _isInPipeMode ? interactionDistance * 3f : interactionDistance;
+            // Increase distance for mini-game mode to make it easier to click
+            float currentDistance = _isInMiniGameMode ? interactionDistance * 3f : interactionDistance;
             
-            // Use larger layer mask in pipe mode to ensure we can detect pipes
+            // Use larger layer mask in mini-game mode to ensure we can detect interactables
             int currentMask = mask;
-            if (_isInPipeMode)
+            if (_isInMiniGameMode)
             {
-                // In pipe mode, accept all layers except UI (layer 5)
+                // In mini-game mode, accept all layers except UI (layer 5)
                 currentMask = ~(1 << 5); // All layers except UI layer 5
             }
             
@@ -316,8 +324,8 @@ namespace InteractiveMuseum.Player
                 _currentHighlightedOutline = null;
             }
             
-            // Use longer distance in pipe mode since we're using mouse position
-            float raycastDistance = _isInPipeMode ? interactionDistance * 10f : currentDistance;
+            // Use longer distance in mini-game mode since we're using mouse position
+            float raycastDistance = _isInMiniGameMode ? interactionDistance * 10f : currentDistance;
             
             if (Physics.Raycast(ray, out hit, raycastDistance, currentMask))
             {
@@ -336,9 +344,9 @@ namespace InteractiveMuseum.Player
                 }
                 
                 // Show interaction info
-                if (_isInPipeMode)
+                if (_isInMiniGameMode)
                 {
-                    // In pipe mode, check for pipes first
+                    // In mini-game mode, check for interactables first
                     PipeSegmentInteractable pipeInteractable = hit.collider.gameObject.GetComponent<PipeSegmentInteractable>();
                     if (pipeInteractable == null && hit.collider.transform.parent != null)
                     {
@@ -362,7 +370,7 @@ namespace InteractiveMuseum.Player
                             CanvasManager canvasManager = FindFirstObjectByType<CanvasManager>();
                             if (canvasManager != null)
                             {
-                                canvasManager.setInteractionInfo("Click to exit pipe mode");
+                                canvasManager.setInteractionInfo("Click to exit mini-game mode");
                             }
                         }
                         else
@@ -607,8 +615,8 @@ namespace InteractiveMuseum.Player
         
         private void OnLook(InputValue inputValue)
         {
-            // Don't process look input in pipe mode (cursor is unlocked)
-            if (_isInPipeMode)
+            // Don't process look input in mini-game mode (cursor is unlocked)
+            if (_isInMiniGameMode)
                 return;
                 
             _lookDirection += inputValue.Get<Vector2>() * characterSense;
@@ -631,44 +639,56 @@ namespace InteractiveMuseum.Player
         
         private void OnCancel(InputValue inputValue)
         {
-            if (inputValue.isPressed && _isInPipeMode)
+            if (inputValue.isPressed && _isInMiniGameMode)
             {
-                Debug.Log("[OnCancel] Exiting pipe mode via ESC");
-                ExitPipeModeViaESC();
+                Debug.Log("[OnCancel] Exiting mini-game mode via ESC");
+                ExitMiniGameModeViaESC();
             }
         }
     
-        private void ExitPipeModeViaESC()
+        private void ExitMiniGameModeViaESC()
         {
-            // Clear highlight when exiting pipe mode
+            // Clear highlight when exiting mini-game mode
             if (_currentHighlightedOutline != null)
             {
                 _currentHighlightedOutline.DisableHighlight();
                 _currentHighlightedOutline = null;
             }
             
-            // Find all FocusableInteractable components and exit pipe mode on them
-            // This ensures triggers are re-enabled when exiting pipe mode
+            // Find all FocusableInteractable components and exit mini-game mode on them
+            // This ensures triggers are re-enabled when exiting mini-game mode
             FocusableInteractable[] focusables = FindObjectsByType<FocusableInteractable>(FindObjectsSortMode.None);
             foreach (var focusable in focusables)
             {
-                focusable.ExitPipeModePublic();
+                focusable.ExitMiniGameModePublic();
             }
             
-            // Find PipeGridSystem and deactivate it
-            PipeGridSystem pipeSystem = FindFirstObjectByType<PipeGridSystem>();
-            if (pipeSystem != null)
+            // Find all active mini-games and deactivate them
+            MiniGameBase[] miniGames = FindObjectsByType<MiniGameBase>(FindObjectsSortMode.None);
+            foreach (var miniGame in miniGames)
             {
-                pipeSystem.DeactivatePipeMode();
+                if (miniGame != null && miniGame.IsActive())
+                {
+                    miniGame.DeactivateMiniGame();
+                }
             }
             
-            // CameraManager will be updated by PipeGridSystem.DeactivatePipeMode()
+            // CameraManager will be updated by MiniGameBase.DeactivateMiniGame()
             // But also ensure it's done
             CameraManager cameraManager = CameraManager.Instance;
-            if (cameraManager != null && cameraManager.IsPipeModeActive())
+            if (cameraManager != null && cameraManager.IsMiniGameModeActive())
             {
                 cameraManager.SwitchToPlayerCamera();
             }
+        }
+        
+        /// <summary>
+        /// Legacy method name for backward compatibility.
+        /// </summary>
+        [System.Obsolete("Use ExitMiniGameModeViaESC instead")]
+        private void ExitPipeModeViaESC()
+        {
+            ExitMiniGameModeViaESC();
         }
         
         /// <summary>
@@ -689,7 +709,7 @@ namespace InteractiveMuseum.Player
                 return;
                 
             // Handle pipe interaction mode (default to clockwise for Interact action)
-            if (_isInPipeMode)
+            if (_isInMiniGameMode)
             {
                 HandlePipeClick(true);
                 return;
@@ -775,9 +795,9 @@ namespace InteractiveMuseum.Player
                 return;
                 
             // Handle pipe interaction mode - left click rotates pipes clockwise (right)
-            if (_isInPipeMode)
+            if (_isInMiniGameMode)
             {
-                Debug.Log("[OnLeftClick] In pipe mode, handling pipe click (clockwise)");
+                Debug.Log("[OnLeftClick] In mini-game mode, handling click (clockwise)");
                 HandlePipeClick(true);
                 return;
             }
@@ -820,9 +840,9 @@ namespace InteractiveMuseum.Player
                 return;
                 
             // Handle pipe interaction mode - right click rotates pipes counter-clockwise (left)
-            if (_isInPipeMode)
+            if (_isInMiniGameMode)
             {
-                Debug.Log("[OnRightClick] In pipe mode, handling pipe click (counter-clockwise)");
+                Debug.Log("[OnRightClick] In mini-game mode, handling click (counter-clockwise)");
                 HandlePipeClick(false);
                 return;
             }
@@ -930,36 +950,36 @@ namespace InteractiveMuseum.Player
             // Do a fresh raycast for pipe clicking (more reliable)
             Ray ray;
             
-            if (_isInPipeMode)
+            if (_isInMiniGameMode)
             {
-                // In pipe mode, use mouse position for raycast
-                UnityEngine.Camera pipeCameraComponent = null;
+                // In mini-game mode, use mouse position for raycast
+                UnityEngine.Camera miniGameCameraComponent = null;
                 
                 // Get Camera from CinemachineBrain (Cinemachine controls the main camera)
                 CinemachineBrain cinemachineBrain = FindFirstObjectByType<CinemachineBrain>();
                 if (cinemachineBrain != null)
                 {
-                    pipeCameraComponent = cinemachineBrain.OutputCamera;
+                    miniGameCameraComponent = cinemachineBrain.OutputCamera;
                 }
                 
                 // Fallback: try to get Camera from main camera
-                if (pipeCameraComponent == null)
+                if (miniGameCameraComponent == null)
                 {
-                    pipeCameraComponent = UnityEngine.Camera.main;
+                    miniGameCameraComponent = UnityEngine.Camera.main;
                 }
                 
                 // Final fallback: find any camera
-                if (pipeCameraComponent == null)
+                if (miniGameCameraComponent == null)
                 {
-                    pipeCameraComponent = FindFirstObjectByType<UnityEngine.Camera>();
+                    miniGameCameraComponent = FindFirstObjectByType<UnityEngine.Camera>();
                 }
                 
-                if (pipeCameraComponent != null)
+                if (miniGameCameraComponent != null)
                 {
                     // Use mouse position to create ray from camera (using new Input System)
                     Vector2 mousePos2D = Mouse.current != null ? Mouse.current.position.ReadValue() : Vector2.zero;
                     Vector3 mousePosition = new Vector3(mousePos2D.x, mousePos2D.y, 0);
-                    ray = pipeCameraComponent.ScreenPointToRay(mousePosition);
+                    ray = miniGameCameraComponent.ScreenPointToRay(mousePosition);
                 }
                 else
                 {
@@ -982,11 +1002,11 @@ namespace InteractiveMuseum.Player
             {
                 mask = (1 << 6) | (1 << 0);
             }
-            // In pipe mode, accept all layers except UI
+            // In mini-game mode, accept all layers except UI
             mask = ~(1 << 5);
 
-            // Use longer distance in pipe mode
-            float raycastDistance = _isInPipeMode ? interactionDistance * 10f : interactionDistance * 3f;
+            // Use longer distance in mini-game mode
+            float raycastDistance = _isInMiniGameMode ? interactionDistance * 10f : interactionDistance * 3f;
             
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, raycastDistance, mask))
@@ -1076,7 +1096,7 @@ namespace InteractiveMuseum.Player
                     return;
                 }
                 
-                // Don't process FocusableInteractable in pipe mode - exit only via ESC key
+                // Don't process FocusableInteractable in mini-game mode - exit only via ESC key
                 // This prevents accidental exit when clicking near the trigger
                 
                 Debug.LogWarning($"[HandlePipeClick] No pipe interactable found on {hitObject.name}. Object has components: {string.Join(", ", hitObject.GetComponents<Component>().Select(c => c.GetType().Name))}");
@@ -1088,19 +1108,19 @@ namespace InteractiveMuseum.Player
         }
     
         /// <summary>
-        /// Sets pipe mode active/inactive state.
+        /// Sets mini-game mode active/inactive state.
         /// </summary>
-        public void SetPipeMode(bool active)
+        public void SetMiniGameMode(bool active)
         {
-            _isInPipeMode = active;
+            _isInMiniGameMode = active;
             
-            // Ensure PlayerInput is enabled in pipe mode (needed for Input System callbacks)
+            // Ensure PlayerInput is enabled in mini-game mode (needed for Input System callbacks)
             if (_input != null && active && !_input.enabled)
             {
                 _input.enabled = true;
             }
             
-            // Unlock cursor in pipe mode for mouse interaction
+            // Unlock cursor in mini-game mode for mouse interaction
             if (active)
             {
                 Cursor.lockState = CursorLockMode.None;
@@ -1125,8 +1145,8 @@ namespace InteractiveMuseum.Player
 
         private Vector3 CalculateMovementDirection()
         {
-            // Block movement in pipe mode
-            if (_isInPipeMode)
+            // Block movement in mini-game mode
+            if (_isInMiniGameMode)
             {
                 _localMovementAccelerationVector = Vector3.zero;
                 return _localMovementAccelerationVector;

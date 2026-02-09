@@ -59,7 +59,7 @@ public class CheckPipeSystemSetup : EditorWindow
                 Debug.Log("✓ CameraManager: Player Camera assigned");
             }
             
-            if (manager.pipeCamera == null)
+            if (manager.miniGameCamera == null)
             {
                 Debug.LogError("❌ CameraManager: Pipe Camera not assigned!");
                 allGood = false;

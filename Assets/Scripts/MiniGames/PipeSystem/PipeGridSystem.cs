@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using InteractiveMuseum.Camera;
 using InteractiveMuseum.Interaction;
+using InteractiveMuseum.MiniGames;
 
 namespace InteractiveMuseum.PipeSystem
 {
@@ -18,9 +19,20 @@ namespace InteractiveMuseum.PipeSystem
     }
     
     /// <summary>
+    /// Side of the grid for entry/exit pipe placement.
+    /// </summary>
+    public enum EntryExitSide
+    {
+        North,  // y+ from grid (top)
+        South,  // y- from grid (bottom)
+        East,   // x+ from grid (right)
+        West    // x- from grid (left)
+    }
+    
+    /// <summary>
     /// Manages a grid of pipe segments that form a puzzle.
     /// </summary>
-    public class PipeGridSystem : MonoBehaviour
+    public class PipeGridSystem : MiniGameBase
     {
         [Header("Grid Configuration")]
         [Tooltip("Number of pipes horizontally")]
@@ -91,6 +103,22 @@ namespace InteractiveMuseum.PipeSystem
         [Tooltip("Invoked when the puzzle is solved")]
         [SerializeField]
         private UnityEvent _onPuzzleSolved;
+        
+        [Header("Entry/Exit Configuration")]
+        [Tooltip("Enable entry and exit pipes outside the grid")]
+        [SerializeField]
+        private bool _enableEntryExit = false;
+        
+        [Tooltip("Side of the grid where entry pipe is placed")]
+        [SerializeField]
+        private EntryExitSide _entrySide = EntryExitSide.West;
+        
+        [Tooltip("Side of the grid where exit pipe is placed")]
+        [SerializeField]
+        private EntryExitSide _exitSide = EntryExitSide.East;
+        
+        private PipeSegment _entryPipe = null;
+        private PipeSegment _exitPipe = null;
 
         public int gridWidth
         {
@@ -147,13 +175,29 @@ namespace InteractiveMuseum.PipeSystem
             set => _randomizeInitialRotations = value;
         }
         
-        private PipeSegment[,] _pipeGrid;
-        private bool _isActive = false;
-        private CameraManager _cameraManager;
-        
-        private void Start()
+        public bool enableEntryExit
         {
-            _cameraManager = CameraManager.Instance;
+            get => _enableEntryExit;
+            set => _enableEntryExit = value;
+        }
+        
+        public EntryExitSide entrySide
+        {
+            get => _entrySide;
+            set => _entrySide = value;
+        }
+        
+        public EntryExitSide exitSide
+        {
+            get => _exitSide;
+            set => _exitSide = value;
+        }
+        
+        private PipeSegment[,] _pipeGrid;
+        
+        protected override void Start()
+        {
+            base.Start();
             
             // Generate grid if at least one prefab is assigned
             if (HasAnyPrefab() && _pipeGrid == null)
@@ -185,8 +229,20 @@ namespace InteractiveMuseum.PipeSystem
         {
             _pipeGrid = new PipeSegment[_gridWidth, _gridHeight];
             
-            // Clear existing children
+            // Save entry/exit pipes before clearing (they will be recreated if enabled)
+            bool hadEntryExit = _enableEntryExit && (_entryPipe != null || _exitPipe != null);
+            
+            // Clear existing children (except we'll recreate entry/exit if needed)
+            // First, remove entry/exit pipes explicitly to clear references
+            RemoveEntryExitPipes();
+            
+            // Then clear remaining children (grid pipes)
+            List<Transform> childrenToRemove = new List<Transform>();
             foreach (Transform child in transform)
+            {
+                childrenToRemove.Add(child);
+            }
+            foreach (Transform child in childrenToRemove)
             {
                 if (Application.isPlaying)
                     Destroy(child.gameObject);
@@ -253,6 +309,250 @@ namespace InteractiveMuseum.PipeSystem
                     
                     _pipeGrid[x, y] = pipe;
                 }
+            }
+            
+            // Spawn entry/exit pipes if enabled
+            if (_enableEntryExit)
+            {
+                SpawnEntryPipe();
+                SpawnExitPipe();
+            }
+        }
+        
+        /// <summary>
+        /// Calculates the world position for a grid coordinate.
+        /// </summary>
+        private Vector3 GetWorldPositionForGrid(int x, int y)
+        {
+            return _gridOrigin + new Vector3(
+                x * _pipeSpacing - (_gridWidth - 1) * _pipeSpacing * 0.5f,
+                y * _pipeSpacing - (_gridHeight - 1) * _pipeSpacing * 0.5f,
+                0
+            );
+        }
+        
+        /// <summary>
+        /// Calculates the position for entry/exit pipe based on side and grid position.
+        /// </summary>
+        private Vector3 GetEntryExitPosition(EntryExitSide side, int gridX, int gridY)
+        {
+            Vector3 gridPos = GetWorldPositionForGrid(gridX, gridY);
+            float offset = _pipeSpacing;
+            
+            switch (side)
+            {
+                case EntryExitSide.North: // y+ (top)
+                    return gridPos + new Vector3(0, offset, 0);
+                case EntryExitSide.South: // y- (bottom)
+                    return gridPos + new Vector3(0, -offset, 0);
+                case EntryExitSide.East: // x+ (right)
+                    return gridPos + new Vector3(offset, 0, 0);
+                case EntryExitSide.West: // x- (left)
+                    return gridPos + new Vector3(-offset, 0, 0);
+                default:
+                    return gridPos;
+            }
+        }
+        
+        /// <summary>
+        /// Gets the direction index (0=North, 1=East, 2=South, 3=West) pointing from the pipe towards the grid.
+        /// </summary>
+        private int GetDirectionToGrid(EntryExitSide side)
+        {
+            switch (side)
+            {
+                case EntryExitSide.North:
+                    return 2; // South (pipe looks down to grid)
+                case EntryExitSide.South:
+                    return 0; // North (pipe looks up to grid)
+                case EntryExitSide.East:
+                    return 3; // West (pipe looks left to grid)
+                case EntryExitSide.West:
+                    return 1; // East (pipe looks right to grid)
+                default:
+                    return 0;
+            }
+        }
+        
+        /// <summary>
+        /// Calculates the rotation count needed for a corner pipe to have one connection pointing to grid and one pointing away.
+        /// Corner pipes always have two adjacent connections (not opposite), so we choose a neighbor direction for the "away" connection.
+        /// </summary>
+        private int CalculateCornerRotation(EntryExitSide side, bool isEntry)
+        {
+            // Corner pipe default connections: North (0) and East (1)
+            // For entry/exit pipe: one connection points to/from grid, one points to a neighboring direction (away)
+            
+            int directionToGrid = GetDirectionToGrid(side);
+            
+            // For corner pipe, we need two adjacent directions. Choose a neighbor of directionToGrid for the "away" direction.
+            // We'll use the clockwise neighbor: (directionToGrid + 1) % 4
+            int directionAway = (directionToGrid + 1) % 4;
+            
+            // Default corner pipe has connections at 0 (North) and 1 (East)
+            // We need to rotate so that it has connections at directionToGrid and directionAway
+            
+            // Try all 4 rotations and find the one that matches
+            for (int rotation = 0; rotation < 4; rotation++)
+            {
+                // Rotated connections for corner (default: 0,1) after rotation
+                int conn1 = (0 + rotation) % 4;
+                int conn2 = (1 + rotation) % 4;
+                
+                // Check if rotated connections match what we need
+                bool hasDirectionToGrid = (conn1 == directionToGrid || conn2 == directionToGrid);
+                bool hasDirectionAway = (conn1 == directionAway || conn2 == directionAway);
+                
+                if (hasDirectionToGrid && hasDirectionAway)
+                {
+                    return rotation;
+                }
+            }
+            
+            return 0; // Default rotation (shouldn't happen, but safety fallback)
+        }
+        
+        /// <summary>
+        /// Spawns the entry pipe outside the grid.
+        /// </summary>
+        public void SpawnEntryPipe()
+        {
+            // Remove existing entry pipe
+            if (_entryPipe != null)
+            {
+                if (Application.isPlaying)
+                    Destroy(_entryPipe.gameObject);
+                else
+                    DestroyImmediate(_entryPipe.gameObject);
+                _entryPipe = null;
+            }
+            
+            if (_cornerPipePrefab == null)
+            {
+                Debug.LogWarning("Corner pipe prefab is required for entry pipe but is not assigned!");
+                return;
+            }
+            
+            // Calculate position
+            Vector3 entryPos = GetEntryExitPosition(_entrySide, _startPosition.x, _startPosition.y);
+            
+            // Spawn corner pipe
+            GameObject entryObj = Instantiate(_cornerPipePrefab, entryPos, Quaternion.identity, transform);
+            entryObj.name = "EntryPipe";
+            
+            PipeSegment entryPipe = entryObj.GetComponent<PipeSegment>();
+            if (entryPipe == null)
+            {
+                entryPipe = entryObj.AddComponent<PipeSegment>();
+            }
+            
+            // Set pipe type
+            entryPipe.pipeType = PipeType.Corner;
+            entryPipe.gridX = -1; // Special marker for entry pipe
+            entryPipe.gridY = -1;
+            
+            // Calculate and set rotation so one end points to grid, other points away (into wall)
+            int rotation = CalculateCornerRotation(_entrySide, true);
+            entryPipe.SetInitialRotation(rotation);
+            
+            // Ensure PipeSegmentInteractable exists
+            PipeSegmentInteractable pipeInteractable = entryObj.GetComponent<PipeSegmentInteractable>();
+            if (pipeInteractable == null)
+            {
+                pipeInteractable = entryObj.AddComponent<PipeSegmentInteractable>();
+            }
+            
+            // Ensure InteractableOutline exists
+            InteractiveMuseum.Interaction.InteractableOutline outline = entryObj.GetComponent<InteractiveMuseum.Interaction.InteractableOutline>();
+            if (outline == null)
+            {
+                outline = entryObj.AddComponent<InteractiveMuseum.Interaction.InteractableOutline>();
+            }
+            
+            _entryPipe = entryPipe;
+        }
+        
+        /// <summary>
+        /// Spawns the exit pipe outside the grid.
+        /// </summary>
+        public void SpawnExitPipe()
+        {
+            // Remove existing exit pipe
+            if (_exitPipe != null)
+            {
+                if (Application.isPlaying)
+                    Destroy(_exitPipe.gameObject);
+                else
+                    DestroyImmediate(_exitPipe.gameObject);
+                _exitPipe = null;
+            }
+            
+            if (_cornerPipePrefab == null)
+            {
+                Debug.LogWarning("Corner pipe prefab is required for exit pipe but is not assigned!");
+                return;
+            }
+            
+            // Calculate position
+            Vector3 exitPos = GetEntryExitPosition(_exitSide, _endPosition.x, _endPosition.y);
+            
+            // Spawn corner pipe
+            GameObject exitObj = Instantiate(_cornerPipePrefab, exitPos, Quaternion.identity, transform);
+            exitObj.name = "ExitPipe";
+            
+            PipeSegment exitPipe = exitObj.GetComponent<PipeSegment>();
+            if (exitPipe == null)
+            {
+                exitPipe = exitObj.AddComponent<PipeSegment>();
+            }
+            
+            // Set pipe type
+            exitPipe.pipeType = PipeType.Corner;
+            exitPipe.gridX = -2; // Special marker for exit pipe
+            exitPipe.gridY = -2;
+            
+            // Calculate and set rotation so one end points from grid, other points away (into wall)
+            int rotation = CalculateCornerRotation(_exitSide, false);
+            exitPipe.SetInitialRotation(rotation);
+            
+            // Ensure PipeSegmentInteractable exists
+            PipeSegmentInteractable pipeInteractable = exitObj.GetComponent<PipeSegmentInteractable>();
+            if (pipeInteractable == null)
+            {
+                pipeInteractable = exitObj.AddComponent<PipeSegmentInteractable>();
+            }
+            
+            // Ensure InteractableOutline exists
+            InteractiveMuseum.Interaction.InteractableOutline outline = exitObj.GetComponent<InteractiveMuseum.Interaction.InteractableOutline>();
+            if (outline == null)
+            {
+                outline = exitObj.AddComponent<InteractiveMuseum.Interaction.InteractableOutline>();
+            }
+            
+            _exitPipe = exitPipe;
+        }
+        
+        /// <summary>
+        /// Removes entry and exit pipes.
+        /// </summary>
+        public void RemoveEntryExitPipes()
+        {
+            if (_entryPipe != null)
+            {
+                if (Application.isPlaying)
+                    Destroy(_entryPipe.gameObject);
+                else
+                    DestroyImmediate(_entryPipe.gameObject);
+                _entryPipe = null;
+            }
+            
+            if (_exitPipe != null)
+            {
+                if (Application.isPlaying)
+                    Destroy(_exitPipe.gameObject);
+                else
+                    DestroyImmediate(_exitPipe.gameObject);
+                _exitPipe = null;
             }
         }
         
@@ -326,8 +626,19 @@ namespace InteractiveMuseum.PipeSystem
             
             foreach (var pipe in pipes)
             {
-                if (pipe.gridX >= 0 && pipe.gridX < _gridWidth &&
-                    pipe.gridY >= 0 && pipe.gridY < _gridHeight)
+                // Check if this is an entry pipe
+                if (pipe.gridX == -1 && pipe.gridY == -1)
+                {
+                    _entryPipe = pipe;
+                }
+                // Check if this is an exit pipe
+                else if (pipe.gridX == -2 && pipe.gridY == -2)
+                {
+                    _exitPipe = pipe;
+                }
+                // Regular grid pipe
+                else if (pipe.gridX >= 0 && pipe.gridX < _gridWidth &&
+                         pipe.gridY >= 0 && pipe.gridY < _gridHeight)
                 {
                     _pipeGrid[pipe.gridX, pipe.gridY] = pipe;
                 }
@@ -339,12 +650,7 @@ namespace InteractiveMuseum.PipeSystem
         /// </summary>
         public void ActivatePipeMode()
         {
-            _isActive = true;
-            
-            if (_cameraManager != null)
-            {
-                _cameraManager.SwitchToPipeCamera();
-            }
+            ActivateMiniGame();
         }
         
         /// <summary>
@@ -352,20 +658,27 @@ namespace InteractiveMuseum.PipeSystem
         /// </summary>
         public void DeactivatePipeMode()
         {
-            _isActive = false;
-            
-            if (_cameraManager != null)
-            {
-                _cameraManager.SwitchToPlayerCamera();
-            }
+            DeactivateMiniGame();
         }
         
         /// <summary>
         /// Returns whether pipe mode is currently active.
         /// </summary>
-        public bool IsActive()
+        public new bool IsActive()
         {
-            return _isActive;
+            return base.IsActive();
+        }
+        
+        protected override void OnMiniGameActivated()
+        {
+            base.OnMiniGameActivated();
+            // Additional pipe-specific activation logic can be added here
+        }
+        
+        protected override void OnMiniGameDeactivated()
+        {
+            base.OnMiniGameDeactivated();
+            // Additional pipe-specific deactivation logic can be added here
         }
         
         /// <summary>
@@ -375,7 +688,7 @@ namespace InteractiveMuseum.PipeSystem
         /// <param name="clockwise">True for clockwise rotation, false for counter-clockwise</param>
         public void OnPipeClicked(PipeSegment pipe, bool clockwise = true)
         {
-            if (!_isActive)
+            if (!IsActive())
                 return;
                 
             if (pipe == null || pipe.IsRotating())
@@ -403,6 +716,7 @@ namespace InteractiveMuseum.PipeSystem
                 
             bool allConnected = true;
             
+            // Check connections within grid
             for (int y = 0; y < _gridHeight; y++)
             {
                 for (int x = 0; x < _gridWidth; x++)
@@ -474,6 +788,44 @@ namespace InteractiveMuseum.PipeSystem
                 }
             }
             
+            // Check connection between entry pipe and start position (if entry/exit enabled)
+            if (_enableEntryExit && _entryPipe != null)
+            {
+                PipeSegment startPipe = _pipeGrid[_startPosition.x, _startPosition.y];
+                if (startPipe != null)
+                {
+                    int directionToGrid = GetDirectionToGrid(_entrySide);
+                    int directionFromEntry = (directionToGrid + 2) % 4; // Direction from grid to entry pipe
+                    
+                    bool entryHasConnection = _entryPipe.HasConnection(directionToGrid);
+                    bool startHasConnection = startPipe.HasConnection(directionFromEntry);
+                    
+                    if (entryHasConnection != startHasConnection)
+                    {
+                        allConnected = false;
+                    }
+                }
+            }
+            
+            // Check connection between end position and exit pipe (if entry/exit enabled)
+            if (_enableEntryExit && _exitPipe != null)
+            {
+                PipeSegment endPipe = _pipeGrid[_endPosition.x, _endPosition.y];
+                if (endPipe != null)
+                {
+                    int directionToGrid = GetDirectionToGrid(_exitSide);
+                    int directionFromExit = (directionToGrid + 2) % 4; // Direction from grid to exit pipe
+                    
+                    bool endHasConnection = endPipe.HasConnection(directionFromExit);
+                    bool exitHasConnection = _exitPipe.HasConnection(directionToGrid);
+                    
+                    if (endHasConnection != exitHasConnection)
+                    {
+                        allConnected = false;
+                    }
+                }
+            }
+            
             if (allConnected && IsPuzzleSolved())
             {
                 _onPuzzleSolved?.Invoke();
@@ -514,9 +866,53 @@ namespace InteractiveMuseum.PipeSystem
                 return false;
             }
                 
-            // Use flood fill to check if path exists from start to end
+            // Use flood fill to check if path exists from entry/start to exit/end
             bool[,] visited = new bool[_gridWidth, _gridHeight];
             bool endReached = false;
+            
+            // Check if entry/exit pipes are connected first
+            if (_enableEntryExit)
+            {
+                // Check entry pipe connection to start
+                if (_entryPipe != null)
+                {
+                    int directionToGrid = GetDirectionToGrid(_entrySide);
+                    if (!_entryPipe.HasConnection(directionToGrid))
+                    {
+                        return false; // Entry pipe not connected to grid
+                    }
+                    
+                    PipeSegment startPipe = _pipeGrid[_startPosition.x, _startPosition.y];
+                    if (startPipe != null)
+                    {
+                        int directionFromEntry = (directionToGrid + 2) % 4;
+                        if (!startPipe.HasConnection(directionFromEntry))
+                        {
+                            return false; // Start pipe not connected to entry
+                        }
+                    }
+                }
+                
+                // Check exit pipe connection from end
+                if (_exitPipe != null)
+                {
+                    int directionToGrid = GetDirectionToGrid(_exitSide);
+                    if (!_exitPipe.HasConnection(directionToGrid))
+                    {
+                        return false; // Exit pipe not connected to grid
+                    }
+                    
+                    PipeSegment endPipe = _pipeGrid[_endPosition.x, _endPosition.y];
+                    if (endPipe != null)
+                    {
+                        int directionFromExit = (directionToGrid + 2) % 4;
+                        if (!endPipe.HasConnection(directionFromExit))
+                        {
+                            return false; // End pipe not connected to exit
+                        }
+                    }
+                }
+            }
             
             // Start flood fill from start position
             FloodFillToEnd(_startPosition.x, _startPosition.y, visited, ref endReached);

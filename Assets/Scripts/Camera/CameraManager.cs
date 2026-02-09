@@ -5,7 +5,7 @@ using InteractiveMuseum.Player;
 namespace InteractiveMuseum.Camera
 {
     /// <summary>
-    /// Manages camera switching between player and pipe modes.
+    /// Manages camera switching between player and mini-game modes.
     /// </summary>
     public class CameraManager : MonoBehaviour
     {
@@ -14,9 +14,9 @@ namespace InteractiveMuseum.Camera
         [SerializeField]
         private CinemachineCamera _playerCamera;
         
-        [Tooltip("Camera used when interacting with pipe puzzles")]
+        [Tooltip("Camera used when interacting with mini-games")]
         [SerializeField]
-        private CinemachineCamera _pipeCamera;
+        private CinemachineCamera _miniGameCamera;
 
         [Header("Player Reference")]
         [Tooltip("Reference to the player controller")]
@@ -29,10 +29,10 @@ namespace InteractiveMuseum.Camera
             set => _playerCamera = value;
         }
 
-        public CinemachineCamera pipeCamera
+        public CinemachineCamera miniGameCamera
         {
-            get => _pipeCamera;
-            set => _pipeCamera = value;
+            get => _miniGameCamera;
+            set => _miniGameCamera = value;
         }
 
         public PlayerMovementController player
@@ -41,7 +41,7 @@ namespace InteractiveMuseum.Camera
             set => _player = value;
         }
 
-        private bool _isPipeModeActive = false;
+        private bool _isMiniGameModeActive = false;
 
         public static CameraManager Instance { get; private set; }
 
@@ -61,35 +61,44 @@ namespace InteractiveMuseum.Camera
         private void Start()
         {
             // Ensure player camera is active by default
-            if (_playerCamera != null && _pipeCamera != null)
+            if (_playerCamera != null && _miniGameCamera != null)
             {
                 _playerCamera.Priority = 10;
-                _pipeCamera.Priority = 0;
+                _miniGameCamera.Priority = 0;
             }
         }
 
         /// <summary>
-        /// Switches to pipe camera and disables player movement.
+        /// Switches to mini-game camera and disables player movement.
         /// </summary>
-        public void SwitchToPipeCamera()
+        public void SwitchToMiniGameCamera()
         {
-            if (_pipeCamera == null || _playerCamera == null)
+            if (_miniGameCamera == null || _playerCamera == null)
             {
                 Debug.LogError("Camera references not set in CameraManager!");
                 return;
             }
 
-            _isPipeModeActive = true;
+            _isMiniGameModeActive = true;
             
             // Switch camera priorities
             _playerCamera.Priority = 0;
-            _pipeCamera.Priority = 10;
+            _miniGameCamera.Priority = 10;
 
             // Disable player movement
             if (_player != null)
             {
-                _player.SetPipeMode(true);
+                _player.SetMiniGameMode(true);
             }
+        }
+        
+        /// <summary>
+        /// Switches to mini-game camera (legacy method name for backward compatibility).
+        /// </summary>
+        [System.Obsolete("Use SwitchToMiniGameCamera() instead")]
+        public void SwitchToPipeCamera()
+        {
+            SwitchToMiniGameCamera();
         }
 
         /// <summary>
@@ -97,31 +106,40 @@ namespace InteractiveMuseum.Camera
         /// </summary>
         public void SwitchToPlayerCamera()
         {
-            if (_pipeCamera == null || _playerCamera == null)
+            if (_miniGameCamera == null || _playerCamera == null)
             {
                 Debug.LogError("Camera references not set in CameraManager!");
                 return;
             }
 
-            _isPipeModeActive = false;
+            _isMiniGameModeActive = false;
             
             // Switch camera priorities back
             _playerCamera.Priority = 10;
-            _pipeCamera.Priority = 0;
+            _miniGameCamera.Priority = 0;
 
             // Enable player movement
             if (_player != null)
             {
-                _player.SetPipeMode(false);
+                _player.SetMiniGameMode(false);
             }
         }
 
         /// <summary>
-        /// Returns whether pipe mode is currently active.
+        /// Returns whether mini-game mode is currently active.
         /// </summary>
+        public bool IsMiniGameModeActive()
+        {
+            return _isMiniGameModeActive;
+        }
+        
+        /// <summary>
+        /// Returns whether mini-game mode is currently active (legacy method name for backward compatibility).
+        /// </summary>
+        [System.Obsolete("Use IsMiniGameModeActive() instead")]
         public bool IsPipeModeActive()
         {
-            return _isPipeModeActive;
+            return IsMiniGameModeActive();
         }
     }
 }
