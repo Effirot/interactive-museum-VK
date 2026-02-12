@@ -1,0 +1,20 @@
+{
+    "language_name": "English",
+    "ui": {
+        "play": "Play",
+        "settings": "Settings",
+        "quit": "Quit",
+        "back": "Back",
+        "apply": "Apply",
+        "fps_counter": "FPS Counter",
+        "language": "Language",
+        "english": "English",
+        "russian": "Russian"
+    },
+    "settings": {
+        "graphics": "Graphics",
+        "audio": "Audio",
+	  "music": "Music",
+        "controls": "Controls"
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "language_name": "Русский",
+    "ui": {
+        "play": "Играть",
+        "settings": "Настройки",
+        "quit": "Выход",
+        "back": "Назад",
+        "apply": "Применить",
+        "fps_counter": "Счетчик FPS",
+        "language": "Язык",
+        "english": "Английский",
+        "russian": "Русский"
+    },
+    "settings": {
+        "graphics": "Графика",
+        "audio": "Звук",
+	  "music": "Музыка",
+        "controls": "Управление"
+    }
+}
