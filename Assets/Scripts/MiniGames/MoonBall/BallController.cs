@@ -34,7 +34,7 @@ using UnityEngine.InputSystem;
         void Start()
         {
             rb = GetComponent<Rigidbody>();
-            rb.linearDamping = 0.05f;
+            //rb.linearDamping = 0.05f;
             mainCamera = Camera.main;
 
 
@@ -122,7 +122,7 @@ using UnityEngine.InputSystem;
                 rb.linearVelocity = Vector3.zero;
                 rb.angularVelocity = Vector3.zero;
             }
-            else if (gameObject == targetBall)
+            if (gameObject == targetBall)
             {
                 transform.position = startPositionTargetBall;
                 rb.linearVelocity = Vector3.zero;

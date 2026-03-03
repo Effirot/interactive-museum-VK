@@ -6,21 +6,26 @@ namespace InteractiveMuseum.MiniGames
     public class MoonBallMiniGame : MiniGameBase
     {
         [Header("Moon Ball Game References")]
-        [SerializeField] 
-        private GameObject _moonBallGameRoot; 
-        [SerializeField] 
-        private BallController _ballController;
-        [SerializeField] 
-        private HoleTrigger _holeTrigger;
+        [SerializeField]
+        private GameObject moonBallGameRoot;
+        [SerializeField]
+        private BallController ballController;
+        // [SerializeField]
+        // private BallController playerBall;
+        // [SerializeField] 
+        // private BallController targetBall;
+        [SerializeField]
+        private HoleTrigger holeTrigger;
+        
 
         protected override void OnMiniGameActivated()
         {
             base.OnMiniGameActivated();
 
-            if (_moonBallGameRoot != null)
-                _moonBallGameRoot.SetActive(true);
+            if (moonBallGameRoot != null)
+                moonBallGameRoot.SetActive(true);
 
-            Debug.Log("Мини-игра активирована");
+            Debug.Log("пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
         }
 
         protected override void OnMiniGameDeactivated()
@@ -30,10 +35,14 @@ namespace InteractiveMuseum.MiniGames
             //if (_moonBallGameRoot != null)
             //    _moonBallGameRoot.SetActive(false);
 
-            if (_ballController != null)
-                _ballController.ResetPositions();
+            if (ballController != null)
+            {
+                ballController.ResetPositions();
+                //playerBall.ResetPositions();
+            }
+                
 
-            Debug.Log("Мини-игра деактивирована");
+            Debug.Log("пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
         }
 
         public void OnGameComplete()
