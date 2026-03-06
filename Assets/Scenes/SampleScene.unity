@@ -11246,6 +11246,73 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1517708016432041645, guid: 786e235db257f09479477e32a52df4ef, type: 3}
   m_PrefabInstance: {fileID: 1425761848}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1426664508
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1426664510}
+  - component: {fileID: 1426664509}
+  - component: {fileID: 1426664512}
+  m_Layer: 0
+  m_Name: Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1426664509
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426664508}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.94, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1426664510
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426664508}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.09629, y: 0.93934, z: 3.211}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1426664512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426664508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82f6772e4a945f74dadf5ab4c431dc7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractiveMuseum.UI.SceneLoader
+  sceneNameTrigger: Scene2
 --- !u!114 &1457891209 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7439895940223897291, guid: 7a0e7608502f89d4e8a3c084d7a05ef6, type: 3}
@@ -16004,6 +16071,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoonBallGame
       objectReference: {fileID: 0}
+    - target: {fileID: 5760571577416551275, guid: b1c9c058ee02b5e4d83fe13206c9cf7c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6397825381681605248, guid: b1c9c058ee02b5e4d83fe13206c9cf7c, type: 3}
       propertyPath: m_Positions.Array.size
       value: 0
@@ -16585,3 +16656,4 @@ SceneRoots:
   - {fileID: 8072783059736481605}
   - {fileID: 2475967602561704354}
   - {fileID: 1643840886}
+  - {fileID: 1426664510}

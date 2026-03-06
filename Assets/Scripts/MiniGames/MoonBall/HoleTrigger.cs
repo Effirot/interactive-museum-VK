@@ -1,18 +1,21 @@
 using InteractiveMuseum.MiniGames;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class HoleTrigger : MonoBehaviour
 {
     public GameObject areneActive;
     public GameObject areneInactive;
-    public GameObject targetBall;
+    public GameObject targetBall;   
 
     public float maxSpeedForHole = 1.5f;
     public float delayBeforeChange = 2f;
 
     private BallController ballController;
     public GameObject playerBall;
+
+    public UnityEvent onBallPassed = new();
     void Start()
     {
         if (playerBall != null)
@@ -29,7 +32,7 @@ public class HoleTrigger : MonoBehaviour
 
             float currentSpeed = ballRigidbody.linearVelocity.magnitude;
 
-            Debug.Log($"Скорость шара при входе в лунку: {currentSpeed:F2}, максимум на попадание: {maxSpeedForHole}");
+            Debug.Log($"пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ: {currentSpeed:F2}, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: {maxSpeedForHole}");
 
             if (currentSpeed <= maxSpeedForHole)
             {
@@ -41,7 +44,7 @@ public class HoleTrigger : MonoBehaviour
 
     void ProcessSuccessful()
     {
-        Debug.Log("Победа! Шар в лунке :)");
+        Debug.Log("пїЅпїЅпїЅпїЅпїЅпїЅ! пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ :)");
 
         areneActive.SetActive(false);
         areneInactive.SetActive(true);
@@ -51,6 +54,8 @@ public class HoleTrigger : MonoBehaviour
         {
             miniGame.OnGameComplete();
         }
+
+        onBallPassed.Invoke();
     }
     public void RestartLevel()
     {

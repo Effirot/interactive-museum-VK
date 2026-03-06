@@ -8,6 +8,8 @@ namespace InteractiveMuseum.UI
     /// </summary>
     public class SceneLoader : MonoBehaviour
     {
+        public string sceneNameTrigger;
+        
         /// <summary>
         /// Loads a scene by name.
         /// </summary>
@@ -28,6 +30,10 @@ namespace InteractiveMuseum.UI
             {
                 Debug.LogError($"Scene '{sceneName}' not found in build settings!");
             }
+        }
+        public void OnTriggerEnter(Collider other)
+        {
+            OpenScene(sceneNameTrigger);
         }
     }
 }
