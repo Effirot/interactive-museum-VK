@@ -85,6 +85,10 @@ namespace InteractiveMuseum.Player
         [SerializeField]
         private PickableObject _lefthandObject;
 
+        [Header("Inventory")]
+        [SerializeField]
+        private PlayerInventory _inventory;
+
         public bool isInMiniGameMode
         {
             get => _isInMiniGameMode;
@@ -109,6 +113,8 @@ namespace InteractiveMuseum.Player
             get => _lefthandObject;
             set => _lefthandObject = value;
         }
+
+        public PlayerInventory Inventory => _inventory;
         
         private Vector3 _rightPickedLastPos;
         private Vector3 _leftPickedLastPos;
@@ -145,6 +151,11 @@ namespace InteractiveMuseum.Player
         {
             _characterController = GetComponent<CharacterController>();
             _input = GetComponent<PlayerInput>();
+            _inventory = GetComponent<PlayerInventory>();
+            if (_inventory == null)
+            {
+                _inventory = gameObject.AddComponent<PlayerInventory>();
+            }
         
             StartControlling();
             Current = this;
@@ -401,18 +412,16 @@ namespace InteractiveMuseum.Player
                     
                     if (pickable != null)
                     {
-                        // Check if hand is free
-                        bool handFree = _righthandObject == null || _lefthandObject == null;
                         CanvasManager canvasManager = FindFirstObjectByType<CanvasManager>();
                         if (canvasManager != null)
                         {
-                            if (handFree)
+                            if (_inventory != null && _inventory.HasFreeSlot())
                             {
-                                canvasManager.setInteractionInfo("Click to pick up");
+                                canvasManager.setInteractionInfo("Click to collect");
                             }
                             else
                             {
-                                canvasManager.setInteractionInfo("Hands full - click to place");
+                                canvasManager.setInteractionInfo("Inventory full");
                             }
                         }
                     }
@@ -420,6 +429,14 @@ namespace InteractiveMuseum.Player
                     {
                         // Check for Interactable
                         Interactable interactable = hitObj.GetComponent<Interactable>();
+                        if (interactable == null && hitObj.transform.parent != null)
+                        {
+                            interactable = hitObj.transform.parent.GetComponent<Interactable>();
+                        }
+                        if (interactable == null)
+                        {
+                            interactable = hitObj.GetComponentInChildren<Interactable>();
+                        }
                         if (interactable != null)
                         {
                             CanvasManager canvasManager = FindFirstObjectByType<CanvasManager>();
@@ -736,55 +753,40 @@ namespace InteractiveMuseum.Player
                 if (pickableObject != null)
                 {
                     Debug.Log($"[OnInteract] Found PickableObject: {pickableObject.name}");
-                    
-                    // Check if hand is free
-                    if (_righthandObject == null || _lefthandObject == null)
+
+                    if (_inventory != null)
                     {
-                        // Use right hand if free, otherwise left
-                        bool useRightHand = _righthandObject == null;
-                        if (PickupObjectToHand(pickableObject, useRightHand))
+                        if (_inventory.TryAddPickable(pickableObject))
                         {
-                            Debug.Log($"[OnInteract] Picked up {pickableObject.name} in {(useRightHand ? "right" : "left")} hand");
+                            Debug.Log($"[OnInteract] Collected {pickableObject.name} to inventory");
                             return;
                         }
-                    }
-                    else
-                    {
-                        Debug.Log($"[OnInteract] Both hands are full, cannot pick up {pickableObject.name}");
+
+                        CanvasManager canvasManager = FindFirstObjectByType<CanvasManager>();
+                        if (canvasManager != null)
+                        {
+                            canvasManager.setInteractionInfo("Inventory full");
+                        }
+                        return;
                     }
                 }
                 
-                // Priority 2: If we have an object in hand, try to place it
-                if (_righthandObject != null || _lefthandObject != null)
-                {
-                    bool useRightHand = _righthandObject != null;
-                    Debug.Log($"[OnInteract] Placing object from {(useRightHand ? "right" : "left")} hand");
-                    PlaceObjectFromHand(useRightHand, _lastLookRaycast);
-                    return;
-                }
-                
-                // Priority 3: Try to interact with Interactable (but skip FocusableInteractable if we want to pick up)
+                // Priority 2: Try to interact with Interactable
                 Interactable interactable = hitObject.GetComponent<Interactable>();
-                FocusableInteractable focusable = hitObject.GetComponent<FocusableInteractable>();
+                if (interactable == null && hitObject.transform.parent != null)
+                {
+                    interactable = hitObject.transform.parent.GetComponent<Interactable>();
+                }
+                if (interactable == null)
+                {
+                    interactable = hitObject.GetComponentInChildren<Interactable>();
+                }
                 
-                // If no object in hand and there's an interactable, use it
                 if (interactable != null)
                 {
                     Debug.Log($"[OnInteract] Found Interactable on {hitObject.name}");
                     interactable.Interact(this, _lastLookRaycast.point);
                     return;
-                }
-            }
-            else
-            {
-                // Drop object if nothing to interact with
-                if (righthandObject != null)
-                {
-                    DropObjectFromHand(true);
-                }
-                else if (lefthandObject != null)
-                {
-                    DropObjectFromHand(false);
                 }
             }
         }
