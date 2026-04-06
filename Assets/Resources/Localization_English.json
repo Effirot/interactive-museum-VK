@@ -9,12 +9,33 @@
         "fps_counter": "FPS Counter",
         "language": "Language",
         "english": "English",
-        "russian": "Russian"
+        "russian": "Russian",
+        "interact": "Press E to interact"
     },
     "settings": {
         "graphics": "Graphics",
         "audio": "Audio",
-	  "music": "Music",
+        "music": "Music",
         "controls": "Controls"
+    },
+    "npc": {
+        "scientist": {
+            "name": "Professor Knowledge"
+        },
+        "guard": {
+            "name": "Museum Guard"
+        }
+    },
+    "dialogue": {
+        "intro": {
+            "line1": "Welcome to the interactive museum!",
+            "line2": "You will learn many interesting things here.",
+            "line3": "Explore the exhibits and solve puzzles."
+        },
+        "quest": {
+            "line1": "I need your help!",
+            "line2": "Find the ancient artifact in the east wing.",
+            "line3": "It looks like a golden statuette."
+        }
     }
 }

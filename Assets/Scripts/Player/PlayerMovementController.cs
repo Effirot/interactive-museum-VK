@@ -788,6 +788,24 @@ namespace InteractiveMuseum.Player
                     interactable.Interact(this, _lastLookRaycast.point);
                     return;
                 }
+
+                // Priority 3: Check for DialogueTrigger
+                DialogueTrigger dialogueTrigger = hitObject.GetComponent<DialogueTrigger>();
+                if (dialogueTrigger == null && hitObject.transform.parent != null)
+                {
+                    dialogueTrigger = hitObject.transform.parent.GetComponent<DialogueTrigger>();
+                }
+                if (dialogueTrigger == null)
+                {
+                    dialogueTrigger = hitObject.GetComponentInChildren<DialogueTrigger>();
+                }
+
+                if (dialogueTrigger != null)
+                {
+                    Debug.Log($"[OnInteract] Found DialogueTrigger on {hitObject.name}");
+                    dialogueTrigger.Interact();
+                    return;
+                }
             }
         }
     
