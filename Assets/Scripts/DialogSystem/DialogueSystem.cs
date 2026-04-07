@@ -47,7 +47,7 @@ public class DialogueSystem : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
 
         if (dialoguePanel != null)

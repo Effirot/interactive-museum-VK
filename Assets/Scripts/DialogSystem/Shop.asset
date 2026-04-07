@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b786d5876f4b034ba4f54a86a943936, type: 3}
+  m_Name: Shop
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueData
+  lines:
+  - speakerNameKey: npc.anna.name
+    textKey: dialogue.dialogueShop.line1
+  - speakerNameKey: npc.erich.name
+    textKey: dialogue.dialogueShop.line2
+  - speakerNameKey: npc.anna.name
+    textKey: dialogue.dialogueShop.line3
+  - speakerNameKey: npc.erich.name
+    textKey: dialogue.dialogueShop.line4
+  - speakerNameKey: npc.anna.name
+    textKey: dialogue.dialogueShop.line5
+  - speakerNameKey: npc.erich.name
+    textKey: dialogue.dialogueShop.line6
+  - speakerNameKey: npc.erich.name
+    textKey: dialogue.dialogueShop.line7
+  - speakerNameKey: npc.anna.name
+    textKey: dialogue.dialogueShop.line8
+  - speakerNameKey: npc.erich.name
+    textKey: dialogue.dialogueShop.line9
+  - speakerNameKey: npc.erich.name
+    textKey: dialogue.dialogueShop.line10
+  - speakerNameKey: npc.anna.name
+    textKey: dialogue.dialogueShop.line11
+  - speakerNameKey: npc.erich.name
+    textKey: dialogue.dialogueShop.line12
+  - speakerNameKey: npc.anna.name
+    textKey: dialogue.dialogueShop.line1
+  - speakerNameKey: npc.anna.name
+    textKey: dialogue.dialogueShop.line1
+  - speakerNameKey: npc.anna.name
+    textKey: dialogue.dialogueShop.line1
+  - speakerNameKey: npc.anna.name
+    textKey: dialogue.dialogueShop.line1
+  onCompleteTriggerId: 
+  autoDestroyOnComplete: 0

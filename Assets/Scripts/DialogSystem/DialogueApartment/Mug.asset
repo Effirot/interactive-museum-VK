@@ -10,14 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b786d5876f4b034ba4f54a86a943936, type: 3}
-  m_Name: NPC_IntroDialogue
+  m_Name: Mug
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
   lines:
-  - speakerNameKey: npc.scientist.name
-    textKey: dialogue.intro.line1
-  - speakerNameKey: npc.scientist.name
-    textKey: dialogue.intro.line2
-  - speakerNameKey: npc.scientist.name
-    textKey: dialogue.intro.line3
+  - speakerNameKey: npc.anna.name
+    textKey: dialogue.interactiveObjApartment.mug
   onCompleteTriggerId: 
   autoDestroyOnComplete: 0

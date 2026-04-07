@@ -1,41 +1,102 @@
 {
-    "language_name": "English",
-    "ui": {
-        "play": "Play",
-        "settings": "Settings",
-        "quit": "Quit",
-        "back": "Back",
-        "apply": "Apply",
-        "fps_counter": "FPS Counter",
-        "language": "Language",
-        "english": "English",
-        "russian": "Russian",
-        "interact": "Press E to interact"
+  "language_name": "English",
+  "ui": {
+    "play": "Play",
+    "settings": "Settings",
+    "quit": "Quit",
+    "back": "Back",
+    "apply": "Apply",
+    "fps_counter": "FPS Counter",
+    "language": "Language",
+    "english": "English",
+    "russian": "Russian",
+    "interact": "Press E to interact"
+  },
+  "settings": {
+    "graphics": "Graphics",
+    "audio": "Audio",
+    "music": "Music",
+    "controls": "Controls"
+  },
+  "npc": {
+    "concierge": {
+      "name": "Concierge"
     },
-    "settings": {
-        "graphics": "Graphics",
-        "audio": "Audio",
-        "music": "Music",
-        "controls": "Controls"
+    "anna": {
+      "name": "Anna"
     },
-    "npc": {
-        "scientist": {
-            "name": "Professor Knowledge"
-        },
-        "guard": {
-            "name": "Museum Guard"
-        }
+    "artem": {
+      "name": "Artem"
     },
-    "dialogue": {
-        "intro": {
-            "line1": "Welcome to the interactive museum!",
-            "line2": "You will learn many interesting things here.",
-            "line3": "Explore the exhibits and solve puzzles."
-        },
-        "quest": {
-            "line1": "I need your help!",
-            "line2": "Find the ancient artifact in the east wing.",
-            "line3": "It looks like a golden statuette."
-        }
+    "erich": {
+      "name": "Erich"
     }
+  },
+  "dialogue": {
+    "dialogueApartment": {
+      "line1": "Good morning. Sorry for the unexpected visit.",
+      "line2": "Everything's fine. Did something happen?",
+      "line3": "The local police officer came to see you early this morning. He said he had important information for you. He tried to contact you, but couldn't get through. Then he was called away somewhere.",
+      "line4": "The local police officer? Ah... I didn't receive any notifications.",
+      "line5": "He asked me to give you this flash code. It will give you access to the data they left specifically for you.",
+      "line6": "Did he say something about Artyom?",
+      "line7": "Unfortunately, no, I just emphasized that it is necessary to hand it over to you personally.",
+      "line8": "What if I have questions for him personally?",
+      "line9": "He said he'd be in the office after two o'clock. You can find him there.",
+      "line10": "Okay. Thank you, Victor. You're a good person.",
+      "line11": "Good day to you, Anna. And I'm sure Artyom is still alive. Cheer up.",
+      "line12": "Certainly."
+    },
+    "dialogueShop": {
+      "line1": "Good afternoon. I need to speak with you about my husband, Artyom. I've heard he used to visit your shop often, well... before he disappeared. I think he was asking you about artifacts related to the early eras in the Urals, especially B.C. Do you happen to remember him?",
+      "line2": "Yes, I think I do. — It's been quite a while since I last saw him. Your husband is an extremely interesting conversationalist, and people like me often find themselves lacking exactly that kind of company. Well, you know what I mean: I don't exactly get many visitors.",
+      "line3": "Yes, yes. And did Artyom perhaps ask about or look for anything specific?",
+      "line4": "Well, he was often interested in finds related to ancient tribes, or even some specific people, I would say, or perhaps even an entire civilization.",
+      "line5": "Which tribes are you talking about? Some specific people in the ancient Urals? And did he mention anything he managed to find or was planning to research in more detail?",
+      "line6": "He was looking for traces of some ancient civilization. And it seemed he was convinced that tribes existed in the Urals that were similar in some aspects of their beliefs to the Aryans, and perhaps even much more developed than we imagine. Your husband believed that these people left behind tools and implements that didn't just surpass their time. Some technologies were inherited by their descendants, but most of them disappeared without a trace, as did almost all mentions of their culture. He was captivated by this. He wanted to prove that this civilization didn't vanish by chance, but was destroyed or disappeared for some inexplicable reason. That very reason was what Artyom was primarily searching for.",
+      "line7": "I... I couldn't help him. He spent a lot of time studying those old tools, but never managed to figure out which people lived here. Or why their technologies were so advanced for that era. And, of course, what primarily concerned Artyom was: why and where did they go?",
+      "line8": "He didn't find anything at all? There must have been some leads. Did he intend to find something specific and study it more closely on site? Did he mention anything?",
+      "line9": "...",
+      "line10": "There is one place I suggested to him before he left. An old museum, 'Arkaim'. It's been closed for a long time, but... Perhaps there are still some traces there that could help him pick up the trail. But I'm not sure he could find anything else there. The place has been abandoned for a long time, and, frankly, all that's there is dust and remnants of the past.",
+      "line11": "The Arkaim Museum? Where is it?",
+      "line12": "It's on the outskirts, in the abandoned part of the city beyond Chistopolskaya. About 5 kilometers further down the road. No one has lived nearby for a long time. It's a remote area, and there were severe fires about a hundred years ago. There were strange incidents. People still speculate about them. I recall reading that even scientists from all over the world came to study the phenomenon. They say that a couple of times, fire just ignited there in the air, out of nowhere.",
+      "line13": "Do you think Artyom went there after all?",
+      "line14": "Well, at that point, it seemed to me, he had hit a dead end and was desperately looking for any leads for his investigation of antiquity. And if he did go there and didn't return, then perhaps he found clues to his theories. Although, I admit, I told him about that museum just to offer some support. There was almost no chance that anything could actually be found there.",
+      "line15": "Still, thank you for the information. I think I'll go there anyway.",
+      "line16": "Don't lose hope. If Artyom disappeared, then apparently he did find the clues he needed. And if so, then you can find them too. And then you'll find him as well."
+    },
+    "interactiveObjApartment": {
+      "photo": "Our first trip was not long, but the most exciting... Artyom, I miss you.",
+      "mug": "My first gift; it seemed so silly, but Artyom cherishes it to this day...",
+      "toothbrush": "Is it dust? Yes, I should remember to wash it off tonight.",
+      "notebook": "For some reason, Artyom doesn't like storing his thoughts on devices. Even though it's old-fashioned, I'm glad he found my gift useful.",
+      "Bed": "When was the last time I filled it up? It seems like it's been six months since Artyom did it."
+    },
+    "flashCode": {
+      "line1": "Official Notification. \n From: Investigative Department \n Date: 06/05/2322. \n For: Anna Kerman \n Subject: Declaration of Artyom Kerman as missing \n Dear Anna Kerman We hereby \n notify you that, following lengthy and thorough investigative actions conducted by the investigative authorities, and in accordance with established procedure, your husband, Artyom Kerman, has ultimately been declared missing. \nDespite all efforts to establish his whereabouts, as well as numerous search operations, no evidence regarding his fate or whereabouts that could confirm his survival has been obtained. During the investigation, which included collecting statements, inspecting potential locations, and testing various hypotheses, not a single significant lead was discovered.",
+      "line2": "In accordance with the law, Artyom Kerman is declared missing 90 days after the official request, given the lack of information regarding his fate and the active absence of any traces. All further legal proceedings and possible actions in the case will depend on the discovery of new information. \nIf you have any additional questions or receive new information, please immediately contact the investigative department where this case was registered. We also remind you that you can contact us shortly to clarify further steps in your case. \nWe hope for your understanding and offer our sincere condolences in connection with this situation. \n Sincerely, (Signature) \n Investigator Latnikov A.V. \n Investigative Department of the city of Chelyabinsk, 45th International Street 51.",
+      "line3": "It was wrong to agree with his research. The ancient Urals had become his new obsession; Artyom was simply obsessed with it."
+    },
+    "interactiveObjMuseum": {
+      "museumExhibit1": "Did crabs of this size actually live in temperate latitudes? Wait, there seems to be a note about the finder and archaeologist: umm... so... Brod Tovard?",
+      "museumExhibit2": "It seems that in ancient times there were tribes that knew how to harvest spider silk for crafting needs... A looot of spider silk...",
+      "museumExhibit3": "Hold on: what is a crowbar doing in a museum display case from ancient eras?",
+      "museumExhibit4": "Did carts with wheels like these really exist? I've heard about war chariots, but I imagined them differently...",
+      "museumExhibit5": "What's this, ancient writing? What does it say: Mok Ra? Zag-Zag? I can't make it out...",
+      "incomeRegister": "They foisted off some old arcade machines from Pushkin Park on us for god knows what reason. They're still in the basement for now. On my break, I decided to test one of them: it still works! Now there's at least some entertainment. Except I accidentally dropped a sheet of paper with my login passwords into it — our security team uses such crazy passwords, you can never remember them. Well, I figure nothing will happen: it's unlikely anyone would think to go looking for them inside an arcade machine, and it would only spit them out if someone got consecutive wins on all levels, and I can't be bothered with that kind of hardcore.",
+      "message1": "Max, on behalf of the security service, I again express my sincere admiration for your ability to find the only working object in a museum after midnight. I'm especially impressed by how quickly you respond to the arcade machine's 'threats' and protect it from dust. However, my monitors and security cameras have been calling me, complaining about how rudely you abandoned them, trading them for some ancient junk. I think we all agree that 8-bit sound is the most suitable 'atmospheric background' for a museum. But the surveillance systems are jealous and refuse to tolerate it, threatening to take legal action. For now, I'm holding off their attacks, but I won't last long. If you don't tone down your heroism in fighting the machine, I'm afraid we might lose this battle. I think you should stop trying to set a new record until the end of your shift. Otherwise, the arcade machine will be officially declared the most disciplined employee of the month, and I'll have to explain why it will be receiving your salary instead of you. Sincerely, your beloved boss.",
+      "message2": "Dear colleagues, please do not let that crazy person into the museum anymore. The other day he was shouting again about doors to the past and the master race that is watching us from 'behind the veil of time'. Maybe I'm no Einstein, but we don't need any of that crap. And most importantly, this guy always leaves the taps in the bathroom running, as if we're stacking bills in there instead of toilet paper. If you miss him, you can identify him by his behavior: he scurries around the main hall like a madman, muttering under his breath, sometimes picks something out of the trash bin and throws it back. And yes, for the love of all gods, do not discuss his theories about the end and beginning of the world with him. Escort him to my office or straight outside if he resists. It was funny only the first 513 times, but now he's annoyed everyone. At least he doesn't come often, usually only on Tuesdays and Fridays — otherwise our sign would soon be mistaken for a madhouse with such collaborations. Regarding the water — check the bathroom every two hours: that damn ninja sometimes seems to know all the blind spots of the security cameras! P.S. Science fiction is no excuse to leave taps running! Sincerely, Head of Security.",
+      "bin1": "Hmm, this might come in handy.",
+      "bin2": "Seems like nothing interesting here.",
+      "visitor'sNote": "That crazy guy was shouting something about doors to the past, and that the master race behind the veil of time is watching us, that we might be in danger. Ugh, these lunatics have completely lost their minds with their sci-fi; plus, he kept leaving all the bathroom taps running and scurried around the second hall like our budget is made of rubber, throwing away two months' salary on water bills.",
+      "table": "That crazy guy was shouting something about doors to the past, and that the master race behind the veil of time is watching us, that we might be in danger. Ugh, these lunatics have completely lost their minds with their sci-fi; plus, he kept leaving all the bathroom taps running and scurried around the second hall like our budget is made of rubber, throwing away two months' salary on water bills.",
+      "pen": "I remember when Artyom was deep in thought, he would often twirl this in his hand like a propeller. He once remarked that this pen has an amazing balance.",
+      "glasses": "Artyom often wore these on his forehead. I still remember how he laughed for a long time when I called him an antique pilot.",
+      "empty1": "Seems like nothing useful here",
+      "empty2": "Hmm, I doubt anything here will be of use to me.",
+      "empty3": "Interesting, of course, but right now Artyom might be in danger, I shouldn't linger.",
+      "NotEnoughClues1": "I feel like I'm missing something",
+      "NotEnoughClues2": "I need to keep searching, there must be clues left here"
+    }
+  }
 }
