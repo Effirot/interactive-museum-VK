@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using InteractiveMuseum.Player;
+using System.Collections;
 
 public class DialogueTrigger : MonoBehaviour
 {

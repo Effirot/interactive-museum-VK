@@ -1,0 +1,308 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: LocalizationString Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: LocalizationString
+  m_TableCollectionNameGuidString: 2bb3860a8c9115e4e9a0888c69cced54
+  m_Entries:
+  - m_Id: 225391628288
+    m_Key: english
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4182943944704
+    m_Key: play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4355547942912
+    m_Key: settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4517745872896
+    m_Key: quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4564088737792
+    m_Key: back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4605696233472
+    m_Key: fps_counter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4662000570368
+    m_Key: language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4842825404416
+    m_Key: russian
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4923620282368
+    m_Key: graphics
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5038644875264
+    m_Key: audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5071930871808
+    m_Key: music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5104378007552
+    m_Key: concierge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5174473216000
+    m_Key: anna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5208799399936
+    m_Key: artem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5236414697472
+    m_Key: erich
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5270308868096
+    m_Key: dialogueApartment.line1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5386574974976
+    m_Key: dialogueApartment.line2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5393181003776
+    m_Key: dialogueApartment.line3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5490253975552
+    m_Key: dialogueApartment.line4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5506565623808
+    m_Key: dialogueApartment.line5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5522499784704
+    m_Key: dialogueApartment.line6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5537968377856
+    m_Key: dialogueApartment.line7
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5551692140544
+    m_Key: dialogueApartment.line8
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5567131373568
+    m_Key: dialogueApartment.line9
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5595044466688
+    m_Key: dialogueApartment.line10
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5614438928384
+    m_Key: dialogueApartment.line11
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5633669812224
+    m_Key: dialogueApartment.line12
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6382302744576
+    m_Key: dialogueShop.line1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6499239940096
+    m_Key: dialogueShop.line2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6512695267328
+    m_Key: dialogueShop.line3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6525982822400
+    m_Key: dialogueShop.line4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6539803054080
+    m_Key: dialogueShop.line5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6555242287104
+    m_Key: dialogueShop.line6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6571444883456
+    m_Key: dialogueShop.line7
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6587014139904
+    m_Key: dialogueShop.line8
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6601912307712
+    m_Key: dialogueShop.line9
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6647881879552
+    m_Key: dialogueShop.line10
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6662914265088
+    m_Key: dialogueShop.line11
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6676038242304
+    m_Key: dialogueShop.line12
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6688080089088
+    m_Key: dialogueShop.line13
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6698884616192
+    m_Key: dialogueShop.line14
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6709156466688
+    m_Key: dialogueShop.line15
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6729792442368
+    m_Key: dialogueShop.line16
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6740324339712
+    m_Key: interactiveObjApartment.photo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6753750306816
+    m_Key: interactiveObjApartment.mug
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10009553620992
+    m_Key: interactiveObjApartment.toothbrush
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10095088062464
+    m_Key: interactiveObjApartment.notebook
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10164881281024
+    m_Key: interactiveObjApartment.Bed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10464824348672
+    m_Key: flashCode.line1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10527902486528
+    m_Key: flashCode.line2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10604037492736
+    m_Key: flashCode.line3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11993220337664
+    m_Key: interactiveObjMuseum.museumExhibit1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12043950444544
+    m_Key: interactiveObjMuseum.museumExhibit2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12056940204032
+    m_Key: interactiveObjMuseum.museumExhibit3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12074224930816
+    m_Key: interactiveObjMuseum.museumExhibit4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12091505463296
+    m_Key: interactiveObjMuseum.museumExhibit5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12111898169344
+    m_Key: interactiveObjMuseum.incomeRegister
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12191724163072
+    m_Key: interactiveObjMuseum.message1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12239807664128
+    m_Key: interactiveObjMuseum.message2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12255209148416
+    m_Key: interactiveObjMuseum.bin1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12279972319232
+    m_Key: interactiveObjMuseum.bin2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12370065969152
+    m_Key: interactiveObjMuseum.table
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12382917316608
+    m_Key: interactiveObjMuseum.pen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12396074848256
+    m_Key: interactiveObjMuseum.glasses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12409697947648
+    m_Key: interactiveObjMuseum.empty1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12469521305600
+    m_Key: interactiveObjMuseum.empty2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12487946883072
+    m_Key: interactiveObjMuseum.empty3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12512374509568
+    m_Key: interactiveObjMuseum.NotEnoughClues1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12567433138176
+    m_Key: interactiveObjMuseum.NotEnoughClues2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36865673744384
+    m_Key: next
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 1663517432837308440
+  references:
+    version: 2
+    RefIds:
+    - rid: 1663517432837308440
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1776138155457

@@ -13,29 +13,51 @@ MonoBehaviour:
   m_Name: NPC_dialogueApartment
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
   lines:
-  - speakerNameKey: npc.concierge.name
-    textKey: dialogue.dialogueApartment.line1
-  - speakerNameKey: npc.anna.name
-    textKey: dialogue.dialogueApartment.line2
-  - speakerNameKey: npc.concierge.name
-    textKey: dialogue.dialogueApartment.line3
-  - speakerNameKey: npc.anna.name
-    textKey: dialogue.dialogueApartment.line4
-  - speakerNameKey: npc.concierge.name
-    textKey: dialogue.dialogueApartment.line5
-  - speakerNameKey: npc.anna.name
-    textKey: dialogue.dialogueApartment.line6
-  - speakerNameKey: npc.concierge.name
-    textKey: dialogue.dialogueApartment.line7
-  - speakerNameKey: npc.anna.name
-    textKey: dialogue.dialogueApartment.line8
-  - speakerNameKey: npc.concierge.name
-    textKey: dialogue.dialogueApartment.line9
-  - speakerNameKey: npc.anna.name
-    textKey: dialogue.dialogueApartment.line10
-  - speakerNameKey: npc.concierge.name
-    textKey: dialogue.dialogueApartment.line11
-  - speakerNameKey: npc.anna.name
-    textKey: dialogue.dialogueApartment.line12
-  onCompleteTriggerId: 
-  autoDestroyOnComplete: 0
+  - speakerNameKey: concierge
+    textKey: dialogueApartment.line1
+    continueButtonKey: next
+    tableReference: LocalizationString
+  - speakerNameKey: anna
+    textKey: dialogueApartment.line2
+    continueButtonKey: next
+    tableReference: LocalizationString
+  - speakerNameKey: concierge
+    textKey: dialogueApartment.line3
+    continueButtonKey: next
+    tableReference: LocalizationString
+  - speakerNameKey: anna
+    textKey: dialogueApartment.line4
+    continueButtonKey: next
+    tableReference: LocalizationString
+  - speakerNameKey: concierge
+    textKey: dialogueApartment.line5
+    continueButtonKey: next
+    tableReference: LocalizationString
+  - speakerNameKey: anna
+    textKey: dialogueApartment.line6
+    continueButtonKey: next
+    tableReference: LocalizationString
+  - speakerNameKey: concierge
+    textKey: dialogueApartment.line7
+    continueButtonKey: next
+    tableReference: LocalizationString
+  - speakerNameKey: anna
+    textKey: dialogueApartment.line8
+    continueButtonKey: next
+    tableReference: LocalizationString
+  - speakerNameKey: concierge
+    textKey: dialogueApartment.line9
+    continueButtonKey: next
+    tableReference: LocalizationString
+  - speakerNameKey: anna
+    textKey: dialogueApartment.line10
+    continueButtonKey: next
+    tableReference: LocalizationString
+  - speakerNameKey: concierge
+    textKey: dialogueApartment.line11
+    continueButtonKey: next
+    tableReference: LocalizationString
+  - speakerNameKey: anna
+    textKey: dialogueApartment.line12
+    continueButtonKey: next
+    tableReference: LocalizationString

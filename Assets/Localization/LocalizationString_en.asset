@@ -1,0 +1,424 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: LocalizationString_en
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 2bb3860a8c9115e4e9a0888c69cced54, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 225391628288
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4182943944704
+    m_Localized: Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4355547942912
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4517745872896
+    m_Localized: Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4564088737792
+    m_Localized: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4605696233472
+    m_Localized: Fps_counter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4662000570368
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4842825404416
+    m_Localized: Russian
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4923620282368
+    m_Localized: Graphics
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5038644875264
+    m_Localized: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5071930871808
+    m_Localized: Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5104378007552
+    m_Localized: Concierge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5174473216000
+    m_Localized: Anna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5208799399936
+    m_Localized: Artem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5236414697472
+    m_Localized: Erich
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5270308868096
+    m_Localized: Good morning. Sorry for the unexpected visit.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5386574974976
+    m_Localized: Everything's fine. Did something happen?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5393181003776
+    m_Localized: The local police officer came to see you early this morning. He
+      said he had important information for you. He tried to contact you, but couldn't
+      get through. Then he was called away somewhere.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5506565623808
+    m_Localized: He asked me to give you this flash code. It will give you access
+      to the data they left specifically for you.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5490253975552
+    m_Localized: The local police officer? Ah... I didn't receive any notifications.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5522499784704
+    m_Localized: Did he say something about Artyom?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5537968377856
+    m_Localized: Unfortunately, no, I just emphasized that it is necessary to hand
+      it over to you personally.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5551692140544
+    m_Localized: What if I have questions for him personally?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5567131373568
+    m_Localized: He said he'd be in the office after two o'clock. You can find him
+      there.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5595044466688
+    m_Localized: Okay. Thank you, Victor. You're a good person.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5614438928384
+    m_Localized: Good day to you, Anna. And I'm sure Artyom is still alive. Cheer
+      up.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5633669812224
+    m_Localized: Certainly.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6601912307712
+    m_Localized: "\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6382302744576
+    m_Localized: Good afternoon. I need to speak with you about my husband, Artyom.
+      I've heard he used to visit your shop often, well... before he disappeared.
+      I think he was asking you about artifacts related to the early eras in the
+      Urals, especially B.C. Do you happen to remember him?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6499239940096
+    m_Localized: "Yes, I think I do. \u2014 It's been quite a while since I last
+      saw him. Your husband is an extremely interesting conversationalist, and people
+      like me often find themselves lacking exactly that kind of company. Well, you
+      know what I mean: I don't exactly get many visitors."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6512695267328
+    m_Localized: Yes, yes. And did Artyom perhaps ask about or look for anything
+      specific?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6525982822400
+    m_Localized: Well, he was often interested in finds related to ancient tribes,
+      or even some specific people, I would say, or perhaps even an entire civilization.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6539803054080
+    m_Localized: Which tribes are you talking about? Some specific people in the
+      ancient Urals? And did he mention anything he managed to find or was planning
+      to research in more detail?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6555242287104
+    m_Localized: He was looking for traces of some ancient civilization. And it seemed
+      he was convinced that tribes existed in the Urals that were similar in some
+      aspects of their beliefs to the Aryans, and perhaps even much more developed
+      than we imagine. Your husband believed that these people left behind tools
+      and implements that didn't just surpass their time. Some technologies were
+      inherited by their descendants, but most of them disappeared without a trace,
+      as did almost all mentions of their culture. He was captivated by this. He
+      wanted to prove that this civilization didn't vanish by chance, but was destroyed
+      or disappeared for some inexplicable reason. That very reason was what Artyom
+      was primarily searching for.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6571444883456
+    m_Localized: 'I... I couldn''t help him. He spent a lot of time studying those
+      old tools, but never managed to figure out which people lived here. Or why
+      their technologies were so advanced for that era. And, of course, what primarily
+      concerned Artyom was: why and where did they go?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6587014139904
+    m_Localized: He didn't find anything at all? There must have been some leads.
+      Did he intend to find something specific and study it more closely on site?
+      Did he mention anything?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6647881879552
+    m_Localized: There is one place I suggested to him before he left. An old museum,
+      'Arkaim'. It's been closed for a long time, but... Perhaps there are still
+      some traces there that could help him pick up the trail. But I'm not sure he
+      could find anything else there. The place has been abandoned for a long time,
+      and, frankly, all that's there is dust and remnants of the past.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6662914265088
+    m_Localized: The Arkaim Museum? Where is it?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6676038242304
+    m_Localized: It's on the outskirts, in the abandoned part of the city beyond
+      Chistopolskaya. About 5 kilometers further down the road. No one has lived
+      nearby for a long time. It's a remote area, and there were severe fires about
+      a hundred years ago. There were strange incidents. People still speculate about
+      them. I recall reading that even scientists from all over the world came to
+      study the phenomenon. They say that a couple of times, fire just ignited there
+      in the air, out of nowhere.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6688080089088
+    m_Localized: Do you think Artyom went there after all?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6698884616192
+    m_Localized: Well, at that point, it seemed to me, he had hit a dead end and
+      was desperately looking for any leads for his investigation of antiquity. And
+      if he did go there and didn't return, then perhaps he found clues to his theories.
+      Although, I admit, I told him about that museum just to offer some support.
+      There was almost no chance that anything could actually be found there.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6709156466688
+    m_Localized: Still, thank you for the information. I think I'll go there anyway.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6729792442368
+    m_Localized: Don't lose hope. If Artyom disappeared, then apparently he did find
+      the clues he needed. And if so, then you can find them too. And then you'll
+      find him as well.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6740324339712
+    m_Localized: Our first trip was not long, but the most exciting... Artyom, I
+      miss you.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6753750306816
+    m_Localized: My first gift; it seemed so silly, but Artyom cherishes it to this
+      day...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10009553620992
+    m_Localized: Is it dust? Yes, I should remember to wash it off tonight.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10095088062464
+    m_Localized: For some reason, Artyom doesn't like storing his thoughts on devices.
+      Even though it's old-fashioned, I'm glad he found my gift useful.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10164881281024
+    m_Localized: When was the last time I filled it up? It seems like it's been six
+      months since Artyom did it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10604037492736
+    m_Localized: It was wrong to agree with his research. The ancient Urals had become
+      his new obsession; Artyom was simply obsessed with it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10464824348672
+    m_Localized: "Official Notification. \nFrom: Investigative Department \nDate:
+      06/05/2322. \nFor: Anna Kerman \nSubject: Declaration of Artyom Kerman as missing
+      \nDear Anna Kerman We hereby \nnotify you that, following lengthy and thorough
+      investigative actions conducted by the investigative authorities, and in accordance
+      with established procedure, your husband, Artyom Kerman, has ultimately been
+      declared missing. \nDespite all efforts to establish his whereabouts, as well
+      as numerous search operations, no evidence regarding his fate or whereabouts
+      that could confirm his survival has been obtained. During the investigation,
+      which included collecting statements, inspecting potential locations, and testing
+      various hypotheses, not a single significant lead was discovered."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10527902486528
+    m_Localized: "In accordance with the law, Artyom Kerman is declared missing 90
+      days after the official request, given the lack of information regarding his
+      fate and the active absence of any traces. All further legal proceedings and
+      possible actions in the case will depend on the discovery of new information.
+      \nIf you have any additional questions or receive new information, please immediately
+      contact the investigative department where this case was registered. We also
+      remind you that you can contact us shortly to clarify further steps in your
+      case. \nWe hope for your understanding and offer our sincere condolences in
+      connection with this situation. \nSincerely, (Signature) \nInvestigator Latnikov
+      A.V. \nInvestigative Department of the city of Chelyabinsk, 45th International
+      Street 51."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11993220337664
+    m_Localized: 'Did crabs of this size actually live in temperate latitudes? Wait,
+      there seems to be a note about the finder and archaeologist: umm... so... Brod
+      Tovard?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12043950444544
+    m_Localized: It seems that in ancient times there were tribes that knew how to
+      harvest spider silk for crafting needs... A looot of spider silk...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12056940204032
+    m_Localized: 'Hold on: what is a crowbar doing in a museum display case from
+      ancient eras?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12074224930816
+    m_Localized: Did carts with wheels like these really exist? I've heard about
+      war chariots, but I imagined them differently...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12091505463296
+    m_Localized: 'What''s this, ancient writing? What does it say: Mok Ra? Zag-Zag?
+      I can''t make it out...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12111898169344
+    m_Localized: "They foisted off some old arcade machines from Pushkin Park on
+      us for god knows what reason. They're still in the basement for now. On my
+      break, I decided to test one of them: it still works! Now there's at least
+      some entertainment. Except I accidentally dropped a sheet of paper with my
+      login passwords into it \u2014 our security team uses such crazy passwords,
+      you can never remember them. Well, I figure nothing will happen: it's unlikely
+      anyone would think to go looking for them inside an arcade machine, and it
+      would only spit them out if someone got consecutive wins on all levels, and
+      I can't be bothered with that kind of hardcore."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12191724163072
+    m_Localized: Max, on behalf of the security service, I again express my sincere
+      admiration for your ability to find the only working object in a museum after
+      midnight. I'm especially impressed by how quickly you respond to the arcade
+      machine's 'threats' and protect it from dust. However, my monitors and security
+      cameras have been calling me, complaining about how rudely you abandoned them,
+      trading them for some ancient junk. I think we all agree that 8-bit sound is
+      the most suitable 'atmospheric background' for a museum. But the surveillance
+      systems are jealous and refuse to tolerate it, threatening to take legal action.
+      For now, I'm holding off their attacks, but I won't last long. If you don't
+      tone down your heroism in fighting the machine, I'm afraid we might lose this
+      battle. I think you should stop trying to set a new record until the end of
+      your shift. Otherwise, the arcade machine will be officially declared the most
+      disciplined employee of the month, and I'll have to explain why it will be
+      receiving your salary instead of you. Sincerely, your beloved boss.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12239807664128
+    m_Localized: "Dear colleagues, please do not let that crazy person into the museum
+      anymore. The other day he was shouting again about doors to the past and the
+      master race that is watching us from 'behind the veil of time'. Maybe I'm no
+      Einstein, but we don't need any of that crap. And most importantly, this guy
+      always leaves the taps in the bathroom running, as if we're stacking bills
+      in there instead of toilet paper. If you miss him, you can identify him by
+      his behavior: he scurries around the main hall like a madman, muttering under
+      his breath, sometimes picks something out of the trash bin and throws it back.
+      And yes, for the love of all gods, do not discuss his theories about the end
+      and beginning of the world with him. Escort him to my office or straight outside
+      if he resists. It was funny only the first 513 times, but now he's annoyed
+      everyone. At least he doesn't come often, usually only on Tuesdays and Fridays
+      \u2014 otherwise our sign would soon be mistaken for a madhouse with such collaborations.
+      Regarding the water \u2014 check the bathroom every two hours: that damn ninja
+      sometimes seems to know all the blind spots of the security cameras! P.S. Science
+      fiction is no excuse to leave taps running! Sincerely, Head of Security."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12255209148416
+    m_Localized: Hmm, this might come in handy.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12279972319232
+    m_Localized: Seems like nothing interesting here.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36865673744384
+    m_Localized: next
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12382917316608
+    m_Localized: I remember when Artyom was deep in thought, he would often twirl
+      this in his hand like a propeller. He once remarked that this pen has an amazing
+      balance.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12396074848256
+    m_Localized: Artyom often wore these on his forehead. I still remember how he
+      laughed for a long time when I called him an antique pilot.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12409697947648
+    m_Localized: Seems like nothing useful here
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12469521305600
+    m_Localized: Hmm, I doubt anything here will be of use to me.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12487946883072
+    m_Localized: Interesting, of course, but right now Artyom might be in danger,
+      I shouldn't linger.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12512374509568
+    m_Localized: I feel like I'm missing something
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12567433138176
+    m_Localized: I need to keep searching, there must be clues left here
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12370065969152
+    m_Localized: That crazy guy was shouting something about doors to the past, and
+      that the master race behind the veil of time is watching us, that we might
+      be in danger. Ugh, these lunatics have completely lost their minds with their
+      sci-fi; plus, he kept leaving all the bathroom taps running and scurried around
+      the second hall like our budget is made of rubber, throwing away two months'
+      salary on water bills.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

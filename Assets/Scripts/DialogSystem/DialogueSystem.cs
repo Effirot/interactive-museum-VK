@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using InteractiveMuseum.Player;
+using UnityEngine.Localization.Settings;
 
 public class DialogueSystem : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private ScrollRect scrollRect;
     [SerializeField] private GameObject continueButton;
+    [SerializeField] private GameObject canvasInventory;
     [SerializeField] private float typingSpeed = 0.05f;
     [SerializeField] private float scrollSensitivity = 20f;
 
@@ -45,10 +47,6 @@ public class DialogueSystem : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else
-        {
-            //Destroy(gameObject);
-        }
 
         if (dialoguePanel != null)
             dialoguePanel.SetActive(false);
@@ -71,6 +69,24 @@ public class DialogueSystem : MonoBehaviour
 
         scrollAction = new InputAction("Scroll", binding: "<Mouse>/scroll");
         scrollAction.Enable();
+    }
+
+    private void OnEnable()
+    {
+        UnityEngine.Localization.Settings.LocalizationSettings.SelectedLocaleChanged += OnLocaleChanged;
+    }
+
+    private void OnDisable()
+    {
+        UnityEngine.Localization.Settings.LocalizationSettings.SelectedLocaleChanged -= OnLocaleChanged;
+    }
+
+    private void OnLocaleChanged(UnityEngine.Localization.Locale locale)
+    {
+        if (isDialogueActive && currentDialogue != null && currentLineIndex < currentDialogue.lines.Length)
+        {
+            RefreshCurrentLine();
+        }
     }
 
     private void Update()
@@ -133,7 +149,7 @@ public class DialogueSystem : MonoBehaviour
             Debug.LogWarning("Cannot start empty dialogue");
             return;
         }
-
+        canvasInventory.SetActive(false);
         currentDialogue = dialogue;
         currentLineIndex = 0;
         isDialogueActive = true;
@@ -151,6 +167,23 @@ public class DialogueSystem : MonoBehaviour
         DisplayCurrentLine();
     }
 
+    private string GetLocalizedString(string tableReference, string entryKey)
+    {
+        if (string.IsNullOrEmpty(entryKey))
+            return "";
+
+        var table = LocalizationSettings.StringDatabase.GetTable(tableReference);
+        if (table != null)
+        {
+            var entry = table.GetEntry(entryKey);
+            if (entry != null)
+                return entry.GetLocalizedString();
+        }
+
+        Debug.LogWarning($"Localization key not found: {entryKey} in table {tableReference}");
+        return entryKey;
+    }
+
     private void DisplayCurrentLine()
     {
         if (currentLineIndex >= currentDialogue.lines.Length)
@@ -159,14 +192,17 @@ public class DialogueSystem : MonoBehaviour
             return;
         }
 
-        DialogueLine line = currentDialogue.lines[currentLineIndex];
+        LocalizedDialogueLine line = currentDialogue.lines[currentLineIndex];
 
-        string localizedSpeakerName = LocalizationManager.Instance.GetLocalizedText(line.speakerNameKey);
+        string localizedSpeakerName = GetLocalizedString(line.tableReference, line.speakerNameKey);
         if (speakerNameText != null)
             speakerNameText.text = localizedSpeakerName;
 
-        string localizedText = LocalizationManager.Instance.GetLocalizedText(line.textKey);
+        string localizedText = GetLocalizedString(line.tableReference, line.textKey);
         currentFullText = localizedText;
+
+        line.cachedSpeakerName = localizedSpeakerName;
+        line.cachedText = localizedText;
 
         if (typingCoroutine != null)
             StopCoroutine(typingCoroutine);
@@ -174,6 +210,32 @@ public class DialogueSystem : MonoBehaviour
 
         if (scrollRect != null)
             scrollRect.verticalNormalizedPosition = 1f;
+    }
+
+    private void RefreshCurrentLine()
+    {
+        if (currentLineIndex >= currentDialogue.lines.Length) return;
+
+        LocalizedDialogueLine line = currentDialogue.lines[currentLineIndex];
+
+        string localizedSpeakerName = GetLocalizedString(line.tableReference, line.speakerNameKey);
+        if (speakerNameText != null)
+            speakerNameText.text = localizedSpeakerName;
+
+        string localizedText = GetLocalizedString(line.tableReference, line.textKey);
+
+        if (!isTyping)
+        {
+            dialogueText.text = localizedText;
+            currentFullText = localizedText;
+        }
+        else
+        {
+            currentFullText = localizedText;
+        }
+
+        line.cachedSpeakerName = localizedSpeakerName;
+        line.cachedText = localizedText;
     }
 
     private IEnumerator TypeText(string text)
@@ -205,6 +267,7 @@ public class DialogueSystem : MonoBehaviour
 
     private void EndDialogue()
     {
+        canvasInventory.SetActive(true);
         isDialogueActive = false;
 
         if (dialoguePanel != null)
@@ -232,14 +295,7 @@ public class DialogueSystem : MonoBehaviour
         PlayerMovementController player = FindFirstObjectByType<PlayerMovementController>();
         if (player != null)
         {
-            if (disable)
-            {
-                player.enabled = false;
-            }
-            else
-            {
-                player.enabled = true;
-            }
+            player.enabled = !disable;
         }
     }
 

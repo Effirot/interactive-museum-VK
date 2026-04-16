@@ -292,51 +292,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 12547059}
   m_CullTransparentMesh: 1
---- !u!1 &43208012
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 43208014}
-  - component: {fileID: 43208013}
-  m_Layer: 0
-  m_Name: LocalizationManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &43208013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 43208012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2ca5db78ddd4b4468ace345c16800d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LocalizationManager
-  defaultLanguage: 1
---- !u!4 &43208014
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 43208012}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 262.8335, y: 0, z: 1856.2668}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &66304333
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,10 +877,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 240367414}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04ad3b318c3f54a489c7816ab00622ce, type: 3}
+  m_Script: {fileID: 11500000, guid: 7065d638f68292a46bd4d513418d1b30, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LocalizedText
-  localizationKey: settings.music
+  m_EditorClassIdentifier: Assembly-CSharp::AutoLocalizedText
+  tableReference: LocalizationString
+  entryKey: music
 --- !u!1 &270301453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,10 +1028,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 270301453}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04ad3b318c3f54a489c7816ab00622ce, type: 3}
+  m_Script: {fileID: 11500000, guid: 7065d638f68292a46bd4d513418d1b30, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LocalizedText
-  localizationKey: ui.back
+  m_EditorClassIdentifier: Assembly-CSharp::AutoLocalizedText
+  tableReference: LocalizationString
+  entryKey: back
 --- !u!1 &342136434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1595,10 +1552,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 568286867}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04ad3b318c3f54a489c7816ab00622ce, type: 3}
+  m_Script: {fileID: 11500000, guid: 7065d638f68292a46bd4d513418d1b30, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LocalizedText
-  localizationKey: ui.play
+  m_EditorClassIdentifier: Assembly-CSharp::AutoLocalizedText
+  tableReference: LocalizationString
+  entryKey: play
 --- !u!1 &620729089
 GameObject:
   m_ObjectHideFlags: 0
@@ -1745,10 +1703,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 620729089}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04ad3b318c3f54a489c7816ab00622ce, type: 3}
+  m_Script: {fileID: 11500000, guid: 7065d638f68292a46bd4d513418d1b30, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LocalizedText
-  localizationKey: settings.audio
+  m_EditorClassIdentifier: Assembly-CSharp::AutoLocalizedText
+  tableReference: LocalizationString
+  entryKey: audio
 --- !u!1 &644388564
 GameObject:
   m_ObjectHideFlags: 0
@@ -2170,7 +2129,7 @@ GameObject:
   - component: {fileID: 943886530}
   - component: {fileID: 943886533}
   - component: {fileID: 943886532}
-  - component: {fileID: 943886531}
+  - component: {fileID: 943886534}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2197,19 +2156,6 @@ RectTransform:
   m_AnchoredPosition: {x: 22, y: 33}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &943886531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 943886529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04ad3b318c3f54a489c7816ab00622ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LocalizedText
-  localizationKey: ui.language
 --- !u!114 &943886532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2309,6 +2255,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 943886529}
   m_CullTransparentMesh: 1
+--- !u!114 &943886534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943886529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7065d638f68292a46bd4d513418d1b30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AutoLocalizedText
+  tableReference: LocalizationString
+  entryKey: language
 --- !u!1 &977177144
 GameObject:
   m_ObjectHideFlags: 0
@@ -2974,10 +2934,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1099072908}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04ad3b318c3f54a489c7816ab00622ce, type: 3}
+  m_Script: {fileID: 11500000, guid: 7065d638f68292a46bd4d513418d1b30, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LocalizedText
-  localizationKey: ui.settings
+  m_EditorClassIdentifier: Assembly-CSharp::AutoLocalizedText
+  tableReference: LocalizationString
+  entryKey: settings
 --- !u!1 &1320160937
 GameObject:
   m_ObjectHideFlags: 0
@@ -4063,6 +4024,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82f6772e4a945f74dadf5ab4c431dc7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Play
+  sceneNameTrigger: 
 --- !u!114 &1974475217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4563,9 +4525,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2110071274}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f9fd4a01b11a7648baf0b5195798c07, type: 3}
+  m_Script: {fileID: 11500000, guid: 675968f25a46fe946a919cc52b71519d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LanguageDropdownController
+  m_EditorClassIdentifier: Assembly-CSharp::LanguageSelector
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -4575,4 +4537,3 @@ SceneRoots:
   - {fileID: 1974475215}
   - {fileID: 433409057}
   - {fileID: 451784389}
-  - {fileID: 43208014}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Toothbrush
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
   lines:
-  - speakerNameKey: npc.anna.name
-    textKey: dialogue.interactiveObjApartment.toothbrush
-  onCompleteTriggerId: 
-  autoDestroyOnComplete: 0
+  - speakerNameKey: anna
+    textKey: interactiveObjApartment.toothbrush
+    continueButtonKey: next
+    tableReference: LocalizationString

@@ -15,35 +15,65 @@ MonoBehaviour:
   lines:
   - speakerNameKey: npc.anna.name
     textKey: dialogue.dialogueShop.line1
+    continueButtonKey: next
+    tableReference: Localization Table
   - speakerNameKey: npc.erich.name
     textKey: dialogue.dialogueShop.line2
+    continueButtonKey: next
+    tableReference: Localization Table
   - speakerNameKey: npc.anna.name
     textKey: dialogue.dialogueShop.line3
+    continueButtonKey: next
+    tableReference: Localization Table
   - speakerNameKey: npc.erich.name
     textKey: dialogue.dialogueShop.line4
+    continueButtonKey: next
+    tableReference: Localization Table
   - speakerNameKey: npc.anna.name
     textKey: dialogue.dialogueShop.line5
+    continueButtonKey: next
+    tableReference: Localization Table
   - speakerNameKey: npc.erich.name
     textKey: dialogue.dialogueShop.line6
+    continueButtonKey: next
+    tableReference: Localization Table
   - speakerNameKey: npc.erich.name
     textKey: dialogue.dialogueShop.line7
+    continueButtonKey: next
+    tableReference: Localization Table
   - speakerNameKey: npc.anna.name
     textKey: dialogue.dialogueShop.line8
+    continueButtonKey: next
+    tableReference: Localization Table
   - speakerNameKey: npc.erich.name
     textKey: dialogue.dialogueShop.line9
+    continueButtonKey: next
+    tableReference: Localization Table
   - speakerNameKey: npc.erich.name
     textKey: dialogue.dialogueShop.line10
+    continueButtonKey: next
+    tableReference: Localization Table
   - speakerNameKey: npc.anna.name
     textKey: dialogue.dialogueShop.line11
+    continueButtonKey: next
+    tableReference: Localization Table
   - speakerNameKey: npc.erich.name
     textKey: dialogue.dialogueShop.line12
+    continueButtonKey: next
+    tableReference: Localization Table
   - speakerNameKey: npc.anna.name
     textKey: dialogue.dialogueShop.line1
+    continueButtonKey: next
+    tableReference: Localization Table
   - speakerNameKey: npc.anna.name
     textKey: dialogue.dialogueShop.line1
+    continueButtonKey: next
+    tableReference: Localization Table
   - speakerNameKey: npc.anna.name
     textKey: dialogue.dialogueShop.line1
+    continueButtonKey: next
+    tableReference: Localization Table
   - speakerNameKey: npc.anna.name
     textKey: dialogue.dialogueShop.line1
-  onCompleteTriggerId: 
-  autoDestroyOnComplete: 0
+    continueButtonKey: next
+    tableReference: Localization Table
