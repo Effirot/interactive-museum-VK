@@ -5,6 +5,7 @@ using InteractiveMuseum.Camera;
 using InteractiveMuseum.PipeSystem;
 using InteractiveMuseum.Interaction;
 using InteractiveMuseum.MiniGames;
+using InteractiveMuseum.MiniGames.WireSystem;
 using System.Linq;
 
 namespace InteractiveMuseum.Player
@@ -1033,6 +1034,30 @@ namespace InteractiveMuseum.Player
             {
                 GameObject hitObject = hit.collider.gameObject;
                 Debug.Log($"[HandlePipeClick] Hit object: {hitObject.name}, Layer: {hitObject.layer}");
+
+                if (_isInMiniGameMode)
+                {
+                    WireColorMiniGame wireGame = FindFirstObjectByType<WireColorMiniGame>();
+                    if (wireGame != null && wireGame.IsActive())
+                    {
+                        WireEndpoint wireEndpoint = hitObject.GetComponent<WireEndpoint>();
+                        if (wireEndpoint == null && hitObject.transform.parent != null)
+                        {
+                            wireEndpoint = hitObject.transform.parent.GetComponent<WireEndpoint>();
+                        }
+                        if (wireEndpoint == null)
+                        {
+                            wireEndpoint = hitObject.GetComponentInChildren<WireEndpoint>();
+                        }
+
+                        if (wireEndpoint != null)
+                        {
+                            wireGame.HandleEndpointClick(wireEndpoint);
+                        }
+
+                        return;
+                    }
+                }
                 
                 // First check for Cockroach mini-game
                 if (_isInMiniGameMode)
