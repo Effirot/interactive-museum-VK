@@ -3,7 +3,12 @@ guid: 989cc9ad3bd4c4d479b80ebedbd00e85
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Printer_BaseColor
+    second: {fileID: 2800000, guid: 4f689227ad310554f811818ce7e7478d, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -3,7 +3,67 @@ guid: 277ca0ad60a064844a4d1c9c85e98891
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: "\u043B\u0438\u0441\u0442_BaseColor"
+    second: {fileID: 2800000, guid: e46b78fe6171bc841ae669c6097bb3a0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: "\u043B\u0438\u0441\u0442_Metallic"
+    second: {fileID: 2800000, guid: e8d6f43b4e069a04a9b5d3425af66724, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: "\u043B\u0438\u0441\u0442_Normal"
+    second: {fileID: 2800000, guid: eb42d35f317574548853026da3211ed6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: "\u043B\u0438\u0441\u0442_Roughness"
+    second: {fileID: 2800000, guid: b58d7ba814cb94d45b827625fa120ad9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: "\u0440\u0430\u0441\u0442\u0435\u043D\u0438\u0435 \u0433\u043E\u0440\u0448\u043E\u043A_BaseColor"
+    second: {fileID: 2800000, guid: a72c9a2a2d3927541a01cfcf3455df3b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: "\u0440\u0430\u0441\u0442\u0435\u043D\u0438\u0435 \u0433\u043E\u0440\u0448\u043E\u043A_Metallic"
+    second: {fileID: 2800000, guid: 43c654abccab11d4ba7cf54746e4dddb, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: "\u0440\u0430\u0441\u0442\u0435\u043D\u0438\u0435 \u0433\u043E\u0440\u0448\u043E\u043A_Normal"
+    second: {fileID: 2800000, guid: 75670e8dc6728f44bb17e84955f0b78d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: "\u0440\u0430\u0441\u0442\u0435\u043D\u0438\u0435 \u0433\u043E\u0440\u0448\u043E\u043A_Roughness"
+    second: {fileID: 2800000, guid: a45efa9d1ac05af44a583ea78d35821d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: "\u0441\u0442\u0435\u0431\u043B\u0438_BaseColor"
+    second: {fileID: 2800000, guid: 02fb7a7f77355d243b78479cbad88131, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: "\u0441\u0442\u0435\u0431\u043B\u0438_Metallic"
+    second: {fileID: 2800000, guid: c1432f5f802ad1b42861e538058d8250, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: "\u0441\u0442\u0435\u0431\u043B\u0438_Normal"
+    second: {fileID: 2800000, guid: 2cd20dc0c53a648449dbf966936c5f67, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: "\u0441\u0442\u0435\u0431\u043B\u0438_Roughness"
+    second: {fileID: 2800000, guid: 7420a7a5875a6b645b32cd7918fb0382, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

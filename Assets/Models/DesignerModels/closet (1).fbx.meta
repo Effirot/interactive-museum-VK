@@ -3,7 +3,67 @@ guid: f7a19d17300acda4ba21f3a5109f0e98
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Material.002_BaseColor
+    second: {fileID: 2800000, guid: 98e015ca655a5de4e9c43c685ca0fea9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Material.002_Metallic
+    second: {fileID: 2800000, guid: 2bbebda607a739d4182753af97f542d4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Material.002_Normal
+    second: {fileID: 2800000, guid: b63715ffdaeb76845bf621a32675f498, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Material.002_Roughness
+    second: {fileID: 2800000, guid: 46fa471720e3dd0499eafca591c60b92, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Material.004_BaseColor
+    second: {fileID: 2800000, guid: 3d81000a8e871b9409b4112a120cfd85, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Material.004_Metallic
+    second: {fileID: 2800000, guid: 62d2ad7be9617bc4eae8d8f89608efa5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Material.004_Normal
+    second: {fileID: 2800000, guid: 3cbde10ed0a03e54eac23e513b0f3634, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Material.004_Roughness
+    second: {fileID: 2800000, guid: 25128e6ba3cad1e4a8237b71a13a8c8e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Material.028_BaseColor
+    second: {fileID: 2800000, guid: 8cb507d2415c7c04e99f748ad536c2e3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Material.028_Metallic
+    second: {fileID: 2800000, guid: 1de367e4f55cca240b6d6dd4816e0982, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Material.028_Normal
+    second: {fileID: 2800000, guid: 4087bfd0aa95441429906571572c9cb7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Material.028_Roughness
+    second: {fileID: 2800000, guid: 20fea1ed62dc9b54a911b8466b0abe9c, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

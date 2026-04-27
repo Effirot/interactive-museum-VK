@@ -3,7 +3,12 @@ guid: 2d631050cd1321f4eaf2a681f7039e91
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: stol_BaseColor
+    second: {fileID: 2800000, guid: e54822be1ff2bd64984908da89ea9698, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
