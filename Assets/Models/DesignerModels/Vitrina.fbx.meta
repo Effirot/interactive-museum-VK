@@ -3,7 +3,17 @@ guid: 9db3779ce49d359439949daf3a45508f
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Vitrina_BaseColor
+    second: {fileID: 2800000, guid: 15f8bffdbbed7ef448b5508cc96c7eef, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Vitrina_DefaultMaterial_Normal
+    second: {fileID: 2800000, guid: 120478f124698f140b19a45ba7a0ef2b, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
