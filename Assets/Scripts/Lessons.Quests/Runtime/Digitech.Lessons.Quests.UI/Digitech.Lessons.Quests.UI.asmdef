@@ -1,0 +1,17 @@
+{
+    "name": "Lessons.Quests.UI",
+    "rootNamespace": "Lessons.Quests.UI",
+    "references": [
+        "GUID:e847a0b4ea58abb49a08010e604c6a4d",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

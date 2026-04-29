@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Notebook
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
   lines:
-  - speakerNameKey: npc.anna.name
-    textKey: dialogue.interactiveObjApartment.notebook
-  onCompleteTriggerId: 
-  autoDestroyOnComplete: 0
+  - speakerNameKey: anna
+    textKey: interactiveObjApartment.notebook
+    continueButtonKey: next
+    tableReference: LocalizationString

@@ -1,0 +1,22 @@
+{
+    "name": "Digitech.Lessons.Quests",
+    "rootNamespace": "Digitech.Lessons.Quests",
+    "references": [
+        "GUID:75469ad4d38634e559750d17036d5f7c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "Select...",
+            "expression": "",
+            "define": "DIGITECH_QUESTS"
+        }
+    ],
+    "noEngineReferences": false
+}

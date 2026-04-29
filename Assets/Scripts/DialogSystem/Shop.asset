@@ -13,67 +13,67 @@ MonoBehaviour:
   m_Name: Shop
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
   lines:
-  - speakerNameKey: npc.anna.name
-    textKey: dialogue.dialogueShop.line1
+  - speakerNameKey: anna
+    textKey: dialogueShop.line1
     continueButtonKey: next
-    tableReference: Localization Table
-  - speakerNameKey: npc.erich.name
-    textKey: dialogue.dialogueShop.line2
+    tableReference: LocalizationString
+  - speakerNameKey: erich
+    textKey: dialogueShop.line2
     continueButtonKey: next
-    tableReference: Localization Table
-  - speakerNameKey: npc.anna.name
-    textKey: dialogue.dialogueShop.line3
+    tableReference: LocalizationString
+  - speakerNameKey: anna
+    textKey: dialogueShop.line3
     continueButtonKey: next
-    tableReference: Localization Table
-  - speakerNameKey: npc.erich.name
-    textKey: dialogue.dialogueShop.line4
+    tableReference: LocalizationString
+  - speakerNameKey: erich
+    textKey: dialogueShop.line4
     continueButtonKey: next
-    tableReference: Localization Table
-  - speakerNameKey: npc.anna.name
-    textKey: dialogue.dialogueShop.line5
+    tableReference: LocalizationString
+  - speakerNameKey: anna
+    textKey: dialogueShop.line5
     continueButtonKey: next
-    tableReference: Localization Table
-  - speakerNameKey: npc.erich.name
-    textKey: dialogue.dialogueShop.line6
+    tableReference: LocalizationString
+  - speakerNameKey: erich
+    textKey: dialogueShop.line6
     continueButtonKey: next
-    tableReference: Localization Table
-  - speakerNameKey: npc.erich.name
-    textKey: dialogue.dialogueShop.line7
+    tableReference: LocalizationString
+  - speakerNameKey: erich
+    textKey: dialogueShop.line7
     continueButtonKey: next
-    tableReference: Localization Table
-  - speakerNameKey: npc.anna.name
-    textKey: dialogue.dialogueShop.line8
+    tableReference: LocalizationString
+  - speakerNameKey: anna
+    textKey: dialogueShop.line8
     continueButtonKey: next
-    tableReference: Localization Table
-  - speakerNameKey: npc.erich.name
-    textKey: dialogue.dialogueShop.line9
+    tableReference: LocalizationString
+  - speakerNameKey: erich
+    textKey: dialogueShop.line9
     continueButtonKey: next
-    tableReference: Localization Table
-  - speakerNameKey: npc.erich.name
-    textKey: dialogue.dialogueShop.line10
+    tableReference: LocalizationString
+  - speakerNameKey: erich
+    textKey: dialogueShop.line10
     continueButtonKey: next
-    tableReference: Localization Table
-  - speakerNameKey: npc.anna.name
-    textKey: dialogue.dialogueShop.line11
+    tableReference: LocalizationString
+  - speakerNameKey: anna
+    textKey: dialogueShop.line11
     continueButtonKey: next
-    tableReference: Localization Table
-  - speakerNameKey: npc.erich.name
-    textKey: dialogue.dialogueShop.line12
+    tableReference: LocalizationString
+  - speakerNameKey: erich
+    textKey: dialogueShop.line12
     continueButtonKey: next
-    tableReference: Localization Table
-  - speakerNameKey: npc.anna.name
-    textKey: dialogue.dialogueShop.line1
+    tableReference: LocalizationString
+  - speakerNameKey: anna
+    textKey: dialogueShop.line13
     continueButtonKey: next
-    tableReference: Localization Table
-  - speakerNameKey: npc.anna.name
-    textKey: dialogue.dialogueShop.line1
+    tableReference: LocalizationString
+  - speakerNameKey: anna
+    textKey: dialogueShop.line14
     continueButtonKey: next
-    tableReference: Localization Table
-  - speakerNameKey: npc.anna.name
-    textKey: dialogue.dialogueShop.line1
+    tableReference: LocalizationString
+  - speakerNameKey: anna
+    textKey: dialogueShop.line15
     continueButtonKey: next
-    tableReference: Localization Table
-  - speakerNameKey: npc.anna.name
-    textKey: dialogue.dialogueShop.line1
+    tableReference: LocalizationString
+  - speakerNameKey: anna
+    textKey: dialogueShop.line16
     continueButtonKey: next
-    tableReference: Localization Table
+    tableReference: LocalizationString

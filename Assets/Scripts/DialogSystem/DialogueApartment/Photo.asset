@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Photo
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
   lines:
-  - speakerNameKey: npc.anna.name
-    textKey: dialogue.interactiveObjApartment.photo
-  onCompleteTriggerId: 
-  autoDestroyOnComplete: 0
+  - speakerNameKey: anna
+    textKey: interactiveObjApartment.photo
+    continueButtonKey: next
+    tableReference: LocalizationString

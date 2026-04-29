@@ -1,0 +1,16 @@
+{
+    "name": "Lessons.Quests.UIToolkit",
+    "rootNamespace": "Lessons.Quests.UIToolkit",
+    "references": [
+        "GUID:e847a0b4ea58abb49a08010e604c6a4d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
