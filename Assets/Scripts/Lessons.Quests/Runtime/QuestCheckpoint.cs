@@ -40,15 +40,21 @@ namespace Lessons.Quests
             SetCheckpointForConditions(null);
             onSelectionChanged.Invoke(false);
         }
+        public void Skip()
+        {
+            if (Active)
+                ParentQuest.SkipCheckPoint();
+        }
+
 
         public IEnumerator<QuestCondition> GetEnumerator() => (IEnumerator<QuestCondition>)conditions.GetEnumerator();
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         internal void Checkout()
         {
-            if (conditions.Any() && conditions.All(condition => condition.isCompleted) && Active)
+            if (conditions.Any() && conditions.All(condition => condition.isCompleted))
             {
-                ParentQuest.SkipCheckPoint();
+                Skip();
             }
         }
 

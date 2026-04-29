@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
@@ -26,6 +27,7 @@ public class DialogueSystem : MonoBehaviour
     private DialogueData currentDialogue;
     private int currentLineIndex = 0;
     private bool isTyping = false;
+    public bool endDialogue = false;
     private Coroutine typingCoroutine;
     private string currentFullText;
     private bool isDialogueActive = false;
@@ -36,9 +38,9 @@ public class DialogueSystem : MonoBehaviour
 
     private Vector2 mouseScrollDelta;
 
+    public UnityEvent OnDialogueStart;
+    public UnityEvent OnDialogueEnd;
     public static DialogueSystem Instance { get; private set; }
-    public event Action OnDialogueStart;
-    public event Action OnDialogueEnd;
 
     private void Awake()
     {
@@ -269,6 +271,7 @@ public class DialogueSystem : MonoBehaviour
     {
         canvasInventory.SetActive(true);
         isDialogueActive = false;
+        endDialogue = true;
 
         if (dialoguePanel != null)
             dialoguePanel.SetActive(false);

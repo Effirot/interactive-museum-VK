@@ -365,7 +365,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &52910673
 MeshFilter:
@@ -422,6 +421,68 @@ Transform:
   - {fileID: 1177803532}
   - {fileID: 1257970386}
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &59389256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 59389258}
+  - component: {fileID: 59389257}
+  m_Layer: 0
+  m_Name: WaitDialogueEnding
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &59389257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59389256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1bc697d05f46146ac73cd7756ca4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Digitech.Lessons.Quests::Lessons.Quests.QuestCheckpoint
+  checkpointName: 
+  checkpointDiscription: 
+  conditions: []
+  onSelectionChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1871682043}
+        m_TargetAssemblyTypeName: DialogueTrigger, Assembly-CSharp
+        m_MethodName: TriggerDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!4 &59389258
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59389256}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 752092175}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &68501982
 PrefabInstance:
@@ -923,14 +984,14 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 150973517}
   m_Enabled: 1
-  serializedVersion: 13
+  serializedVersion: 11
   m_Type: 2
   m_Color: {r: 1, g: 0.97099465, b: 0.8160377, a: 1}
   m_Intensity: 1
   m_Range: 3.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
-  m_CookieSize2D: {x: 10, y: 10}
+  m_CookieSize: 10
   m_Shadows:
     m_Type: 2
     m_Resolution: -1
@@ -975,7 +1036,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
-  m_ShapeRadius: 0
+  m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_LightUnit: 1
   m_LuxAtDistance: 1
@@ -2390,7 +2451,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &403530426
 MonoBehaviour:
@@ -5719,7 +5779,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &410781902
 MonoBehaviour:
@@ -6293,6 +6352,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fc0417b80318d574ea2da4679d095e47, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1871682042}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fc0417b80318d574ea2da4679d095e47, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1871682043}
   m_SourcePrefab: {fileID: 100100000, guid: fc0417b80318d574ea2da4679d095e47, type: 3}
 --- !u!4 &467351960 stripped
 Transform:
@@ -7638,6 +7700,88 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 374466356}
   m_SourcePrefab: {fileID: 100100000, guid: a3ad0658c6cd02a4094db57748e84db4, type: 3}
+--- !u!1 &752092173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 752092175}
+  - component: {fileID: 752092174}
+  m_Layer: 0
+  m_Name: QuestManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &752092174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752092173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79c37b1a104b5ee4b9dd980a12c686ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Digitech.Lessons.Quests::Lessons.Quests.Quest
+  questName: Dialogue
+  questDiscription: "\u0410\u043A\u0442\u0438\u0432\u0438\u0440\u0443\u0435\u0442\u0441\u044F
+    \u0442\u0440\u0438\u0433\u0433\u0435\u0440 (\u043F\u0435\u0440\u0435\u0445\u043E\u0434)
+    \u043D\u0430 \u0434\u0440\u0443\u0433\u0443\u044E \u0441\u0446\u0435\u043D\u0443
+    \u043F\u043E\u0441\u043B\u0435 \u0434\u0438\u0430\u043B\u043E\u0433\u0430"
+  activateOnInitialize: 1
+  bindedAsset: {fileID: 0}
+  checkPoints:
+  - {fileID: 1644049797}
+  - {fileID: 59389257}
+  - {fileID: 1131127317}
+  onQuestSelected:
+    m_PersistentCalls:
+      m_Calls: []
+  onQuestAborted:
+    m_PersistentCalls:
+      m_Calls: []
+  onQuestConpleted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1426664508}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onCheckpointChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &752092175
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752092173}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.78341, y: 1.65305, z: 1.86359}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1644049798}
+  - {fileID: 59389258}
+  - {fileID: 1131127318}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &761859893
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7751,8 +7895,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cded085d155cde949b60f67a11dbc3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
-  globalVolume: 0
   mode: 1
   size: {x: 17.954123, y: 7.5871873, z: 17.106174}
   overrideRendererFilters: 0
@@ -7783,6 +7925,8 @@ MonoBehaviour:
     e33: 1
   cachedHashCode: 1585846822
   fillEmptySpaces: 0
+  version: 2
+  globalVolume: 0
 --- !u!4 &780323671
 Transform:
   m_ObjectHideFlags: 0
@@ -9560,14 +9704,14 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1099526660}
   m_Enabled: 1
-  serializedVersion: 13
+  serializedVersion: 11
   m_Type: 2
   m_Color: {r: 1, g: 0.97099465, b: 0.8160377, a: 1}
   m_Intensity: 0.6
   m_Range: 3.35
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
-  m_CookieSize2D: {x: 10, y: 10}
+  m_CookieSize: 10
   m_Shadows:
     m_Type: 2
     m_Resolution: -1
@@ -9612,7 +9756,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
-  m_ShapeRadius: 0
+  m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_LightUnit: 1
   m_LuxAtDistance: 1
@@ -9826,6 +9970,68 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 290160679}
   m_SourcePrefab: {fileID: 100100000, guid: 9aa97823d9d5e06428e0a3a58d4ccab0, type: 3}
+--- !u!1 &1131127316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1131127318}
+  - component: {fileID: 1131127317}
+  m_Layer: 0
+  m_Name: WaitForExit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1131127317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131127316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1bc697d05f46146ac73cd7756ca4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Digitech.Lessons.Quests::Lessons.Quests.QuestCheckpoint
+  checkpointName: 
+  checkpointDiscription: 
+  conditions: []
+  onSelectionChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1426664508}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!4 &1131127318
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131127316}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 752092175}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1134561267 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7584877252852037902, guid: e575cab885e18d543a480d6e7724283f, type: 3}
@@ -10147,7 +10353,6 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
 --- !u!2083052967 &1257970385
 VisualEffect:
   m_ObjectHideFlags: 0
@@ -11570,14 +11775,14 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1416499882}
   m_Enabled: 1
-  serializedVersion: 13
+  serializedVersion: 11
   m_Type: 2
   m_Color: {r: 1, g: 0.97099465, b: 0.8160377, a: 1}
   m_Intensity: 0.6
   m_Range: 3
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
-  m_CookieSize2D: {x: 10, y: 10}
+  m_CookieSize: 10
   m_Shadows:
     m_Type: 2
     m_Resolution: -1
@@ -11622,7 +11827,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
-  m_ShapeRadius: 0
+  m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_LightUnit: 1
   m_LuxAtDistance: 1
@@ -11818,7 +12023,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1426664509
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11862,7 +12067,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1426664508}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82f6772e4a945f74dadf5ab4c431dc7d, type: 3}
   m_Name: 
@@ -12111,7 +12316,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &1474397621
 MonoBehaviour:
@@ -13187,6 +13391,79 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1 &1547616970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1547616972}
+  - component: {fileID: 1547616974}
+  - component: {fileID: 1547616973}
+  m_Layer: 0
+  m_Name: QuestCondition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1547616972
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547616970}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1644049798}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1547616973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547616970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c56f15478bd6ca84a8401b1884f22758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Digitech.Lessons.Quests::Lessons.Quests.TriggerEnterCheckerCondition
+  hidden: 0
+  conditionName: 
+  _isCompleted: 0
+  onComplitionStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  includeObjectsWithTag: Player
+--- !u!65 &1547616974
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547616970}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1551047866 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -516098083770646512, guid: ee9168e61284d854a87978e6eb887264, type: 3}
@@ -13694,6 +13971,58 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1644049796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1644049798}
+  - component: {fileID: 1644049797}
+  m_Layer: 0
+  m_Name: WalkToDoor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1644049797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644049796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1bc697d05f46146ac73cd7756ca4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Digitech.Lessons.Quests::Lessons.Quests.QuestCheckpoint
+  checkpointName: 
+  checkpointDiscription: 
+  conditions:
+  - {fileID: 1547616973}
+  onSelectionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &1644049798
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644049796}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.403, y: -1.248, z: 1.249}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1547616972}
+  m_Father: {fileID: 752092175}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1659140580
 PrefabInstance:
@@ -14483,7 +14812,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1748727499
 MeshFilter:
@@ -14679,7 +15007,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1786271473
 MeshFilter:
@@ -14897,14 +15224,14 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1794934162}
   m_Enabled: 1
-  serializedVersion: 13
+  serializedVersion: 11
   m_Type: 2
   m_Color: {r: 1, g: 0.97099465, b: 0.8160377, a: 1}
   m_Intensity: 0.6
   m_Range: 2.9
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
-  m_CookieSize2D: {x: 10, y: 10}
+  m_CookieSize: 10
   m_Shadows:
     m_Type: 2
     m_Resolution: -1
@@ -14949,7 +15276,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
-  m_ShapeRadius: 0
+  m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_LightUnit: 1
   m_LuxAtDistance: 1
@@ -15280,11 +15607,28 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5928785198427282456, guid: fc0417b80318d574ea2da4679d095e47, type: 3}
+--- !u!114 &1871682043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871682039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2d9ee97964f2524496fcd1a7528f37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
+  dialogue: {fileID: 11400000, guid: 23389334f1f9791498aefe4bfae22a7f, type: 2}
+  triggerOnce: 1
+  triggerDelay: 0
+  requiredItemId: 
+  consumeItemOnTrigger: 0
 --- !u!1 &1877048897 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4203084502409348395, guid: f67dcd098116f564e9254a36dabc3092, type: 3}
@@ -17468,6 +17812,42 @@ PrefabInstance:
       propertyPath: canvasInventory
       value: 
       objectReference: {fileID: 451637073}
+    - target: {fileID: 179066641391291738, guid: 3981169bd42fac444b626f72c137e0a5, type: 3}
+      propertyPath: OnDialogueEnd.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 179066641391291738, guid: 3981169bd42fac444b626f72c137e0a5, type: 3}
+      propertyPath: OnDialogueStart.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 179066641391291738, guid: 3981169bd42fac444b626f72c137e0a5, type: 3}
+      propertyPath: OnDialogueEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 179066641391291738, guid: 3981169bd42fac444b626f72c137e0a5, type: 3}
+      propertyPath: OnDialogueEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 59389257}
+    - target: {fileID: 179066641391291738, guid: 3981169bd42fac444b626f72c137e0a5, type: 3}
+      propertyPath: OnDialogueEnd.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 179066641391291738, guid: 3981169bd42fac444b626f72c137e0a5, type: 3}
+      propertyPath: OnDialogueEnd.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Skip
+      objectReference: {fileID: 0}
+    - target: {fileID: 179066641391291738, guid: 3981169bd42fac444b626f72c137e0a5, type: 3}
+      propertyPath: OnDialogueStart.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 179066641391291738, guid: 3981169bd42fac444b626f72c137e0a5, type: 3}
+      propertyPath: OnDialogueEnd.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Lessons.Quests.QuestCheckpoint, Digitech.Lessons.Quests
+      objectReference: {fileID: 0}
+    - target: {fileID: 179066641391291738, guid: 3981169bd42fac444b626f72c137e0a5, type: 3}
+      propertyPath: OnDialogueEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1407703643531512290, guid: 3981169bd42fac444b626f72c137e0a5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -17856,7 +18236,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!4 &7684076350979772982 stripped
 Transform:
@@ -17954,6 +18333,38 @@ PrefabInstance:
       propertyPath: _playerCamera
       value: 
       objectReference: {fileID: 1538485098}
+    - target: {fileID: 5853040890995417073, guid: 101d468814a845a4288b0c5a0d276348, type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5853040890995417073, guid: 101d468814a845a4288b0c5a0d276348, type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5853040890995417073, guid: 101d468814a845a4288b0c5a0d276348, type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5853040890995417073, guid: 101d468814a845a4288b0c5a0d276348, type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5853040890995417073, guid: 101d468814a845a4288b0c5a0d276348, type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_isCompleted
+      objectReference: {fileID: 0}
+    - target: {fileID: 5853040890995417073, guid: 101d468814a845a4288b0c5a0d276348, type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Lessons.Quests.QuestCondition, Digitech.Lessons.Quests
+      objectReference: {fileID: 0}
+    - target: {fileID: 5853040890995417073, guid: 101d468814a845a4288b0c5a0d276348, type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5853040890995417073, guid: 101d468814a845a4288b0c5a0d276348, type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18108,3 +18519,4 @@ SceneRoots:
   - {fileID: 4662254045077376873}
   - {fileID: 467584549}
   - {fileID: 4458788564685819807}
+  - {fileID: 752092175}
