@@ -3,7 +3,17 @@ guid: 8406397deb797904f9f96e11ed5c2944
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Provod_BaseColor
+    second: {fileID: 2800000, guid: 96ba05e8ab8d52146891770fe4169884, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Provod_DefaultMaterial_Normal
+    second: {fileID: 2800000, guid: 86e06edbbe961f74ea17085c68434f47, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

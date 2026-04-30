@@ -3,7 +3,17 @@ guid: b9d5a3ba85473af4b847202d48ac081f
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Kofe_BaseColor
+    second: {fileID: 2800000, guid: 87b99858c92cd7943a4361ef3281d9bf, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Kofe_DefaultMaterial_Normal
+    second: {fileID: 2800000, guid: 5321f278fc33e484abfc22af26d95233, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

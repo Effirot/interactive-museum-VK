@@ -3,7 +3,17 @@ guid: 78cc63b0041315d438d9a1c66e1875a8
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Trub_BaseColor
+    second: {fileID: 2800000, guid: 565c2f6d080314e42b77aaa45ba07ea1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Trub_DefaultMaterial_Normal
+    second: {fileID: 2800000, guid: e98096dd2306cbd42b3ca121f57724d9, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
