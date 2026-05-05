@@ -1,0 +1,9 @@
+﻿<Solution>
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="Digitech.Lessons.Quests.csproj" />
+  <Project Path="Assembly-CSharp-firstpass.csproj" />
+  <Project Path="Digitech.Lessons.Quests.Editor.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="Lessons.Quests.UI.csproj" />
+  <Project Path="Lessons.Quests.UIToolkit.csproj" />
+</Solution>
