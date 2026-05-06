@@ -1026,7 +1026,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 3
@@ -9746,7 +9746,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 3
@@ -11817,7 +11817,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 3
@@ -13081,7 +13081,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.01
+  near clip plane: 0.1
   far clip plane: 5000
   field of view: 75
   orthographic: 0
@@ -13109,8 +13109,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517373468}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.99367046, z: 0, w: 0.11233463}
-  m_LocalPosition: {x: 5.701351, y: 1.38, z: 3.5656114}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.8723297, y: 1.957, z: 0.8469124}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15266,7 +15266,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 3
@@ -17322,6 +17322,10 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 305786963065209916, guid: 34580ac115bf94a439ccbfa274b54fcc, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3068828232109008201, guid: 34580ac115bf94a439ccbfa274b54fcc, type: 3}
       propertyPath: m_Name
       value: Point Light
@@ -17383,6 +17387,14 @@ PrefabInstance:
       propertyPath: _playerCamera
       value: 
       objectReference: {fileID: 1538485098}
+    - target: {fileID: 955566278333125526, guid: b890a6af87bd1d646a36f266c8dd8282, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 955566278333125526, guid: b890a6af87bd1d646a36f266c8dd8282, type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5355806830771920434, guid: b890a6af87bd1d646a36f266c8dd8282, type: 3}
       propertyPath: _onPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -18143,8 +18155,16 @@ PrefabInstance:
       value: 4.4
       objectReference: {fileID: 0}
     - target: {fileID: 5709052166336405590, guid: 86498ce1c70e2fb439a203f9fb71df60, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5709052166336405590, guid: 86498ce1c70e2fb439a203f9fb71df60, type: 3}
       propertyPath: m_ColorTemperature
       value: 5607
+      objectReference: {fileID: 0}
+    - target: {fileID: 5709052166336405590, guid: 86498ce1c70e2fb439a203f9fb71df60, type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18368,6 +18388,10 @@ PrefabInstance:
     - target: {fileID: 5853040890995417073, guid: 101d468814a845a4288b0c5a0d276348, type: 3}
       propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574252529488280880, guid: 101d468814a845a4288b0c5a0d276348, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

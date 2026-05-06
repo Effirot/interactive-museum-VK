@@ -1388,6 +1388,56 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1 &85709970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 85709972}
+  - component: {fileID: 85709971}
+  m_Layer: 0
+  m_Name: PlayLunarBall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &85709971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85709970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1bc697d05f46146ac73cd7756ca4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Digitech.Lessons.Quests::Lessons.Quests.QuestCheckpoint
+  checkpointName: 
+  checkpointDiscription: 
+  conditions: []
+  onSelectionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &85709972
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85709970}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1620769647}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &89487155
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3927,6 +3977,33 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1 &221327385 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3763847135858878018, guid: f08d616e0079da0449e594c2a2d79b50, type: 3}
+  m_PrefabInstance: {fileID: 269234601}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &221327389
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221327385}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -786794213961867924, guid: 59e3bd5488424e74b979ce618a54d713, type: 3}
 --- !u!1001 &224998347
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4118,6 +4195,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4117182104570985203, guid: f08d616e0079da0449e594c2a2d79b50, type: 3}
       insertIndex: -1
       addedObject: {fileID: 269234604}
+    - targetCorrespondingSourceObject: {fileID: 3763847135858878018, guid: f08d616e0079da0449e594c2a2d79b50, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 221327389}
   m_SourcePrefab: {fileID: 100100000, guid: f08d616e0079da0449e594c2a2d79b50, type: 3}
 --- !u!4 &269234602 stripped
 Transform:
@@ -4458,6 +4538,56 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 5026b0343ea410f4bbc1577cab1cc973, type: 3}
+--- !u!1 &324975028
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 324975030}
+  - component: {fileID: 324975029}
+  m_Layer: 0
+  m_Name: ActivateGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &324975029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324975028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1bc697d05f46146ac73cd7756ca4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Digitech.Lessons.Quests::Lessons.Quests.QuestCheckpoint
+  checkpointName: 
+  checkpointDiscription: 
+  conditions: []
+  onSelectionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &324975030
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324975028}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1620769647}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &343960274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4988,15 +5118,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3822528598486772489, guid: 7a0e7608502f89d4e8a3c084d7a05ef6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.71
+      value: 2.76
       objectReference: {fileID: 0}
     - target: {fileID: 3822528598486772489, guid: 7a0e7608502f89d4e8a3c084d7a05ef6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.32
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 3822528598486772489, guid: 7a0e7608502f89d4e8a3c084d7a05ef6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 29.593018
+      value: -13.8
       objectReference: {fileID: 0}
     - target: {fileID: 3822528598486772489, guid: 7a0e7608502f89d4e8a3c084d7a05ef6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5025,6 +5155,10 @@ PrefabInstance:
     - target: {fileID: 3822528598486772489, guid: 7a0e7608502f89d4e8a3c084d7a05ef6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6679110091051017031, guid: 7a0e7608502f89d4e8a3c084d7a05ef6, type: 3}
+      propertyPath: m_SkinWidth
+      value: 0.13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6375,6 +6509,56 @@ Transform:
   - {fileID: 705510627}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &504288902
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 504288904}
+  - component: {fileID: 504288903}
+  m_Layer: 0
+  m_Name: 'FindArtemStuff '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &504288903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504288902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1bc697d05f46146ac73cd7756ca4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Digitech.Lessons.Quests::Lessons.Quests.QuestCheckpoint
+  checkpointName: 
+  checkpointDiscription: 
+  conditions: []
+  onSelectionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &504288904
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504288902}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1620769647}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &509926956
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7156,6 +7340,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 38f61bcfa78a23f47a200fb4e334d73b, type: 3}
   m_PrefabInstance: {fileID: 570534777}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &577370627
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 577370629}
+  - component: {fileID: 577370628}
+  m_Layer: 0
+  m_Name: OpenToiletDoor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &577370628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577370627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1bc697d05f46146ac73cd7756ca4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Digitech.Lessons.Quests::Lessons.Quests.QuestCheckpoint
+  checkpointName: 
+  checkpointDiscription: 
+  conditions: []
+  onSelectionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &577370629
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577370627}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1620769647}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &600974897
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8090,6 +8324,56 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5053925668127403250, guid: 4bfd9fb27082e3e4dac1c02e41f28e05, type: 3}
+--- !u!1 &702205854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 702205856}
+  - component: {fileID: 702205855}
+  m_Layer: 0
+  m_Name: FixPipeMiniGame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &702205855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702205854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1bc697d05f46146ac73cd7756ca4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Digitech.Lessons.Quests::Lessons.Quests.QuestCheckpoint
+  checkpointName: 
+  checkpointDiscription: 
+  conditions: []
+  onSelectionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &702205856
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702205854}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1620769647}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &705510626
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9591,7 +9875,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4b2a4c3e039309543ad05c5d03dbc7ed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 962444791}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4b2a4c3e039309543ad05c5d03dbc7ed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 962444792}
   m_SourcePrefab: {fileID: 100100000, guid: 4b2a4c3e039309543ad05c5d03dbc7ed, type: 3}
 --- !u!4 &867621464 stripped
 Transform:
@@ -10895,6 +11185,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9073624392922170573, guid: 4bc7fa6b051e58f44816d288d6074ff5, type: 3}
   m_PrefabInstance: {fileID: 935789189}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &938098391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 938098393}
+  - component: {fileID: 938098392}
+  m_Layer: 0
+  m_Name: FindNewsPaper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &938098392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938098391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1bc697d05f46146ac73cd7756ca4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Digitech.Lessons.Quests::Lessons.Quests.QuestCheckpoint
+  checkpointName: 
+  checkpointDiscription: 
+  conditions: []
+  onSelectionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &938098393
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938098391}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1620769647}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &944679809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11181,6 +11521,49 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1 &962444788 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4b2a4c3e039309543ad05c5d03dbc7ed, type: 3}
+  m_PrefabInstance: {fileID: 867621463}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &962444791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962444788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c4f86bd417148649991fcf8fd6854ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickableObject
+  itemId: key (1)
+  itemDisplayName: key (1)
+  itemIcon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  placingActive: 0
+--- !u!64 &962444792
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962444788}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5495902117074765545, guid: 4b2a4c3e039309543ad05c5d03dbc7ed, type: 3}
 --- !u!1001 &976075671
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11247,6 +11630,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8241858685941336349, guid: faf0b0ca5dc69f243be6bf9a278c655d, type: 3}
   m_PrefabInstance: {fileID: 976075671}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &976469901
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 976469903}
+  - component: {fileID: 976469902}
+  m_Layer: 0
+  m_Name: FindPipe
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &976469902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976469901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1bc697d05f46146ac73cd7756ca4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Digitech.Lessons.Quests::Lessons.Quests.QuestCheckpoint
+  checkpointName: 
+  checkpointDiscription: 
+  conditions: []
+  onSelectionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &976469903
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976469901}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1620769647}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &976709913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11673,6 +12106,56 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1 &1011606049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1011606051}
+  - component: {fileID: 1011606050}
+  m_Layer: 0
+  m_Name: UseKeycard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1011606050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011606049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1bc697d05f46146ac73cd7756ca4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Digitech.Lessons.Quests::Lessons.Quests.QuestCheckpoint
+  checkpointName: 
+  checkpointDiscription: 
+  conditions: []
+  onSelectionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &1011606051
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011606049}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1620769647}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1036436472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15423,6 +15906,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1335902452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1335902454}
+  - component: {fileID: 1335902453}
+  m_Layer: 0
+  m_Name: CrossPuddle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1335902453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335902452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1bc697d05f46146ac73cd7756ca4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Digitech.Lessons.Quests::Lessons.Quests.QuestCheckpoint
+  checkpointName: 
+  checkpointDiscription: 
+  conditions: []
+  onSelectionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &1335902454
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335902452}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1620769647}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1338435374
 GameObject:
   m_ObjectHideFlags: 0
@@ -16027,6 +16560,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9073624392922170573, guid: 4bc7fa6b051e58f44816d288d6074ff5, type: 3}
   m_PrefabInstance: {fileID: 1368693999}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1369419337
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1369419339}
+  - component: {fileID: 1369419338}
+  m_Layer: 0
+  m_Name: KillRoaches
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1369419338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369419337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1bc697d05f46146ac73cd7756ca4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Digitech.Lessons.Quests::Lessons.Quests.QuestCheckpoint
+  checkpointName: 
+  checkpointDiscription: 
+  conditions: []
+  onSelectionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &1369419339
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369419337}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1620769647}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1385833321
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16274,6 +16857,58 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1 &1399095891
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1399095893}
+  - component: {fileID: 1399095892}
+  m_Layer: 0
+  m_Name: FindBasementKey
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1399095892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399095891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1bc697d05f46146ac73cd7756ca4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Digitech.Lessons.Quests::Lessons.Quests.QuestCheckpoint
+  checkpointName: 
+  checkpointDiscription: 
+  conditions:
+  - {fileID: 1794519685}
+  onSelectionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &1399095893
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399095891}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1794519684}
+  m_Father: {fileID: 1620769647}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1407554124
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16456,6 +17091,7 @@ GameObject:
   - component: {fileID: 1436091016}
   - component: {fileID: 1436091015}
   - component: {fileID: 1436091014}
+  - component: {fileID: 1436091017}
   m_Layer: 0
   m_Name: Pen
   m_TagString: Untagged
@@ -16555,6 +17191,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1436091012}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1436091017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436091012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c4f86bd417148649991fcf8fd6854ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickableObject
+  itemId: item
+  itemDisplayName: Item
+  itemIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  placingActive: 0
 --- !u!1 &1443856391
 GameObject:
   m_ObjectHideFlags: 0
@@ -18271,13 +18923,74 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114032679875626476, guid: fb21c2677f6de9b41b800858634f37f9, type: 3}
       propertyPath: open
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb21c2677f6de9b41b800858634f37f9, type: 3}
+--- !u!114 &1593022094 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114032679875626476, guid: fb21c2677f6de9b41b800858634f37f9, type: 3}
+  m_PrefabInstance: {fileID: 1593022093}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 731917776111cfd4e8e238be7a676f44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1614257875
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1614257877}
+  - component: {fileID: 1614257876}
+  m_Layer: 0
+  m_Name: OpenAllVales
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1614257876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614257875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1bc697d05f46146ac73cd7756ca4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Digitech.Lessons.Quests::Lessons.Quests.QuestCheckpoint
+  checkpointName: 
+  checkpointDiscription: 
+  conditions: []
+  onSelectionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &1614257877
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614257875}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1620769647}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1617612707
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18398,6 +19111,95 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1 &1620769646
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1620769647}
+  - component: {fileID: 1620769648}
+  m_Layer: 0
+  m_Name: QuestManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1620769647
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620769646}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.29486, y: 0.42081, z: -10.02122}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1399095893}
+  - {fileID: 504288904}
+  - {fileID: 1641501471}
+  - {fileID: 976469903}
+  - {fileID: 1335902454}
+  - {fileID: 702205856}
+  - {fileID: 85709972}
+  - {fileID: 1721919631}
+  - {fileID: 938098393}
+  - {fileID: 1369419339}
+  - {fileID: 1011606051}
+  - {fileID: 1624652272}
+  - {fileID: 324975030}
+  - {fileID: 577370629}
+  - {fileID: 1614257877}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1620769648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620769646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79c37b1a104b5ee4b9dd980a12c686ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Digitech.Lessons.Quests::Lessons.Quests.Quest
+  questName: 
+  questDiscription: 
+  activateOnInitialize: 1
+  bindedAsset: {fileID: 0}
+  checkPoints:
+  - {fileID: 1399095892}
+  onQuestSelected:
+    m_PersistentCalls:
+      m_Calls: []
+  onQuestAborted:
+    m_PersistentCalls:
+      m_Calls: []
+  onQuestConpleted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1593022094}
+        m_TargetAssemblyTypeName: DoorScript.Door, Assembly-CSharp-firstpass
+        m_MethodName: OpenDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onCheckpointChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1621800239
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18620,6 +19422,106 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1624652270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1624652272}
+  - component: {fileID: 1624652271}
+  m_Layer: 0
+  m_Name: FixWiresMiniGame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1624652271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624652270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1bc697d05f46146ac73cd7756ca4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Digitech.Lessons.Quests::Lessons.Quests.QuestCheckpoint
+  checkpointName: 
+  checkpointDiscription: 
+  conditions: []
+  onSelectionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &1624652272
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624652270}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1620769647}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1641501469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1641501471}
+  - component: {fileID: 1641501470}
+  m_Layer: 0
+  m_Name: FindSlippers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1641501470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641501469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1bc697d05f46146ac73cd7756ca4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Digitech.Lessons.Quests::Lessons.Quests.QuestCheckpoint
+  checkpointName: 
+  checkpointDiscription: 
+  conditions: []
+  onSelectionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &1641501471
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641501469}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1620769647}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1647777865
 PrefabInstance:
@@ -19704,6 +20606,56 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1718422195}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1721919629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1721919631}
+  - component: {fileID: 1721919630}
+  m_Layer: 0
+  m_Name: GetKeycard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1721919630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721919629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1bc697d05f46146ac73cd7756ca4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Digitech.Lessons.Quests::Lessons.Quests.QuestCheckpoint
+  checkpointName: 
+  checkpointDiscription: 
+  conditions: []
+  onSelectionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &1721919631
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721919629}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1620769647}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1725965897
 GameObject:
   m_ObjectHideFlags: 0
@@ -20562,6 +21514,56 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1 &1794519683
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1794519684}
+  - component: {fileID: 1794519685}
+  m_Layer: 0
+  m_Name: StateCondition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1794519684
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794519683}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1399095893}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1794519685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794519683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a9f864f1711cd44f8d86658a53980aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Digitech.Lessons.Quests::Lessons.Quests.QuestCondition
+  hidden: 0
+  conditionName: 
+  _isCompleted: 0
+  onComplitionStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1803056065
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33194,7 +34196,7 @@ Transform:
   m_GameObject: {fileID: 2039518981}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.9936703, z: 0, w: 0.1123361}
-  m_LocalPosition: {x: 23.71, y: -1.9399999, z: 29.593018}
+  m_LocalPosition: {x: 2.76, y: 1.46, z: -13.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -35048,3 +36050,4 @@ SceneRoots:
   - {fileID: 2079516627}
   - {fileID: 498778005}
   - {fileID: 1713914585}
+  - {fileID: 1620769647}
