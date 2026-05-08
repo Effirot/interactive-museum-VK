@@ -151,6 +151,20 @@ public class DialogueSystem : MonoBehaviour
             Debug.LogWarning("Cannot start empty dialogue");
             return;
         }
+
+        if (canvasInventory == null)
+        {
+            GameObject inventory = GameObject.Find("Inventory");
+            if (inventory != null)
+            {
+                canvasInventory = inventory;
+            }
+            else
+            {
+                Debug.LogWarning("CanvasInventory not found in scene!");
+            }
+        }
+
         canvasInventory.SetActive(false);
         currentDialogue = dialogue;
         currentLineIndex = 0;
@@ -269,6 +283,14 @@ public class DialogueSystem : MonoBehaviour
 
     private void EndDialogue()
     {
+        if (canvasInventory == null)
+        {
+            GameObject inventory = GameObject.Find("Inventory");
+            if (inventory != null)
+            {
+                canvasInventory = inventory;
+            }
+        }
         canvasInventory.SetActive(true);
         isDialogueActive = false;
         endDialogue = true;
