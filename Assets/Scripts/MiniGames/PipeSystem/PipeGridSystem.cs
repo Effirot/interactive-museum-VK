@@ -830,6 +830,7 @@ namespace InteractiveMuseum.PipeSystem
             {
                 _onPuzzleSolved?.Invoke();
                 Debug.Log("Puzzle solved!");
+                CompleteMiniGame();
             }
         }
         
