@@ -1,5 +1,6 @@
 using UnityEngine;
 using InteractiveMuseum.Camera;
+using System;
 
 namespace InteractiveMuseum.MiniGames
 {
@@ -16,7 +17,9 @@ namespace InteractiveMuseum.MiniGames
         
         protected bool _isActive = false;
         protected CameraManager _cameraManager;
-        
+
+        public event Action OnMiniGameCompleted;
+
         /// <summary>
         /// Gets whether the mini-game is currently active.
         /// </summary>
@@ -94,6 +97,14 @@ namespace InteractiveMuseum.MiniGames
         protected virtual void OnMiniGameDeactivated()
         {
             // Override in derived classes for custom deactivation logic
+        }
+        protected virtual void CompleteMiniGame()
+        {
+            if (_isActive)
+            {
+                Debug.Log($"[{GetType().Name}] Мини-игра завершена успешно!");
+                OnMiniGameCompleted?.Invoke();
+            }
         }
     }
 }
