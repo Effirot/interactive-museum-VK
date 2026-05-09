@@ -6903,7 +6903,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1676619827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9294,7 +9294,6 @@ MonoBehaviour:
   checkPoints:
   - {fileID: 1821811456}
   - {fileID: 531745415}
-  - {fileID: 2070873675}
   onQuestSelected:
     m_PersistentCalls:
       m_Calls: []
@@ -10259,7 +10258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2070873675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10277,19 +10276,7 @@ MonoBehaviour:
   conditions: []
   onSelectionChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1676619826}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!4 &2070873676
 Transform:
   m_ObjectHideFlags: 0

@@ -65,7 +65,7 @@ MonoBehaviour:
     textKey: dialogueShop.line13
     continueButtonKey: next
     tableReference: LocalizationString
-  - speakerNameKey: anna
+  - speakerNameKey: erich
     textKey: dialogueShop.line14
     continueButtonKey: next
     tableReference: LocalizationString
@@ -73,7 +73,7 @@ MonoBehaviour:
     textKey: dialogueShop.line15
     continueButtonKey: next
     tableReference: LocalizationString
-  - speakerNameKey: anna
+  - speakerNameKey: erich
     textKey: dialogueShop.line16
     continueButtonKey: next
     tableReference: LocalizationString

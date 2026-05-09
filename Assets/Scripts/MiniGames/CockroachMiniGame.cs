@@ -77,6 +77,9 @@ namespace InteractiveMuseum.MiniGames
             {
                 CreateDefaultCockroachPrefab();
             }
+
+            InitializeGame();
+            SpawnCockroaches();
         }
         
         protected override void OnMiniGameActivated()
@@ -87,23 +90,32 @@ namespace InteractiveMuseum.MiniGames
             {
                 InitializeGame();
             }
-            
-            SpawnCockroaches();
-            
-            // Подписываемся на клики мыши
-            if (_playerController != null)
+
+            if (_activeCockroaches.Count == 0)
             {
-                // Используем существующую систему обработки кликов
-                // Клики будут обрабатываться через HandleCockroachClick
+                SpawnCockroaches();
+            }
+
+            foreach (var cockroach in _activeCockroaches)
+            {
+                if (cockroach != null)
+                {
+                    cockroach.gameObject.SetActive(true);
+                }
             }
         }
         
         protected override void OnMiniGameDeactivated()
         {
             base.OnMiniGameDeactivated();
-            
-            // Удаляем всех тараканов
-            ClearAllCockroaches();
+
+            foreach (var cockroach in _activeCockroaches)
+            {
+                if (cockroach != null)
+                {
+                    cockroach.gameObject.SetActive(false);
+                }
+            }
         }
         
         private void InitializeGame()
@@ -161,6 +173,7 @@ namespace InteractiveMuseum.MiniGames
             {
                 Debug.Log("[CockroachMiniGame] Все тараканы уничтожены! Игра завершена.");
                 // Можно добавить логику завершения игры здесь
+                CompleteMiniGame();
             }
         }
         

@@ -419,6 +419,61 @@ MonoBehaviour:
       salary on water bills.
     m_Metadata:
       m_Items: []
+  - m_Id: 9263871953276928
+    m_Localized: Note
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9264388033024000
+    m_Localized: Everyday life, architecture, and burial sites were closely connected
+      to beliefs (including the cult of fire), rituals, and sacred symbols and meanings.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9264370198843392
+    m_Localized: The main activities were metallurgy (bronze), cattle breeding (and
+      possibly horse breeding), and hunting.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9264356953231360
+    m_Localized: All the dwellings that were adjacent to the outer wall, like lemon
+      slices, had exits to the main street. In total, 35 dwellings were found in
+      the outer circle.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9264345133682688
+    m_Localized: The Arkaim settlement was surrounded by a two-meter-deep moat filled
+      with water. The outer wall was five meters wide and five and a half meters
+      high.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9264327458885632
+    m_Localized: The city and the burial structures are a combination of a circle
+      and a square.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9264298350415872
+    m_Localized: A nine-storey pyramid with a base of 72 meters and a height of about
+      ten meters was discovered in the Arkaim region.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9264283108315136
+    m_Localized: The toponym "Arkaim" comes from the Turkic words for "ridge," "back,"
+      and "foundation."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9263115284058112
+    m_Localized: The layout of the Arkaim settlement combined a defensive function
+      with ritual and cosmological symbolism.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9262878108749824
+    m_Localized: According to one theory, the population of Arkaim may have spoken
+      a Proto-Indo-Iranian language.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9265570445070336
+    m_Localized: Artyom's recordings
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
