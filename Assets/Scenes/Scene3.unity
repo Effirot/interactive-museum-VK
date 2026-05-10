@@ -7925,6 +7925,14 @@ PrefabInstance:
       propertyPath: m_SkinWidth
       value: 0.15
       objectReference: {fileID: 0}
+    - target: {fileID: 8671360499501909312, guid: 7a0e7608502f89d4e8a3c084d7a05ef6, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8671360499501909312, guid: 7a0e7608502f89d4e8a3c084d7a05ef6, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: c60c56b413b782b47930d698387b5b5e, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15694,7 +15702,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &878757909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17392,8 +17400,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.6, y: 21.82, z: 4.43}
-  m_Center: {x: 0.000015258789, y: 3.27, z: -0.34705296}
+  m_Size: {x: 5.74, y: 22.58, z: 6.3}
+  m_Center: {x: 0.000015258789, y: 8.5, z: -0.34705296}
 --- !u!1 &971029555 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5975992697821757778, guid: 9db3779ce49d359439949daf3a45508f, type: 3}
@@ -25673,7 +25681,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.44, y: 2.09, z: 3.72}
+  m_Size: {x: 2.66, y: 5.55, z: 12.36}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1436091015
 MeshRenderer:
@@ -29599,6 +29607,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4b2a4c3e039309543ad05c5d03dbc7ed, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2112355145}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4b2a4c3e039309543ad05c5d03dbc7ed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2112355148}
   m_SourcePrefab: {fileID: 100100000, guid: 4b2a4c3e039309543ad05c5d03dbc7ed, type: 3}
 --- !u!4 &1669428275 stripped
 Transform:
@@ -34359,6 +34370,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 505775461573968448, guid: 3981169bd42fac444b626f72c137e0a5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 280
+      objectReference: {fileID: 0}
+    - target: {fileID: 505775461573968448, guid: 3981169bd42fac444b626f72c137e0a5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 143
+      objectReference: {fileID: 0}
+    - target: {fileID: 1407703643531512290, guid: 3981169bd42fac444b626f72c137e0a5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1407703643531512290, guid: 3981169bd42fac444b626f72c137e0a5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1624516978112464339, guid: 3981169bd42fac444b626f72c137e0a5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -34373,6 +34400,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1624516978112464339, guid: 3981169bd42fac444b626f72c137e0a5, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965348121089804778, guid: 3981169bd42fac444b626f72c137e0a5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965348121089804778, guid: 3981169bd42fac444b626f72c137e0a5, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2050086952022448024, guid: 3981169bd42fac444b626f72c137e0a5, type: 3}
@@ -34455,6 +34490,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3742170107292955677, guid: 3981169bd42fac444b626f72c137e0a5, type: 3}
+      propertyPath: m_text
+      value: "\u0417\u0430\u043C\u0435\u0442\u043A\u0438 \u0410\u0440\u0442\u0435\u043C\u0430"
+      objectReference: {fileID: 0}
     - target: {fileID: 3839443540547067459, guid: 3981169bd42fac444b626f72c137e0a5, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
@@ -34473,6 +34512,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4370634183915298170, guid: 3981169bd42fac444b626f72c137e0a5, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5009220452719892265, guid: 3981169bd42fac444b626f72c137e0a5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5009220452719892265, guid: 3981169bd42fac444b626f72c137e0a5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5009220452719892265, guid: 3981169bd42fac444b626f72c137e0a5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5009220452719892265, guid: 3981169bd42fac444b626f72c137e0a5, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5108124419372664931, guid: 3981169bd42fac444b626f72c137e0a5, type: 3}
@@ -47995,11 +48050,32 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 4b2a4c3e039309543ad05c5d03dbc7ed, type: 3}
+--- !u!65 &2112355148
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112355144}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.87, y: 37.5, z: 7.66}
+  m_Center: {x: -0.00012207031, y: 7.93, z: -0.34696132}
 --- !u!1001 &2114058103
 PrefabInstance:
   m_ObjectHideFlags: 0
